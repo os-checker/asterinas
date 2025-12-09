@@ -1,235 +1,5 @@
-   Compiling proc-macro2 v1.0.95
-   Compiling unicode-ident v1.0.18
-   Compiling syn v1.0.109
-   Compiling autocfg v1.4.0
-   Compiling zerocopy v0.8.25
-    Checking cfg-if v1.0.0
-    Checking scopeguard v1.2.0
-   Compiling libc v0.2.172
-   Compiling getrandom v0.3.3
-    Checking bitflags v1.3.2
-    Checking bitflags v2.9.1
-    Checking log v0.4.27
-    Checking bit_field v0.10.2
-   Compiling strsim v0.10.0
-   Compiling fnv v1.0.7
-   Compiling thiserror v2.0.12
-   Compiling ident_case v1.0.1
-   Compiling radium v0.7.0
-   Compiling rustversion v1.0.20
-    Checking tap v1.0.1
-   Compiling x86 v0.52.0
-    Checking uguid v2.2.1
-    Checking raw-cpuid v10.7.0
-   Compiling serde v1.0.219
-    Checking funty v2.0.0
-    Checking volatile v0.4.6
-    Checking gimli v0.32.3
-   Compiling either v1.15.0
-    Checking acpi v5.2.0
-    Checking wyz v0.5.1
-    Checking smallvec v1.15.0
-    Checking ostd-test v0.16.1 (/home/zjp/asterinas/ostd/libs/ostd-test)
-20:01:30|RAP|INFO|: Start analysis with RAPx.
-    Checking linux-boot-params v0.16.1 (/home/zjp/asterinas/ostd/libs/linux-bzimage/boot-params)
-    Checking gimli v0.28.1
-20:01:31|RAP|INFO|: Start analysis with RAPx.
-   Compiling itertools v0.10.5
-    Checking align_ext v0.1.0 (/home/zjp/asterinas/ostd/libs/align_ext)
-    Checking volatile v0.6.1
-20:01:31|RAP|INFO|: Start analysis with RAPx.
-   Compiling equivalent v1.0.2
-   Compiling hashbrown v0.15.3
-   Compiling lock_api v0.4.12
-20:01:32|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-20:01:32|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-   Compiling memoffset v0.9.1
-   Compiling num-traits v0.2.19
-   Compiling winnow v0.5.40
-    Checking bitvec v1.0.1
-   Compiling version_check v0.9.5
-   Compiling json v0.12.4
-   Compiling typeflags-util v0.1.0 (/home/zjp/asterinas/kernel/libs/typeflags-util)
-   Compiling typenum v1.18.0
-20:01:33|RAP|INFO|: Start analysis with RAPx.
-20:01:34|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-   Compiling generic-array v0.14.7
-20:01:35|RAP|INFO|: Start analysis with RAPx.
-   Compiling indexmap v2.9.0
-20:01:35|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-   Compiling quote v1.0.40
-    Checking x86_64 v0.14.13
-    Checking byteorder v1.5.0
-    Checking spin v0.9.8
-    Checking intrusive-collections v0.9.7
-   Compiling syn v2.0.101
-    Checking unwinding v0.2.8
-   Compiling semver v1.0.26
-    Checking lazy_static v1.5.0
-    Checking stable_deref_trait v1.2.0
-   Compiling paste v1.0.15
-   Compiling rand_core v0.9.3
-    Checking iced-x86 v1.21.0
-   Compiling ahash v0.8.12
-   Compiling heapless v0.8.0
-    Checking allocator-api2 v0.2.21
-    Checking hash32 v0.3.1
-    Checking once_cell v1.21.3
-    Checking cpufeatures v0.2.17
-   Compiling smoltcp v0.11.0 (https://github.com/asterinas/smoltcp?tag=r_2024-11-08_f07e5b5#b10671de)
-    Checking subtle v2.4.1
-   Compiling macro_rules_attribute-proc_macro v0.1.3
-    Checking opaque-debug v0.3.1
-    Checking cipher v0.3.0
-   Compiling ppv-lite86 v0.2.21
-    Checking managed v0.8.0
-   Compiling rustc_version v0.4.1
-    Checking universal-hash v0.4.1
-    Checking font8x8 v0.2.7
-    Checking memchr v2.7.4
-    Checking hash32 v0.2.1
-    Checking takeable v0.2.2
-    Checking polyval v0.5.3
-    Checking never-say-never v6.6.666
-    Checking foldhash v0.1.5
-    Checking polonius-the-crab v0.2.1
-    Checking jhash v0.1.0 (/home/zjp/asterinas/kernel/libs/jhash)
-    Checking aes v0.7.5
-    Checking ghash v0.4.4
-    Checking ctr v0.8.0
-20:01:39|RAP|INFO|: Start analysis with RAPx.
-    Checking aead v0.4.3
-   Compiling proc-macro-error-attr2 v2.0.0
-   Compiling rand_chacha v0.9.0
-    Checking id-alloc v0.1.0 (/home/zjp/asterinas/ostd/libs/id-alloc)
-    Checking powerfmt v0.2.0
-20:01:40|RAP|INFO|: Start analysis with RAPx.
-20:01:40|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-   Compiling heapless v0.7.17
-    Checking cobs v0.2.3
-    Checking rle-decode-fast v1.0.3
-    Checking crc32fast v1.4.2
-    Checking core2 v0.4.0
-    Checking dary_heap v0.3.7
-    Checking deranged v0.4.0
-    Checking aes-gcm v0.9.4
-   Compiling rand v0.9.2
-    Checking num-conv v0.1.0
-    Checking adler32 v1.2.0
-    Checking macro_rules_attribute v0.1.3
-    Checking bittle v0.5.7
-    Checking zero v0.1.3
-    Checking owo-colors v3.5.0
-    Checking time-core v0.1.4
-    Checking logo-ascii-art v0.1.0 (/home/zjp/asterinas/kernel/libs/logo-ascii-art)
-    Checking keyable-arc v0.1.0 (/home/zjp/asterinas/kernel/libs/keyable-arc)
-20:01:41|RAP|INFO|: Start analysis with RAPx.
-20:01:41|RAP|INFO|: Start analysis with RAPx.
-    Checking xmas-elf v0.10.0
-20:01:41|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-    Checking lru v0.12.5
-   Compiling toml_datetime v0.6.9
-   Compiling serde_spanned v0.6.8
-    Checking time v0.3.41
-   Compiling toml_edit v0.19.15
-   Compiling proc-macro-error2 v2.0.1
-   Compiling thiserror-impl v2.0.12
-   Compiling ptr_meta_derive v0.3.0
-   Compiling int-to-c-enum-derive v0.1.0 (/home/zjp/asterinas/kernel/libs/int-to-c-enum/derive)
-   Compiling ostd-macros v0.16.1 (/home/zjp/asterinas/ostd/libs/ostd-macros)
-   Compiling ghost v0.1.19
-   Compiling serde_derive v1.0.219
-   Compiling getset v0.1.5
-   Compiling atomic-integer-wrapper v0.1.0 (/home/zjp/asterinas/kernel/libs/atomic-integer-wrapper)
-   Compiling darling_core v0.13.4
-    Checking ptr_meta v0.3.0
-   Compiling toml v0.7.8
-    Checking int-to-c-enum v0.1.0 (/home/zjp/asterinas/kernel/libs/int-to-c-enum)
-20:01:47|RAP|INFO|: Start analysis with RAPx.
-20:01:48|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-    Checking tdx-guest v0.2.2
-   Compiling ptr_meta_derive v0.2.0
-   Compiling ostd-pod-derive v0.1.1 (https://github.com/asterinas/ostd-pod?rev=c4644be#c4644be4)
-   Compiling ctor v0.1.25 (https://github.com/asterinas/rust-ctor#e30a5d96)
-   Compiling component-macro v0.1.0 (/home/zjp/asterinas/kernel/libs/comp-sys/component-macro)
-   Compiling typeflags v0.1.0 (/home/zjp/asterinas/kernel/libs/typeflags)
-   Compiling aster-rights-proc v0.1.0 (/home/zjp/asterinas/kernel/libs/aster-rights-proc)
-   Compiling ext-trait-proc_macros v1.0.1
-   Compiling nougat-proc_macros v0.2.4
-   Compiling lending-iterator-proc_macros v0.1.7
-   Compiling controlled v0.1.0 (/home/zjp/asterinas/kernel/libs/comp-sys/controlled)
-    Checking multiboot2-common v0.3.0
-    Checking ptr_meta v0.2.0
-    Checking ext-trait v1.0.1
-    Checking ostd-pod v0.1.1 (https://github.com/asterinas/ostd-pod?rev=c4644be#c4644be4)
-    Checking uefi-raw v0.8.0
-    Checking inventory v0.3.3 (https://github.com/asterinas/inventory?rev=9dce587#9dce5871)
-    Checking extension-traits v1.0.1
-    Checking component v0.1.0 (/home/zjp/asterinas/kernel/libs/comp-sys/component)
-20:01:54|RAP|INFO|: Start analysis with RAPx.
-   Compiling darling_macro v0.13.4
-    Checking nougat v0.2.4
-    Checking lending-iterator v0.1.7
-   Compiling darling v0.13.4
+Over visited: DefId(0:52 ~ aster_rights[070b]::{impl#10}::fmt)
 Over visited: DefId(0:44 ~ component[3437]::match_and_call)
-   Compiling inherit-methods-macro v0.1.0 (https://github.com/asterinas/inherit-methods-macro?rev=98f7e3e#98f7e3eb)
-    Checking cpio-decoder v0.1.0 (/home/zjp/asterinas/kernel/libs/cpio-decoder)
-20:01:55|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-rights v0.1.0 (/home/zjp/asterinas/kernel/libs/aster-rights)
-20:01:55|RAP|INFO|: Start analysis with RAPx.
-    Checking multiboot2 v0.24.0
-20:01:56|RAP|WARN|: Intrinsic functions is incompletely retrieved.
-1 fn ids are not found: [
-    [
-        "std::alloc::dealloc",
-        "alloc::alloc::dealloc",
-    ],
-]
-    Checking ostd v0.16.1 (/home/zjp/asterinas/ostd)
-20:01:58|RAP|INFO|: Start analysis with RAPx.
-20:01:59|RAP|WARN|: Dangling pointer detected in function "next"
 warning: Dangling pointer detected.
   --> kernel/libs/cpio-decoder/src/lib.rs:76:1
    |
@@ -258,12 +28,6 @@ warning: Dangling pointer detected.
     | MIR detail: Value _18446744073709551615 and _1 are alias.
     | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
    |
-Over visited: DefId(0:52 ~ aster_rights[070b]::{impl#10}::fmt)
-    Checking hashbrown v0.14.5
-    Checking postcard v1.1.1
-    Checking libflate_lz77 v2.1.0
-    Checking libflate v2.1.0
-20:03:04|RAP|WARN|: Memory Leak detected in function into_raw
 warning: Memory Leak detected.
    --> ostd/src/sync/rcu/non_null/mod.rs:116:19
     |
@@ -275,7 +39,6 @@ warning: Memory Leak detected.
 119 |         unsafe { NonNull::new_unchecked(ptr) }
 120 |     }
     |
-20:03:07|RAP|WARN|: Memory Leak detected in function init
 warning: Memory Leak detected.
   --> ostd/src/task/scheduler/fifo_scheduler.rs:17:21
    |
@@ -302,7 +65,6 @@ Over visited: DefId(0:8128 ~ ostd[ff8b]::arch::mm::{impl#17}::fmt)
 Over visited: DefId(0:8283 ~ ostd[ff8b]::arch::serial::{impl#8}::fmt)
 Over visited: DefId(0:9140 ~ ostd[ff8b]::mm::page_prop::{impl#21}::fmt)
 Over visited: DefId(0:9265 ~ ostd[ff8b]::mm::page_prop::{impl#46}::fmt)
-20:03:27|RAP|WARN|: Double free detected in function wait_until
 warning: Double free detected.
   --> ostd/src/sync/wait.rs:69:1
    |
@@ -328,7 +90,6 @@ warning: Double free detected.
     | MIR detail: Value _10 and _2 are alias.
     | MIR detail: _10 is dropped at BB5; _2 is dropped at BB6.
    |
-20:03:27|RAP|WARN|: Dangling pointer detected in function "wait_until"
 warning: Dangling pointer detected.
   --> ostd/src/sync/wait.rs:69:1
    |
@@ -354,28 +115,7 @@ warning: Dangling pointer detected.
     | MIR detail: Value _10 and _1 are alias.
     | MIR detail: _10 is dropped at BB5; _1 became dangling.
    |
-    Checking osdk-heap-allocator v0.16.1 (/home/zjp/asterinas/osdk/deps/heap-allocator)
-    Checking aster-console v0.1.0 (/home/zjp/asterinas/kernel/comps/console)
-    Checking aster-input v0.1.0 (/home/zjp/asterinas/kernel/comps/input)
-    Checking aster-pci v0.1.0 (/home/zjp/asterinas/kernel/comps/pci)
-    Checking aster-cmdline v0.1.0 (/home/zjp/asterinas/kernel/comps/cmdline)
-    Checking xarray v0.1.0 (/home/zjp/asterinas/kernel/libs/xarray)
-    Checking osdk-frame-allocator v0.16.1 (/home/zjp/asterinas/osdk/deps/frame-allocator)
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-20:03:28|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-logger v0.1.0 (/home/zjp/asterinas/kernel/comps/logger)
-20:03:32|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-util v0.1.0 (/home/zjp/asterinas/kernel/libs/aster-util)
-20:03:35|RAP|INFO|: Start analysis with RAPx.
-Over visited: DefId(0:404 ~ aster_pci[e7cd]::cfg_space::{impl#11}::fmt)
-Over visited: DefId(0:534 ~ aster_pci[e7cd]::cfg_space::{impl#36}::fmt)
 Over visited: DefId(0:230 ~ aster_input[8fae]::event_type_codes::{impl#14}::fmt)
-20:03:41|RAP|WARN|: Double free detected in function unregister_device
 warning: Double free detected.
    --> kernel/comps/input/src/input_core.rs:153:1
     |
@@ -410,7 +150,6 @@ warning: Double free detected.
     | MIR detail: Value _31 and _18 are alias.
     | MIR detail: _31 is dropped at BB13; _18 is dropped at BB39.
     |
-20:03:41|RAP|WARN|: Use-after-free detected in function "unregister_device"
 warning: Use-after-free detected.
    --> kernel/comps/input/src/input_core.rs:170:30
     |
@@ -479,27 +218,10 @@ warning: Use-after-free detected.
 177 |         Some(device_registry.device)
 178 |     }
     |
-    Checking aster-i8042 v0.1.0 (/home/zjp/asterinas/kernel/comps/i8042)
-    Checking aster-framebuffer v0.1.0 (/home/zjp/asterinas/kernel/comps/framebuffer)
-20:03:41|RAP|INFO|: Start analysis with RAPx.
-20:03:41|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-softirq v0.1.0 (/home/zjp/asterinas/kernel/comps/softirq)
-    Checking device-id v0.1.0 (/home/zjp/asterinas/kernel/libs/device-id)
-    Checking aster-systree v0.1.0 (/home/zjp/asterinas/kernel/comps/systree)
-    Checking aster-time v0.1.0 (/home/zjp/asterinas/kernel/comps/time)
-20:03:45|RAP|INFO|: Start analysis with RAPx.
-20:03:45|RAP|INFO|: Start analysis with RAPx.
-20:03:45|RAP|INFO|: Start analysis with RAPx.
-20:03:45|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-block v0.1.0 (/home/zjp/asterinas/kernel/comps/block)
-20:03:46|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-bigtcp v0.1.0 (/home/zjp/asterinas/kernel/libs/aster-bigtcp)
-20:03:47|RAP|INFO|: Start analysis with RAPx.
+Over visited: DefId(0:404 ~ aster_pci[e7cd]::cfg_space::{impl#11}::fmt)
+Over visited: DefId(0:534 ~ aster_pci[e7cd]::cfg_space::{impl#36}::fmt)
 Over visited: DefId(0:22 ~ aster_i8042[a60e]::controller::init)
 Over visited: DefId(0:248 ~ aster_i8042[a60e]::mouse::{impl#5}::parse_packet)
-    Checking aster-mlsdisk v0.1.0 (/home/zjp/asterinas/kernel/comps/mlsdisk)
-20:03:55|RAP|INFO|: Start analysis with RAPx.
-20:03:56|RAP|WARN|: Dangling pointer detected in function "read_rtc"
 warning: Dangling pointer detected.
    --> kernel/comps/time/src/rtc/cmos.rs:179:1
     |
@@ -532,14 +254,9 @@ warning: Dangling pointer detected.
     |
 Over visited: DefId(0:1259 ~ aster_bigtcp[0147]::iface::common::{impl#23}::fmt)
 Over visited: DefId(0:1480 ~ aster_bigtcp[0147]::socket::event::{impl#9}::fmt)
-    Checking aster-network v0.1.0 (/home/zjp/asterinas/kernel/comps/network)
-20:04:08|RAP|INFO|: Start analysis with RAPx.
-    Checking aster-virtio v0.1.0 (/home/zjp/asterinas/kernel/comps/virtio)
-20:04:26|RAP|INFO|: Start analysis with RAPx.
 Over visited: DefId(0:1311 ~ aster_virtio[0497]::device::block::{impl#11}::fmt)
 Over visited: DefId(0:1563 ~ aster_virtio[0497]::device::console::config::{impl#10}::fmt)
 Over visited: DefId(0:1669 ~ aster_virtio[0497]::device::input::device::{impl#14}::fmt)
-20:05:32|RAP|WARN|: Use-after-free detected in function "init"
 warning: Use-after-free detected.
    --> kernel/comps/virtio/src/device/input/device.rs:170:9
     |
@@ -1199,7 +916,6 @@ Over visited: DefId(0:2395 ~ aster_virtio[0497]::device::socket::config::{impl#1
 Over visited: DefId(0:2705 ~ aster_virtio[0497]::device::socket::header::{impl#31}::fmt)
 Over visited: DefId(0:718 ~ aster_virtio[0497]::queue::{impl#0}::new)
 Over visited: DefId(0:3147 ~ aster_virtio[0497]::queue::{impl#20}::fmt)
-20:05:33|RAP|WARN|: Use-after-free detected in function "new"
 warning: Use-after-free detected.
   --> kernel/comps/virtio/src/transport/mmio/multiplex.rs:73:9
    |
@@ -1256,7 +972,6 @@ warning: Use-after-free detected.
     | MIR detail: _26 is dropped at BB9; _4 is used at BB10.
 74 |     }
    |
-20:05:33|RAP|WARN|: Dangling pointer detected in function "new"
 warning: Dangling pointer detected.
   --> kernel/comps/virtio/src/transport/mmio/multiplex.rs:27:1
    |
@@ -1313,76 +1028,785 @@ warning: Dangling pointer detected.
     | MIR detail: Value _26 and _0 are alias.
     | MIR detail: _26 is dropped at BB9; _0 became dangling.
    |
-
-thread 'rustc' (76585) panicked at src/analysis/safedrop/alias.rs:218:33:
-index out of bounds: the len is 166 but the index is 166
-stack backtrace:
-   0:     0x7360f01af703 - <std::sys::backtrace::BacktraceLock::print::DisplayBacktrace as core::fmt::Display>::fmt::ha292289670d8ccb0
-   1:     0x7360f0801a98 - core::fmt::write::h9dfaa01855044d01
-   2:     0x7360f0164531 - std::io::Write::write_fmt::hf248cc4a41bccb1d
-   3:     0x7360f0175652 - std::sys::backtrace::BacktraceLock::print::hd8c2244c375c35ab
-   4:     0x7360f017b599 - std::panicking::default_hook::{{closure}}::h20a380f5fd0a0eef
-   5:     0x7360f017b0c3 - std::panicking::default_hook::h5fff69ce0d714047
-   6:     0x7360ef1c2f37 - std[989bc2be79487f22]::panicking::update_hook::<alloc[add7e349b679f9ea]::boxed::Box<rustc_driver_impl[5fb32e0a6e7437c8]::install_ice_hook::{closure#1}>>::{closure#0}
-   7:     0x7360f017b9bf - std::panicking::panic_with_hook::h3472d77cd4b8d7f5
-   8:     0x7360f017b77a - std::panicking::panic_handler::{{closure}}::hd249e00cedf2bb65
-   9:     0x7360f0175789 - std::sys::backtrace::__rust_end_short_backtrace::h38f3b7f00889b7f3
-  10:     0x7360f0155f6d - __rustc[3a56062fa64d4fc0]::rust_begin_unwind
-  11:     0x7360ec8c2fb0 - core::panicking::panic_fmt::h38794a43703d8bee
-  12:     0x7360ee902a83 - core::panicking::panic_bounds_check::h3a8cdeb727ce9ec3
-  13:     0x62c87244baa5 - rapx::analysis::safedrop::alias::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::merge_alias::h7b27885fbb6d4655
-  14:     0x62c87244c446 - rapx::analysis::safedrop::alias::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::alias_bbcall::hf5bb425694f08c46
-  15:     0x62c872454e9d - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  16:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  17:     0x62c87245674d - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  18:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  19:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  20:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  21:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  22:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  23:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  24:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  25:     0x62c872454bec - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::split_check_with_cond::h79a5b7e93dc001a4
-  26:     0x62c872457ee0 - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  27:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  28:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  29:     0x62c87245320c - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::split_check::hb3061cf45db49b4a
-  30:     0x62c8724580a5 - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  31:     0x62c872458c4f - rapx::analysis::safedrop::safedrop::<impl rapx::analysis::safedrop::graph::SafeDropGraph>::check::h870471ff6627fc00
-  32:     0x62c872403b13 - rapx::analysis::safedrop::query_safedrop::h64cade6d01fc636c
-  33:     0x62c872403dfe - rapx::analysis::safedrop::SafeDrop::start::hd33f89aa3d62e2bc
-  34:     0x62c8725124e6 - rapx::start_analyzer::h656aa87965bd1d35
-  35:     0x62c87252fb27 - scoped_tls::ScopedKey<T>::set::h03c569472945a318
-  36:     0x62c87252fda5 - scoped_tls::ScopedKey<T>::set::h0cbfe0aba6d2dcc8
-  37:     0x62c8723d114f - rustc_public::rustc_internal::run::h1b7694366d3e9a8c
-  38:     0x62c87252c448 - <rapx::RapCallback as rustc_driver_impl::Callbacks>::after_analysis::h907e6d18ff80e183
-  39:     0x7360f1b3a73f - rustc_interface[b1ae535157b9343d]::passes::create_and_enter_global_ctxt::<core[6c151eb9844fe7ce]::option::Option<rustc_interface[b1ae535157b9343d]::queries::Linker>, rustc_driver_impl[5fb32e0a6e7437c8]::run_compiler::{closure#0}::{closure#2}>::{closure#2}::{closure#0}
-  40:     0x7360f1adc37e - rustc_interface[b1ae535157b9343d]::interface::run_compiler::<(), rustc_driver_impl[5fb32e0a6e7437c8]::run_compiler::{closure#0}>::{closure#1}
-  41:     0x7360f1a1b3b8 - std[989bc2be79487f22]::sys::backtrace::__rust_begin_short_backtrace::<rustc_interface[b1ae535157b9343d]::util::run_in_thread_with_globals<rustc_interface[b1ae535157b9343d]::util::run_in_thread_pool_with_globals<rustc_interface[b1ae535157b9343d]::interface::run_compiler<(), rustc_driver_impl[5fb32e0a6e7437c8]::run_compiler::{closure#0}>::{closure#1}, ()>::{closure#0}, ()>::{closure#0}::{closure#0}, ()>
-  42:     0x7360f1a1b088 - <<std[989bc2be79487f22]::thread::Builder>::spawn_unchecked_<rustc_interface[b1ae535157b9343d]::util::run_in_thread_with_globals<rustc_interface[b1ae535157b9343d]::util::run_in_thread_pool_with_globals<rustc_interface[b1ae535157b9343d]::interface::run_compiler<(), rustc_driver_impl[5fb32e0a6e7437c8]::run_compiler::{closure#0}>::{closure#1}, ()>::{closure#0}, ()>::{closure#0}::{closure#0}, ()>::{closure#1} as core[6c151eb9844fe7ce]::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
-  43:     0x7360f1a2134d - std::sys::pal::unix::thread::Thread::new::thread_start::h0a9b1b8aa28834ae
-  44:     0x7360ea29caa4 - start_thread
-                               at ./nptl/pthread_create.c:447:8
-  45:     0x7360ea329c6c - clone3
-                               at ./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78:0
-  46:                0x0 - <unknown>
-
-error: the compiler unexpectedly panicked. this is a bug.
-
-note: we would appreciate a bug report: bug_report_url
-
-note: please make sure that you have updated to the latest nightly
-
-note: please attach the file at `/home/zjp/asterinas/rustc-ice-2025-12-09T12_04_26-76584.txt` to your bug report
-
-note: compiler flags: --crate-type lib -C embed-bitcode=no -C debuginfo=2 -C incremental=[REDACTED] -C link-arg=-fuse-ld=mold
-
-note: some of the compiler flags provided by cargo are hidden
-
-query stack during panic:
-end of query stack
-error: could not compile `aster-virtio` (lib)
-
-Caused by:
-  process didn't exit successfully: `/home/zjp/.cargo/bin/cargo-rapx /home/zjp/.rustup/toolchains/nightly-2025-09-10-x86_64-unknown-linux-gnu/bin/rustc --crate-name aster_virtio --edition=2024 kernel/comps/virtio/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata -C embed-bitcode=no -C debuginfo=2 --warn=unsafe_op_in_unsafe_fn --allow=unexpected_cfgs '--warn=clippy::allow_attributes' --check-cfg 'cfg(ktest)' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("all", "cvm_guest"))' -C metadata=abf42a95eb38aa79 -C extra-filename=-8b506966cfb5ce48 --out-dir /home/zjp/asterinas/target/x86_64-unknown-none/debug/deps --target x86_64-unknown-none -C incremental=/home/zjp/asterinas/target/x86_64-unknown-none/debug/incremental -L dependency=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps -L dependency=/home/zjp/asterinas/target/debug/deps --extern aster_bigtcp=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_bigtcp-1bd4b490fca3fc29.rmeta --extern aster_block=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_block-b0f7aeb28e7c5c97.rmeta --extern aster_console=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_console-d2936b976ad5bcfa.rmeta --extern aster_input=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_input-ce7f4aa03622ff7e.rmeta --extern aster_network=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_network-eb88833e49b6eaa6.rmeta --extern aster_pci=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_pci-324589e1effc47b1.rmeta --extern aster_rights=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_rights-03b688b975692259.rmeta --extern aster_softirq=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_softirq-287ece825d88b134.rmeta --extern aster_systree=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_systree-2e134f99066a1a63.rmeta --extern aster_util=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libaster_util-4311d230d53845c3.rmeta --extern bitflags=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libbitflags-c836927ee9a6a8de.rmeta --extern component=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libcomponent-cb5f505afbf7aa38.rmeta --extern device_id=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libdevice_id-bd4a339d4d8e341e.rmeta --extern id_alloc=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libid_alloc-8d8b05fdd0836af0.rmeta --extern int_to_c_enum=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libint_to_c_enum-e924f658c0712ee3.rmeta --extern log=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/liblog-9a39a60720065c7e.rmeta --extern ostd=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libostd-b73e54a995219854.rmeta --extern spin=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libspin-1a69b0285fae72ac.rmeta --extern typeflags_util=/home/zjp/asterinas/target/x86_64-unknown-none/debug/deps/libtypeflags_util-db818b664b97b393.rmeta -Clink-arg=-fuse-ld=mold` (exit status: 101)
-warning: build failed, waiting for other jobs to finish...
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs:185:1
+    |
+185 | / pub fn trim(&mut self, before_block: BlockId) {
+186 | |         // We must ensure the invariance that there is at least one valid block
+187 | |         // after trimming.
+188 | |         debug_assert!(before_block < self.block_range.end);
+189 | |
+190 | |         if before_block <= self.block_range.start {
+191 | |             return;
+192 | |         }
+193 | |
+194 | |         let num_blocks_trimmed = before_block - self.block_range.start;
+195 | |         self.block_range.start = before_block;
+196 | |         self.block_macs.drain(..num_blocks_trimmed);
+197 | |     }
+    | |_____- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs line 185.
+    | MIR detail: Value _20 and _20 are alias.
+    | MIR detail: _20 is dropped at BB9; _20 is dropped at BB9.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs:185:1
+    |
+185 | / pub fn trim(&mut self, before_block: BlockId) {
+186 | |         // We must ensure the invariance that there is at least one valid block
+187 | |         // after trimming.
+188 | |         debug_assert!(before_block < self.block_range.end);
+189 | |
+190 | |         if before_block <= self.block_range.start {
+191 | |             return;
+192 | |         }
+193 | |
+194 | |         let num_blocks_trimmed = before_block - self.block_range.start;
+195 | |         self.block_range.start = before_block;
+196 | |         self.block_macs.drain(..num_blocks_trimmed);
+197 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs line 185.
+    | MIR detail: Value _18446744073709551615 and _1 are alias.
+    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_log.rs:651:1
+    |
+651 | / fn build_hierarchy(
+652 | |         &self,
+653 | |         level_entries: Vec<MhtNodeEntry>,
+654 | |         total_data_nodes: usize,
+655 | |         mut curr_height: Height,
+656 | |         target_height: Height,
+657 | |     ) -> Result<Arc<MhtNode>> {
+658 | |         // Build the MHT nodes of current level
+659 | |         let mut new_mht_nodes = {
+660 | |             // Previous built incomplete node of same level should participate in the building
+661 | |             let previous_incomplete_node = self
+662 | |                 .previous_build
+663 | |                 .as_ref()
+664 | |                 .and_then(|pre| pre.target_node(curr_height));
+665 | |
+666 | |             LevelBuilder::new(level_entries, total_data_nodes, curr_height)
+667 | |                 .previous_incomplete_node(previous_incomplete_node)
+668 | |                 .build()
+669 | |         };
+670 | |
+671 | |         if curr_height == target_height {
+672 | |             // The root MHT node has been built
+673 | |             debug_assert_eq!(new_mht_nodes.len(), 1);
+674 | |             return Ok(new_mht_nodes.pop().unwrap());
+675 | |         }
+676 | |
+677 | |         // Prepare MHT node entries for the higher level
+678 | |         let next_level_entries = self.storage.append_mht_nodes(&new_mht_nodes)?;
+679 | |         // Build the higher level
+680 | |         curr_height += 1;
+681 | |         self.build_hierarchy(
+682 | |             next_level_entries,
+683 | |             total_data_nodes,
+684 | |             curr_height,
+685 | |             target_height,
+686 | |         )
+687 | |     }
+    | |_____- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_log.rs line 651.
+    | MIR detail: Value _13 and _13 are alias.
+    | MIR detail: _13 is dropped at BB5; _13 is dropped at BB5.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/5-disk/block_alloc.rs:230:1
+    |
+230 | / pub fn do_compaction<D: BlockSet + 'static>(&self, store: &Arc<TxLogStore<D>>) -> Result<()> {
+231 | |         if !self.is_dirty.load(Ordering::Relaxed) {
+232 | |             return Ok(());
+233 | |         }
+234 | |
+235 | |         // Serialize the block validity table
+236 | |         let bitmap = self.bitmap.lock();
+237 | |         const BITMAP_MAX_SIZE: usize = 1792 * BLOCK_SIZE; // TBD
+238 | |         let mut ser_buf = vec![0; BITMAP_MAX_SIZE];
+239 | |         let ser_len = postcard::to_slice::<BitMap>(&bitmap, &mut ser_buf)
+240 | |             .map_err(|_| Error::with_msg(InvalidArgs, "serialize block validity table failed"))?
+241 | |             .len();
+242 | |         ser_buf.resize(align_up(ser_len, BLOCK_SIZE), 0);
+243 | |         drop(bitmap);
+244 | |
+245 | |         // Persist the serialized block validity table to `BVT` log
+246 | |         // and GC any old `BVT` logs and `BAL` logs
+247 | |         let tx = store.new_tx();
+248 | |         let res: Result<_> = tx.context(|| {
+249 | |             if let Ok(bvt_log_ids) = store.list_logs_in(BUCKET_BLOCK_VALIDITY_TABLE) {
+250 | |                 for bvt_log_id in bvt_log_ids {
+251 | |                     store.delete_log(bvt_log_id)?;
+252 | |                 }
+253 | |             }
+254 | |
+255 | |             let bvt_log = store.create_log(BUCKET_BLOCK_VALIDITY_TABLE)?;
+256 | |             bvt_log.append(BufRef::try_from(&ser_buf[..]).unwrap())?;
+257 | |
+258 | |             if let Ok(bal_log_ids) = store.list_logs_in(BUCKET_BLOCK_ALLOC_LOG) {
+259 | |                 for bal_log_id in bal_log_ids {
+260 | |                     store.delete_log(bal_log_id)?;
+261 | |                 }
+262 | |             }
+263 | |             Ok(())
+264 | |         });
+265 | |         if res.is_err() {
+266 | |             tx.abort();
+267 | |             return_errno_with_msg!(TxAborted, "persist block validity table TX aborted");
+268 | |         }
+269 | |         tx.commit()?;
+270 | |
+271 | |         self.is_dirty.store(false, Ordering::Relaxed);
+272 | |         Ok(())
+273 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/5-disk/block_alloc.rs line 230.
+    | MIR detail: Value _11 and _2 are alias.
+    | MIR detail: _11 is dropped at BB35; _2 became dangling.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/5-disk/mlsdisk.rs:74:1
+    |
+ 74 | / fn enqueue(
+ 75 | |         &self,
+ 76 | |         bio: aster_block::bio::SubmittedBio,
+ 77 | |     ) -> core::result::Result<(), aster_block::bio::BioEnqueueError> {
+ 78 | |         use aster_block::bio::{BioStatus, BioType, SubmittedBio};
+ 79 | |
+ 80 | |         if bio.type_() == BioType::Discard {
+ 81 | |             warn!("discard operation not supported");
+ 82 | |             bio.complete(BioStatus::NotSupported);
+ 83 | |             return Ok(());
+ 84 | |         }
+ 85 | |
+ 86 | |         if bio.type_() == BioType::Flush {
+ 87 | |             let status = match self.sync() {
+ 88 | |                 Ok(_) => BioStatus::Complete,
+ 89 | |                 Err(_) => BioStatus::IoError,
+ 90 | |             };
+ 91 | |             bio.complete(status);
+ 92 | |             return Ok(());
+ 93 | |         }
+ 94 | |
+ 95 | |         let start_offset = bio.sid_range().start.to_offset();
+ 96 | |         let start_lba = start_offset / BLOCK_SIZE;
+ 97 | |         let end_offset = bio.sid_range().end.to_offset();
+ 98 | |         let end_lba = end_offset.div_ceil(BLOCK_SIZE);
+ 99 | |         let nblocks = end_lba - start_lba;
+100 | |         let Ok(buf) = Buf::alloc(nblocks) else {
+101 | |             bio.complete(BioStatus::NoSpace);
+102 | |             return Ok(());
+103 | |         };
+104 | |
+105 | |         let handle_read_bio = |mut buf: Buf| {
+106 | |             if self.read(start_lba, buf.as_mut()).is_err() {
+107 | |                 return BioStatus::IoError;
+108 | |             }
+109 | |
+110 | |             let mut base = start_offset % BLOCK_SIZE;
+111 | |             bio.segments().iter().for_each(|seg| {
+112 | |                 let offset = seg.nbytes();
+113 | |                 let _ = seg.write_bytes(0, &buf.as_slice()[base..base + offset]);
+114 | |                 base += offset;
+115 | |             });
+116 | |             BioStatus::Complete
+117 | |         };
+118 | |
+119 | |         let handle_write_bio = |mut buf: Buf| {
+120 | |             let mut base = start_offset % BLOCK_SIZE;
+121 | |             // Read the first unaligned block.
+122 | |             if base != 0 {
+123 | |                 let buf_mut = BufMut::try_from(&mut buf.as_mut_slice()[..BLOCK_SIZE]).unwrap();
+124 | |                 if self.read(start_lba, buf_mut).is_err() {
+125 | |                     return BioStatus::IoError;
+126 | |                 }
+127 | |             }
+128 | |
+129 | |             // Read the last unaligned block.
+130 | |             if !end_offset.is_multiple_of(BLOCK_SIZE) {
+131 | |                 let offset = buf.as_slice().len() - BLOCK_SIZE;
+132 | |                 let buf_mut = BufMut::try_from(&mut buf.as_mut_slice()[offset..]).unwrap();
+133 | |                 if self.read(end_lba - 1, buf_mut).is_err() {
+134 | |                     return BioStatus::IoError;
+135 | |                 }
+136 | |             }
+137 | |
+138 | |             bio.segments().iter().for_each(|seg| {
+139 | |                 let offset = seg.nbytes();
+140 | |                 let _ = seg.read_bytes(0, &mut buf.as_mut_slice()[base..base + offset]);
+141 | |                 base += offset;
+142 | |             });
+143 | |
+144 | |             if self.write(start_lba, buf.as_ref()).is_err() {
+145 | |                 return BioStatus::IoError;
+146 | |             }
+147 | |             BioStatus::Complete
+148 | |         };
+149 | |
+150 | |         let status = match bio.type_() {
+151 | |             BioType::Read => handle_read_bio(buf),
+152 | |             BioType::Write => handle_write_bio(buf),
+153 | |             _ => BioStatus::NotSupported,
+154 | |         };
+155 | |         bio.complete(status);
+156 | |         Ok(())
+157 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/5-disk/mlsdisk.rs line 74.
+    | MIR detail: Value _2 and _1 are alias.
+    | MIR detail: _2 is dropped at BB46; _1 became dangling.
+    |
+Over visited: DefId(0:944 ~ aster_mlsdisk[6b51]::layers::edit::journal::{impl#3}::recover)
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs:187:1
+    |
+187 | / move |entry| {
+188 | |                 chunk_alloc.dealloc_batch(entry.head.chunks.iter().cloned())
+189 | |             }
+    | |_____________- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs line 187.
+    | MIR detail: Value _18446744073709551615 and _2 are alias.
+    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _2 became dangling.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs:326:1
+    |
+326 | / pub fn delete_log(&self, log_id: RawLogId) -> Result<()> {
+327 | |         let mut current_tx = self.tx_provider.current();
+328 | |
+329 | |         // Free tail chunks
+330 | |         let tail_chunks =
+331 | |             current_tx.data_mut_with(|edit: &mut RawLogStoreEdit| edit.delete_log(log_id));
+332 | |         if let Some(chunks) = tail_chunks {
+333 | |             self.chunk_alloc.dealloc_batch(chunks.iter().cloned());
+334 | |         }
+335 | |         // Leave freeing head chunks to lazy delete
+336 | |
+337 | |         self.state.lock().remove_from_write_set(log_id);
+338 | |         Ok(())
+339 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs line 326.
+    | MIR detail: Value _18446744073709551615 and _1 are alias.
+    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/3-log/tx_log.rs:222:1
+    |
+222 | / pub fn recover(disk: D, root_key: Key) -> Result<Self> {
+223 | |         let superblock = Superblock::open(&disk.subset(0..1)?, &root_key)?;
+224 | |         if disk.nblocks() < superblock.total_nblocks() {
+225 | |             return_errno_with_msg!(OutOfDisk, "given disk lacks space for recovering");
+226 | |         }
+227 | |
+228 | |         let tx_provider = TxProvider::new();
+229 | |
+230 | |         let journal = {
+231 | |             let journal_area_meta = &superblock.journal_area_meta;
+232 | |             let journal_area = disk.subset(
+233 | |                 1 + superblock.chunk_area_nblocks
+234 | |                     ..1 + superblock.chunk_area_nblocks + journal_area_meta.total_nblocks(),
+235 | |             )?;
+236 | |             let compaction_policy = JournalCompactPolicy::from_meta(journal_area_meta);
+237 | |             Arc::new(Mutex::new(Journal::recover(
+238 | |                 journal_area,
+239 | |                 journal_area_meta,
+240 | |                 compaction_policy,
+241 | |             )?))
+242 | |         };
+243 | |         Self::register_commit_handler_for_journal(&journal, &tx_provider);
+244 | |
+245 | |         let AllState {
+246 | |             chunk_alloc,
+247 | |             raw_log_store,
+248 | |             tx_log_store,
+249 | |         } = journal.lock().state().clone();
+250 | |
+251 | |         let chunk_alloc = ChunkAlloc::from_parts(chunk_alloc, tx_provider.clone());
+252 | |         let chunk_area = disk.subset(1..1 + superblock.chunk_area_nblocks)?;
+253 | |         let raw_log_store =
+254 | |             RawLogStore::from_parts(raw_log_store, chunk_area, chunk_alloc, tx_provider.clone());
+255 | |         let tx_log_store = TxLogStore::from_parts(
+256 | |             tx_log_store,
+257 | |             raw_log_store,
+258 | |             journal,
+259 | |             superblock,
+260 | |             root_key,
+261 | |             disk,
+262 | |             tx_provider,
+263 | |         );
+264 | |
+265 | |         Ok(tx_log_store)
+266 | |     }
+    | |_____- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/tx_log.rs line 222.
+    | MIR detail: Value _89 and _89 are alias.
+    | MIR detail: _89 is dropped at BB49; _89 is dropped at BB49.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs:53:1
+    |
+ 53 | / pub fn compact_records_and_build_ssts<D: BlockSet + 'static>(
+ 54 | |         upper_records: impl Iterator<Item = (K, ValueEx<V>)>,
+ 55 | |         lower_records: impl Iterator<Item = (K, ValueEx<V>)>,
+ 56 | |         tx_log_store: &Arc<TxLogStore<D>>,
+ 57 | |         event_listener: &Arc<dyn TxEventListener<K, V>>,
+ 58 | |         to_level: LsmLevel,
+ 59 | |         sync_id: SyncId,
+ 60 | |     ) -> Result<Vec<SSTable<K, V>>> {
+ 61 | |         let mut created_ssts = Vec::new();
+ 62 | |         let mut upper_iter = upper_records.peekable();
+ 63 | |         let mut lower_iter = lower_records.peekable();
+ 64 | |
+ 65 | |         loop {
+ 66 | |             let mut record_cnt = 0;
+ 67 | |             let records_iter = core::iter::from_fn(|| {
+ 68 | |                 if record_cnt == SSTABLE_CAPACITY {
+ 69 | |                     return None;
+ 70 | |                 }
+ 71 | |
+ 72 | |                 record_cnt += 1;
+ 73 | |                 match (upper_iter.peek(), lower_iter.peek()) {
+ 74 | |                     (Some((upper_k, _)), Some((lower_k, _))) => match upper_k.cmp(lower_k) {
+ 75 | |                         core::cmp::Ordering::Less => upper_iter.next(),
+ 76 | |                         core::cmp::Ordering::Greater => lower_iter.next(),
+ 77 | |                         core::cmp::Ordering::Equal => {
+ 78 | |                             let (k, new_v_ex) = upper_iter.next().unwrap();
+ 79 | |                             let (_, old_v_ex) = lower_iter.next().unwrap();
+ 80 | |                             let (next_v_ex, dropped_v_opt) =
+ 81 | |                                 Self::compact_value_ex(new_v_ex, old_v_ex);
+ 82 | |
+ 83 | |                             if let Some(dropped_v) = dropped_v_opt {
+ 84 | |                                 event_listener.on_drop_record(&(k, dropped_v)).unwrap();
+ 85 | |                             }
+ 86 | |                             Some((k, next_v_ex))
+ 87 | |                         }
+ 88 | |                     },
+ 89 | |                     (Some(_), None) => upper_iter.next(),
+ 90 | |                     (None, Some(_)) => lower_iter.next(),
+ 91 | |                     (None, None) => None,
+ 92 | |                 }
+ 93 | |             });
+ 94 | |             let mut records_iter = records_iter.peekable();
+ 95 | |             if records_iter.peek().is_none() {
+ 96 | |                 break;
+ 97 | |             }
+ 98 | |
+ 99 | |             let new_log = tx_log_store.create_log(to_level.bucket())?;
+100 | |             let new_sst = SSTable::build(records_iter, sync_id, &new_log, None)?;
+101 | |
+102 | |             created_ssts.push(new_sst);
+103 | |         }
+104 | |
+105 | |         Ok(created_ssts)
+106 | |     }
+    | |_____- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs line 53.
+    | MIR detail: Value _10 and _8 are alias.
+    | MIR detail: _10 is dropped at BB28; _8 is dropped at BB29.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs:53:1
+    |
+ 53 | / pub fn compact_records_and_build_ssts<D: BlockSet + 'static>(
+ 54 | |         upper_records: impl Iterator<Item = (K, ValueEx<V>)>,
+ 55 | |         lower_records: impl Iterator<Item = (K, ValueEx<V>)>,
+ 56 | |         tx_log_store: &Arc<TxLogStore<D>>,
+ 57 | |         event_listener: &Arc<dyn TxEventListener<K, V>>,
+ 58 | |         to_level: LsmLevel,
+ 59 | |         sync_id: SyncId,
+ 60 | |     ) -> Result<Vec<SSTable<K, V>>> {
+ 61 | |         let mut created_ssts = Vec::new();
+ 62 | |         let mut upper_iter = upper_records.peekable();
+ 63 | |         let mut lower_iter = lower_records.peekable();
+ 64 | |
+ 65 | |         loop {
+ 66 | |             let mut record_cnt = 0;
+ 67 | |             let records_iter = core::iter::from_fn(|| {
+ 68 | |                 if record_cnt == SSTABLE_CAPACITY {
+ 69 | |                     return None;
+ 70 | |                 }
+ 71 | |
+ 72 | |                 record_cnt += 1;
+ 73 | |                 match (upper_iter.peek(), lower_iter.peek()) {
+ 74 | |                     (Some((upper_k, _)), Some((lower_k, _))) => match upper_k.cmp(lower_k) {
+ 75 | |                         core::cmp::Ordering::Less => upper_iter.next(),
+ 76 | |                         core::cmp::Ordering::Greater => lower_iter.next(),
+ 77 | |                         core::cmp::Ordering::Equal => {
+ 78 | |                             let (k, new_v_ex) = upper_iter.next().unwrap();
+ 79 | |                             let (_, old_v_ex) = lower_iter.next().unwrap();
+ 80 | |                             let (next_v_ex, dropped_v_opt) =
+ 81 | |                                 Self::compact_value_ex(new_v_ex, old_v_ex);
+ 82 | |
+ 83 | |                             if let Some(dropped_v) = dropped_v_opt {
+ 84 | |                                 event_listener.on_drop_record(&(k, dropped_v)).unwrap();
+ 85 | |                             }
+ 86 | |                             Some((k, next_v_ex))
+ 87 | |                         }
+ 88 | |                     },
+ 89 | |                     (Some(_), None) => upper_iter.next(),
+ 90 | |                     (None, Some(_)) => lower_iter.next(),
+ 91 | |                     (None, None) => None,
+ 92 | |                 }
+ 93 | |             });
+ 94 | |             let mut records_iter = records_iter.peekable();
+ 95 | |             if records_iter.peek().is_none() {
+ 96 | |                 break;
+ 97 | |             }
+ 98 | |
+ 99 | |             let new_log = tx_log_store.create_log(to_level.bucket())?;
+100 | |             let new_sst = SSTable::build(records_iter, sync_id, &new_log, None)?;
+101 | |
+102 | |             created_ssts.push(new_sst);
+103 | |         }
+104 | |
+105 | |         Ok(created_ssts)
+106 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs line 53.
+    | MIR detail: Value _10 and _4 are alias.
+    | MIR detail: _10 is dropped at BB9; _4 became dangling.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:162:1
+    |
+162 | / pub fn access_point<D: BlockSet + 'static>(
+163 | |         &self,
+164 | |         key: &K,
+165 | |         tx_log_store: &Arc<TxLogStore<D>>,
+166 | |     ) -> Result<V> {
+167 | |         debug_assert!(self.range().contains(key));
+168 | |         let target_rb_pos = self
+169 | |             .footer
+170 | |             .index
+171 | |             .iter()
+172 | |             .find_map(|entry| {
+173 | |                 if entry.is_within_range(key) {
+174 | |                     Some(entry.pos)
+175 | |                 } else {
+176 | |                     None
+177 | |                 }
+178 | |             })
+179 | |             .ok_or(Error::with_msg(NotFound, "target key not found in sst"))?;
+180 | |
+181 | |         let accessor = QueryAccessor::Point(*key);
+182 | |         let target_rb = self.target_record_block(target_rb_pos, tx_log_store)?;
+183 | |
+184 | |         let mut iter = BlockQueryIter::<'_, K, V> {
+185 | |             block: &target_rb,
+186 | |             offset: 0,
+187 | |             accessor: &accessor,
+188 | |             phantom: PhantomData,
+189 | |         };
+190 | |
+191 | |         iter.find_map(|(k, v_opt)| if k == *key { v_opt } else { None })
+192 | |             .ok_or(Error::with_msg(NotFound, "target value not found in SST"))
+193 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 162.
+    | MIR detail: Value _33 and _2 are alias.
+    | MIR detail: _33 is dropped at BB26; _2 became dangling.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:711:1
+    |
+711 | / fn next(&mut self) -> Option<Self::Item> {
+712 | |         // Iterate over the current record block first
+713 | |         if let Some(next) = self.curr_rb_iter.as_mut().unwrap().next() {
+714 | |             return Some(next);
+715 | |         }
+716 | |
+717 | |         let curr_rb_iter = self.curr_rb_iter.take().unwrap();
+718 | |
+719 | |         self.curr_nth_index += 1;
+720 | |         // Iteration goes to the end
+721 | |         if self.curr_nth_index >= self.sst.footer.meta.num_index as _ {
+722 | |             return None;
+723 | |         }
+724 | |
+725 | |         // Ready to iterate the next record block
+726 | |         let next_pos = self.sst.footer.index[self.curr_nth_index].pos;
+727 | |         let next_rb = self
+728 | |             .sst
+729 | |             .target_record_block(next_pos, self.tx_log_store)
+730 | |             .unwrap();
+731 | |
+732 | |         let mut next_rb_iter = BlockScanIter {
+733 | |             block: next_rb,
+734 | |             offset: 0,
+735 | |             accessor: curr_rb_iter.accessor,
+736 | |         };
+737 | |         let next = next_rb_iter.next()?;
+738 | |
+739 | |         let _ = self.curr_rb_iter.insert(next_rb_iter);
+740 | |         Some(next)
+741 | |     }
+    | |_____- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 711.
+    | MIR detail: Value _32 and _12 are alias.
+    | MIR detail: _32 is dropped at BB19; _12 is dropped at BB23.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:711:1
+    |
+711 | / fn next(&mut self) -> Option<Self::Item> {
+712 | |         // Iterate over the current record block first
+713 | |         if let Some(next) = self.curr_rb_iter.as_mut().unwrap().next() {
+714 | |             return Some(next);
+715 | |         }
+716 | |
+717 | |         let curr_rb_iter = self.curr_rb_iter.take().unwrap();
+718 | |
+719 | |         self.curr_nth_index += 1;
+720 | |         // Iteration goes to the end
+721 | |         if self.curr_nth_index >= self.sst.footer.meta.num_index as _ {
+722 | |             return None;
+723 | |         }
+724 | |
+725 | |         // Ready to iterate the next record block
+726 | |         let next_pos = self.sst.footer.index[self.curr_nth_index].pos;
+727 | |         let next_rb = self
+728 | |             .sst
+729 | |             .target_record_block(next_pos, self.tx_log_store)
+730 | |             .unwrap();
+731 | |
+732 | |         let mut next_rb_iter = BlockScanIter {
+733 | |             block: next_rb,
+734 | |             offset: 0,
+735 | |             accessor: curr_rb_iter.accessor,
+736 | |         };
+737 | |         let next = next_rb_iter.next()?;
+738 | |
+739 | |         let _ = self.curr_rb_iter.insert(next_rb_iter);
+740 | |         Some(next)
+741 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 711.
+    | MIR detail: Value _18446744073709551615 and _1 are alias.
+    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:357:1
+    |
+357 | / fn recover_sst_manager(
+358 | |         tx_log_store: &Arc<TxLogStore<D>>,
+359 | |     ) -> Result<(SstManager<K, V>, SyncId)> {
+360 | |         let mut manager = SstManager::new();
+361 | |         let mut max_sync_id: SyncId = 0;
+362 | |         let tx = tx_log_store.new_tx();
+363 | |         let res: Result<_> = tx.context(|| {
+364 | |             for (level, bucket) in LsmLevel::iter() {
+365 | |                 let log_ids = tx_log_store.list_logs_in(bucket);
+366 | |                 if let Err(e) = &log_ids
+367 | |                     && e.errno() == NotFound
+368 | |                 {
+369 | |                     continue;
+370 | |                 }
+371 | |
+372 | |                 for id in log_ids? {
+373 | |                     let log = tx_log_store.open_log(id, false)?;
+374 | |                     let sst = SSTable::<K, V>::from_log(&log)?;
+375 | |                     max_sync_id = max_sync_id.max(sst.sync_id());
+376 | |                     manager.insert(SSTable::from_log(&log)?, level);
+377 | |                 }
+378 | |             }
+379 | |             Ok(())
+380 | |         });
+381 | |         if res.is_ok() {
+382 | |             tx.commit()?;
+383 | |         } else {
+384 | |             tx.abort();
+385 | |             return_errno_with_msg!(TxAborted, "recover TxLsmTree failed");
+386 | |         }
+387 | |         Ok((manager, max_sync_id))
+388 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 357.
+    | MIR detail: Value _2 and _1 are alias.
+    | MIR detail: _2 is dropped at BB16; _1 became dangling.
+    |
+warning: Dangling pointer detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:497:1
+    |
+497 | / fn do_minor_compaction(&self, wal_id: TxLogId) -> Result<()> {
+498 | |         let mut tx = self.tx_log_store.new_tx();
+499 | |         // Prepare TX listener
+500 | |         let tx_type = TxType::Compaction {
+501 | |             to_level: LsmLevel::L0,
+502 | |         };
+503 | |         let event_listener = self.listener_factory.new_event_listener(tx_type);
+504 | |         event_listener.on_tx_begin(&mut tx).map_err(|_| {
+505 | |             tx.abort();
+506 | |             Error::with_msg(
+507 | |                 TxAborted,
+508 | |                 "minor compaction TX callback 'on_tx_begin' failed",
+509 | |             )
+510 | |         })?;
+511 | |
+512 | |         let res: Result<_> = tx.context(|| {
+513 | |             let tx_log = self.tx_log_store.create_log(LsmLevel::L0.bucket())?;
+514 | |
+515 | |             // Cook records in immutable MemTable into a new SST
+516 | |             let immutable_memtable = self.memtable_manager.immutable_memtable();
+517 | |             let records_iter = immutable_memtable.iter();
+518 | |             let sync_id = immutable_memtable.sync_id();
+519 | |
+520 | |             let sst = SSTable::build(records_iter, sync_id, &tx_log, Some(&event_listener))?;
+521 | |             self.tx_log_store.delete_log(wal_id)?;
+522 | |             Ok(sst)
+523 | |         });
+524 | |         let new_sst = res.map_err(|_| {
+525 | |             tx.abort();
+526 | |             Error::with_msg(TxAborted, "minor compaction TX failed")
+527 | |         })?;
+528 | |
+529 | |         event_listener.on_tx_precommit(&mut tx).map_err(|_| {
+530 | |             tx.abort();
+531 | |             Error::with_msg(
+532 | |                 TxAborted,
+533 | |                 "minor compaction TX callback 'on_tx_precommit' failed",
+534 | |             )
+535 | |         })?;
+536 | |
+537 | |         tx.commit()?;
+538 | |         event_listener.on_tx_commit();
+539 | |
+540 | |         self.sst_manager.write().insert(new_sst, LsmLevel::L0);
+541 | |
+542 | |         debug!("[MlsDisk TxLsmTree] Minor Compaction completed: {self:?}");
+543 | |         Ok(())
+544 | |     }
+    | |_____- 
+ Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 497.
+    | MIR detail: Value _9 and _1 are alias.
+    | MIR detail: _9 is dropped at BB54; _1 became dangling.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:565:1
+    |
+565 | / move || {
+566 | |             let (mut created_ssts, mut deleted_ssts) = (vec![], vec![]);
+567 | |
+568 | |             // Collect overlapped SSTs
+569 | |             let sst_manager = self.sst_manager.read();
+570 | |             let (upper_sst_id, upper_sst) = sst_manager
+571 | |                 .list_level(from_level)
+572 | |                 .last() // Choose the oldest SST from upper level
+573 | |                 .map(|(id, sst)| (*id, sst.clone()))
+574 | |                 .unwrap();
+575 | |             let lower_ssts: Vec<(TxLogId, Arc<SSTable<K, V>>)> = {
+576 | |                 let mut ssts = sst_manager
+577 | |                     .find_overlapped_ssts(&upper_sst.range(), to_level)
+578 | |                     .map(|(id, sst)| (*id, sst.clone()))
+579 | |                     .collect::<Vec<_>>();
+580 | |                 ssts.sort_by_key(|(_, sst)| *sst.range().start());
+581 | |                 ssts
+582 | |             };
+583 | |             drop(sst_manager);
+584 | |
+585 | |             // If there are no overlapped SSTs, just move the upper SST to the lower level
+586 | |             if lower_ssts.is_empty() {
+587 | |                 tx_log_store.move_log(upper_sst_id, from_level.bucket(), to_level.bucket())?;
+588 | |                 self.sst_manager
+589 | |                     .write()
+590 | |                     .move_sst(upper_sst_id, from_level, to_level);
+591 | |                 return Ok((created_ssts, deleted_ssts));
+592 | |             }
+593 | |
+594 | |             let upper_records_iter =
+595 | |                 upper_sst.iter(master_sync_id, false, &tx_log_store, Some(&listener));
+596 | |
+597 | |             let lower_records_iter = lower_ssts.iter().flat_map(|(_, sst)| {
+598 | |                 sst.iter(master_sync_id, false, &tx_log_store, Some(&listener))
+599 | |             });
+600 | |
+601 | |             // Compact records then build new SSTs
+602 | |             created_ssts = Compactor::compact_records_and_build_ssts(
+603 | |                 upper_records_iter,
+604 | |                 lower_records_iter,
+605 | |                 &tx_log_store,
+606 | |                 &listener,
+607 | |                 to_level,
+608 | |                 master_sync_id,
+609 | |             )?;
+610 | |
+611 | |             // Delete the old SSTs
+612 | |             for (id, level) in core::iter::once((upper_sst_id, from_level))
+613 | |                 .chain(lower_ssts.into_iter().map(|(id, _)| (id, to_level)))
+614 | |             {
+615 | |                 tx_log_store.delete_log(id)?;
+616 | |                 deleted_ssts.push((id, level));
+617 | |             }
+618 | |             Ok((created_ssts, deleted_ssts))
+619 | |         }
+    | |_________- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 565.
+    | MIR detail: Value _20 and _10 are alias.
+    | MIR detail: _20 is dropped at BB71; _10 is dropped at BB66.
+    |
+warning: Double free detected.
+   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:565:1
+    |
+565 | / move || {
+566 | |             let (mut created_ssts, mut deleted_ssts) = (vec![], vec![]);
+567 | |
+568 | |             // Collect overlapped SSTs
+569 | |             let sst_manager = self.sst_manager.read();
+570 | |             let (upper_sst_id, upper_sst) = sst_manager
+571 | |                 .list_level(from_level)
+572 | |                 .last() // Choose the oldest SST from upper level
+573 | |                 .map(|(id, sst)| (*id, sst.clone()))
+574 | |                 .unwrap();
+575 | |             let lower_ssts: Vec<(TxLogId, Arc<SSTable<K, V>>)> = {
+576 | |                 let mut ssts = sst_manager
+577 | |                     .find_overlapped_ssts(&upper_sst.range(), to_level)
+578 | |                     .map(|(id, sst)| (*id, sst.clone()))
+579 | |                     .collect::<Vec<_>>();
+580 | |                 ssts.sort_by_key(|(_, sst)| *sst.range().start());
+581 | |                 ssts
+582 | |             };
+583 | |             drop(sst_manager);
+584 | |
+585 | |             // If there are no overlapped SSTs, just move the upper SST to the lower level
+586 | |             if lower_ssts.is_empty() {
+587 | |                 tx_log_store.move_log(upper_sst_id, from_level.bucket(), to_level.bucket())?;
+588 | |                 self.sst_manager
+589 | |                     .write()
+590 | |                     .move_sst(upper_sst_id, from_level, to_level);
+591 | |                 return Ok((created_ssts, deleted_ssts));
+592 | |             }
+593 | |
+594 | |             let upper_records_iter =
+595 | |                 upper_sst.iter(master_sync_id, false, &tx_log_store, Some(&listener));
+596 | |
+597 | |             let lower_records_iter = lower_ssts.iter().flat_map(|(_, sst)| {
+598 | |                 sst.iter(master_sync_id, false, &tx_log_store, Some(&listener))
+599 | |             });
+600 | |
+601 | |             // Compact records then build new SSTs
+602 | |             created_ssts = Compactor::compact_records_and_build_ssts(
+603 | |                 upper_records_iter,
+604 | |                 lower_records_iter,
+605 | |                 &tx_log_store,
+606 | |                 &listener,
+607 | |                 to_level,
+608 | |                 master_sync_id,
+609 | |             )?;
+610 | |
+611 | |             // Delete the old SSTs
+612 | |             for (id, level) in core::iter::once((upper_sst_id, from_level))
+613 | |                 .chain(lower_ssts.into_iter().map(|(id, _)| (id, to_level)))
+614 | |             {
+615 | |                 tx_log_store.delete_log(id)?;
+616 | |                 deleted_ssts.push((id, level));
+617 | |             }
+618 | |             Ok((created_ssts, deleted_ssts))
+619 | |         }
+    | |_________- 
+ Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 565.
+    | MIR detail: Value _1 and _1 are alias.
+    | MIR detail: _1 is dropped at BB69; _1 is dropped at BB69.
+    |
