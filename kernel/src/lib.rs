@@ -7,6 +7,7 @@
 #![no_main]
 #![deny(unsafe_code)]
 #![feature(btree_cursors)]
+#![feature(btree_extract_if)]
 #![feature(debug_closure_helpers)]
 #![feature(format_args_nl)]
 #![feature(linked_list_cursors)]
