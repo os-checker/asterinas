@@ -1,33 +1,5 @@
-Over visited: DefId(0:52 ~ aster_rights[070b]::{impl#10}::fmt)
-Over visited: DefId(0:44 ~ component[3437]::match_and_call)
-warning: Dangling pointer detected.
-  --> kernel/libs/cpio-decoder/src/lib.rs:76:1
-   |
-76 | / fn next(&mut self) -> Option<Self::Item<'_>> {
-77 | |         // Stop to iterate entries if encounters an error.
-78 | |         if self.is_error {
-79 | |             return None;
-80 | |         }
-81 | |
-82 | |         let entry_result = CpioEntry::new(&mut self.reader);
-83 | |         match &entry_result {
-84 | |             Ok(entry) => {
-85 | |                 // A correct CPIO buffer must end with a trailer.
-86 | |                 if entry.is_trailer() {
-87 | |                     return None;
-88 | |                 }
-89 | |             }
-90 | |             Err(_) => {
-91 | |                 self.is_error = true;
-92 | |             }
-93 | |         }
-94 | |         Some(entry_result)
-95 | |     }
-   | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/libs/cpio-decoder/src/lib.rs line 76.
-    | MIR detail: Value _18446744073709551615 and _1 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
-   |
+Over visited: DefId(0:53 ~ aster_rights[1da3]::{impl#11}::fmt)
+Over visited: DefId(0:44 ~ component[53ae]::match_and_call)
 warning: Memory Leak detected.
    --> ostd/src/sync/rcu/non_null/mod.rs:116:19
     |
@@ -49,22 +21,99 @@ warning: Memory Leak detected.
 18 |     inject_scheduler(scheduler);
 19 | }
    |
-Over visited: DefId(0:5965 ~ ostd[ff8b]::arch::cpu::context::{impl#53}::fmt)
-Over visited: DefId(0:6188 ~ ostd[ff8b]::arch::cpu::extension::{impl#8}::fmt)
-Over visited: DefId(0:6514 ~ ostd[ff8b]::arch::iommu::dma_remapping::second_stage::{impl#19}::fmt)
-Over visited: DefId(0:6700 ~ ostd[ff8b]::arch::iommu::fault::{impl#14}::fmt)
-Over visited: DefId(0:6882 ~ ostd[ff8b]::arch::iommu::interrupt_remapping::table::{impl#20}::fmt)
-Over visited: DefId(0:6992 ~ ostd[ff8b]::arch::iommu::registers::capability::{impl#10}::fmt)
-Over visited: DefId(0:7142 ~ ostd[ff8b]::arch::iommu::registers::capability::{impl#35}::fmt)
-Over visited: DefId(0:7237 ~ ostd[ff8b]::arch::iommu::registers::capability::{impl#60}::fmt)
-Over visited: DefId(0:7327 ~ ostd[ff8b]::arch::iommu::registers::command::{impl#8}::fmt)
-Over visited: DefId(0:7442 ~ ostd[ff8b]::arch::iommu::registers::extended_cap::{impl#10}::fmt)
-Over visited: DefId(0:7676 ~ ostd[ff8b]::arch::iommu::registers::status::{impl#8}::fmt)
-Over visited: DefId(0:791 ~ ostd[ff8b]::arch::iommu::registers::{impl#1}::new)
-Over visited: DefId(0:8128 ~ ostd[ff8b]::arch::mm::{impl#17}::fmt)
-Over visited: DefId(0:8283 ~ ostd[ff8b]::arch::serial::{impl#8}::fmt)
-Over visited: DefId(0:9140 ~ ostd[ff8b]::mm::page_prop::{impl#21}::fmt)
-Over visited: DefId(0:9265 ~ ostd[ff8b]::mm::page_prop::{impl#46}::fmt)
+Over visited: DefId(0:5975 ~ ostd[4ea4]::arch::cpu::context::{impl#59}::fmt)
+Over visited: DefId(0:6201 ~ ostd[4ea4]::arch::cpu::extension::{impl#9}::fmt)
+Over visited: DefId(0:6530 ~ ostd[4ea4]::arch::iommu::dma_remapping::second_stage::{impl#20}::fmt)
+Over visited: DefId(0:6719 ~ ostd[4ea4]::arch::iommu::fault::{impl#15}::fmt)
+Over visited: DefId(0:6902 ~ ostd[4ea4]::arch::iommu::interrupt_remapping::table::{impl#21}::fmt)
+Over visited: DefId(0:7013 ~ ostd[4ea4]::arch::iommu::registers::capability::{impl#11}::fmt)
+Over visited: DefId(0:7164 ~ ostd[4ea4]::arch::iommu::registers::capability::{impl#37}::fmt)
+Over visited: DefId(0:7260 ~ ostd[4ea4]::arch::iommu::registers::capability::{impl#63}::fmt)
+Over visited: DefId(0:7351 ~ ostd[4ea4]::arch::iommu::registers::command::{impl#9}::fmt)
+Over visited: DefId(0:7467 ~ ostd[4ea4]::arch::iommu::registers::extended_cap::{impl#11}::fmt)
+Over visited: DefId(0:7702 ~ ostd[4ea4]::arch::iommu::registers::status::{impl#9}::fmt)
+Over visited: DefId(0:791 ~ ostd[4ea4]::arch::iommu::registers::{impl#1}::new)
+Over visited: DefId(0:8167 ~ ostd[4ea4]::arch::mm::{impl#18}::fmt)
+Over visited: DefId(0:8324 ~ ostd[4ea4]::arch::serial::{impl#9}::fmt)
+Over visited: DefId(0:9200 ~ ostd[4ea4]::mm::page_prop::{impl#24}::fmt)
+Over visited: DefId(0:9326 ~ ostd[4ea4]::mm::page_prop::{impl#50}::fmt)
+warning: Use-after-free detected.
+   --> ostd/src/sync/rcu/monitor.rs:144:9
+    |
+141 | fn restart(&mut self, callbacks: Callbacks) {
+142 |         self.is_complete = false;
+143 |         self.cpu_mask.store(&CpuSet::new_empty(), Ordering::Relaxed);
+144 |         self.callbacks = callbacks;
+    |         -------------- Use-after-free (confidence 99%): Location in file ostd/src/sync/rcu/monitor.rs line 144.
+    | MIR detail: Value _1(self, ostd/src/sync/rcu/monitor.rs:141) and _9(_, ostd/src/sync/rcu/monitor.rs:144) are alias.
+    | MIR detail: _1(self, ostd/src/sync/rcu/monitor.rs:141) is dropped at BB3(ostd/src/sync/rcu/monitor.rs:144); _9(_, ostd/src/sync/rcu/monitor.rs:144) is used at BB4(ostd/src/sync/rcu/monitor.rs:145).
+145 |     }
+    |
+warning: Use-after-free detected.
+   --> ostd/src/sync/rwlock.rs:374:13
+    |
+363 | pub fn try_upgrade(mut self) -> Result<RwLockWriteGuard<'a, T, G>, Self> {
+364 |         let res = self.inner.lock.compare_exchange(
+365 |             UPGRADEABLE_READER | BEING_UPGRADED,
+366 |             WRITER | UPGRADEABLE_READER,
+367 |             AcqRel,
+368 |             Relaxed,
+369 |         );
+370 |         if res.is_ok() {
+371 |             let inner = self.inner;
+372 |             let guard = self.guard.transfer_to();
+373 |             drop(self);
+374 |             Ok(RwLockWriteGuard { inner, guard })
+    |             ------------------------------------- Use-after-free (confidence 99%): Location in file ostd/src/sync/rwlock.rs line 374.
+    | MIR detail: Value _14(_, ostd/src/sync/rwlock.rs:373) and _15(_, ostd/src/sync/rwlock.rs:374) are alias.
+    | MIR detail: _14(_, ostd/src/sync/rwlock.rs:373) is dropped at BB4(ostd/src/sync/rwlock.rs:373); _15(_, ostd/src/sync/rwlock.rs:374) is used at BB5(ostd/src/sync/rwlock.rs:370).
+375 |         } else {
+376 |             Err(self)
+377 |         }
+378 |     }
+    |
+warning: Use-after-free detected.
+   --> ostd/src/sync/rwmutex.rs:284:13
+    |
+276 | fn try_downgrade(self) -> Result<RwMutexUpgradeableGuard<'a, T>, Self> {
+277 |         let inner = self.inner;
+278 |         let res = self
+279 |             .inner
+280 |             .lock
+281 |             .compare_exchange(WRITER, UPGRADEABLE_READER, AcqRel, Relaxed);
+282 |         if res.is_ok() {
+283 |             drop(self);
+284 |             Ok(RwMutexUpgradeableGuard { inner })
+    |             ------------------------------------- Use-after-free (confidence 99%): Location in file ostd/src/sync/rwmutex.rs line 284.
+    | MIR detail: Value _10(_, ostd/src/sync/rwmutex.rs:283) and _11(_, ostd/src/sync/rwmutex.rs:284) are alias.
+    | MIR detail: _10(_, ostd/src/sync/rwmutex.rs:283) is dropped at BB3(ostd/src/sync/rwmutex.rs:283); _11(_, ostd/src/sync/rwmutex.rs:284) is used at BB4(ostd/src/sync/rwmutex.rs:282).
+285 |         } else {
+286 |             Err(self)
+287 |         }
+288 |     }
+    |
+warning: Use-after-free detected.
+   --> ostd/src/sync/rwmutex.rs:348:13
+    |
+338 | pub fn try_upgrade(self) -> Result<RwMutexWriteGuard<'a, T>, Self> {
+339 |         let res = self.inner.lock.compare_exchange(
+340 |             UPGRADEABLE_READER | BEING_UPGRADED,
+341 |             WRITER | UPGRADEABLE_READER,
+342 |             AcqRel,
+343 |             Relaxed,
+344 |         );
+345 |         if res.is_ok() {
+346 |             let inner = self.inner;
+347 |             drop(self);
+348 |             Ok(RwMutexWriteGuard { inner })
+    |             ------------------------------- Use-after-free (confidence 99%): Location in file ostd/src/sync/rwmutex.rs line 348.
+    | MIR detail: Value _12(_, ostd/src/sync/rwmutex.rs:347) and _13(_, ostd/src/sync/rwmutex.rs:348) are alias.
+    | MIR detail: _12(_, ostd/src/sync/rwmutex.rs:347) is dropped at BB3(ostd/src/sync/rwmutex.rs:347); _13(_, ostd/src/sync/rwmutex.rs:348) is used at BB4(ostd/src/sync/rwmutex.rs:345).
+349 |         } else {
+350 |             Err(self)
+351 |         }
+352 |     }
+    |
 warning: Double free detected.
   --> ostd/src/sync/wait.rs:69:1
    |
@@ -85,37 +134,11 @@ warning: Double free detected.
 83 | |             .wait_until_or_cancelled(cond, || Ok::<(), ()>(()))
 84 | |             .unwrap()
 85 | |     }
-   | |_____- 
- Double free (confidence 99%): Location in file ostd/src/sync/wait.rs line 69.
-    | MIR detail: Value _10 and _2 are alias.
-    | MIR detail: _10 is dropped at BB5; _2 is dropped at BB6.
+   | |_____- Double free (confidence 99%): Location in file ostd/src/sync/wait.rs line 69.
+    | MIR detail: Value _10(waiter, ostd/src/sync/wait.rs:77) and _2(cond, ostd/src/sync/wait.rs:69) are alias.
+    | MIR detail: _10(waiter, ostd/src/sync/wait.rs:77) is dropped at BB5(ostd/src/sync/wait.rs:85); _2(cond, ostd/src/sync/wait.rs:69) is dropped at BB6(ostd/src/sync/wait.rs:85).
    |
-warning: Dangling pointer detected.
-  --> ostd/src/sync/wait.rs:69:1
-   |
-69 | / pub fn wait_until<F, R>(&self, mut cond: F) -> R
-70 | |     where
-71 | |         F: FnMut() -> Option<R>,
-72 | |     {
-73 | |         if let Some(res) = cond() {
-74 | |             return res;
-75 | |         }
-76 | |
-77 | |         let (waiter, _) = Waiter::new_pair();
-78 | |         let cond = || {
-79 | |             self.enqueue(waiter.waker());
-80 | |             cond()
-81 | |         };
-82 | |         waiter
-83 | |             .wait_until_or_cancelled(cond, || Ok::<(), ()>(()))
-84 | |             .unwrap()
-85 | |     }
-   | |_____- 
- Dangling pointer (confidence 99%): Location in file ostd/src/sync/wait.rs line 69.
-    | MIR detail: Value _10 and _1 are alias.
-    | MIR detail: _10 is dropped at BB5; _1 became dangling.
-   |
-Over visited: DefId(0:230 ~ aster_input[8fae]::event_type_codes::{impl#14}::fmt)
+Over visited: DefId(0:231 ~ aster_input[3267]::event_type_codes::{impl#15}::fmt)
 warning: Double free detected.
    --> kernel/comps/input/src/input_core.rs:153:1
     |
@@ -145,10 +168,9 @@ warning: Double free detected.
 176 | |         log::info!("Input: unregistered device {}", device.name());
 177 | |         Some(device_registry.device)
 178 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 153.
-    | MIR detail: Value _31 and _18 are alias.
-    | MIR detail: _31 is dropped at BB13; _18 is dropped at BB39.
+    | |_____- Double free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 153.
+    | MIR detail: Value _31(_, kernel/comps/input/src/input_core.rs:167) and _18(device_registry, kernel/comps/input/src/input_core.rs:162) are alias.
+    | MIR detail: _31(_, kernel/comps/input/src/input_core.rs:167) is dropped at BB13(kernel/comps/input/src/input_core.rs:167); _18(device_registry, kernel/comps/input/src/input_core.rs:162) is dropped at BB39(kernel/comps/input/src/input_core.rs:178).
     |
 warning: Use-after-free detected.
    --> kernel/comps/input/src/input_core.rs:170:30
@@ -171,10 +193,9 @@ warning: Use-after-free detected.
 168 |
 169 |         // Disconnect handler classes that were connected.
 170 |         for bound_handler in bound_handlers.into_iter() {
-    |                              -------------------------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 170.
-    | MIR detail: Value _31 and _35 are alias.
-    | MIR detail: _31 is dropped at BB13; _35 is used at BB14.
+    |                              -------------------------- Use-after-free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 170.
+    | MIR detail: Value _31(_, kernel/comps/input/src/input_core.rs:167) and _35(_, kernel/comps/input/src/input_core.rs:170) are alias.
+    | MIR detail: _31(_, kernel/comps/input/src/input_core.rs:167) is dropped at BB13(kernel/comps/input/src/input_core.rs:167); _35(_, kernel/comps/input/src/input_core.rs:170) is used at BB14(kernel/comps/input/src/input_core.rs:170).
 171 |             bound_handler
 172 |                 .handler_class
 173 |                 .disconnect(&device_registry.device);
@@ -205,10 +226,9 @@ warning: Use-after-free detected.
 168 |
 169 |         // Disconnect handler classes that were connected.
 170 |         for bound_handler in bound_handlers.into_iter() {
-    |                              -------------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 170.
-    | MIR detail: Value _31 and _25 are alias.
-    | MIR detail: _31 is dropped at BB13; _25 is used at BB14.
+    |                              -------------- Use-after-free (confidence 99%): Location in file kernel/comps/input/src/input_core.rs line 170.
+    | MIR detail: Value _31(_, kernel/comps/input/src/input_core.rs:167) and _25(bound_handlers, kernel/comps/input/src/input_core.rs:166) are alias.
+    | MIR detail: _31(_, kernel/comps/input/src/input_core.rs:167) is dropped at BB13(kernel/comps/input/src/input_core.rs:167); _25(bound_handlers, kernel/comps/input/src/input_core.rs:166) is used at BB14(kernel/comps/input/src/input_core.rs:170).
 171 |             bound_handler
 172 |                 .handler_class
 173 |                 .disconnect(&device_registry.device);
@@ -218,1595 +238,116 @@ warning: Use-after-free detected.
 177 |         Some(device_registry.device)
 178 |     }
     |
-Over visited: DefId(0:404 ~ aster_pci[e7cd]::cfg_space::{impl#11}::fmt)
-Over visited: DefId(0:534 ~ aster_pci[e7cd]::cfg_space::{impl#36}::fmt)
-Over visited: DefId(0:22 ~ aster_i8042[a60e]::controller::init)
-Over visited: DefId(0:248 ~ aster_i8042[a60e]::mouse::{impl#5}::parse_packet)
-warning: Dangling pointer detected.
-   --> kernel/comps/time/src/rtc/cmos.rs:179:1
-    |
-179 | / pub(self) fn read_rtc(rtc: &RtcCmos) -> Self {
-180 | |         let mut access = rtc.access.lock();
-181 | |
-182 | |         let mut now = Self::from_rtc_raw(&mut access);
-183 | |         // Retry if the new value differs from the old one. An RTC update may occur in the
-184 | |         // meantime, which would result in an invalid value.
-185 | |         while let new = Self::from_rtc_raw(&mut access) && now != new {
-186 | |             now = new;
-187 | |         }
-188 | |
-189 | |         drop(access);
-190 | |
-191 | |         if !rtc.status_b.contains(StatusB::DM_BINARY) {
-192 | |             now.convert_bcd_to_binary();
-193 | |         }
-194 | |         if !rtc.status_b.contains(StatusB::CM_24HOUR) {
-195 | |             now.convert_12_hour_to_24_hour();
-196 | |         }
-197 | |         now.modify_year();
-198 | |
-199 | |         now
-200 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/time/src/rtc/cmos.rs line 179.
-    | MIR detail: Value _18446744073709551615 and _1 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
-    |
-Over visited: DefId(0:1259 ~ aster_bigtcp[0147]::iface::common::{impl#23}::fmt)
-Over visited: DefId(0:1480 ~ aster_bigtcp[0147]::socket::event::{impl#9}::fmt)
-Over visited: DefId(0:1311 ~ aster_virtio[0497]::device::block::{impl#11}::fmt)
-Over visited: DefId(0:1563 ~ aster_virtio[0497]::device::console::config::{impl#10}::fmt)
-Over visited: DefId(0:1669 ~ aster_virtio[0497]::device::input::device::{impl#14}::fmt)
+Over visited: DefId(0:406 ~ aster_pci[9c46]::cfg_space::{impl#12}::fmt)
+Over visited: DefId(0:537 ~ aster_pci[9c46]::cfg_space::{impl#38}::fmt)
 warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:170:9
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-    |         --------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 170.
-    | MIR detail: Value _216 and _221 are alias.
-    | MIR detail: _216 is dropped at BB85; _221 is used at BB92.
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-174 |
-175 |         Ok(())
-176 |     }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:170:9
-    |
- 92 |   pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |           let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |               .expect("create event virtqueue failed");
- 95 |           let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |               .expect("create status virtqueue failed");
- 97 |
- 98 |           let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |           for i in 0..event_table.num_events() {
-100 |               let event_buf = event_table.get(i);
-101 |               let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |               match token {
-103 |                   Ok(value) => {
-104 |                       assert_eq!(value, i as u16);
-105 |                   }
-106 |                   Err(_) => {
-107 |                       return Err(VirtioDeviceError::QueueUnknownError);
-108 |                   }
-109 |               }
-110 |           }
-111 |
-112 |           let device = {
-113 |               let mut device = Self {
-114 |                   config: VirtioInputConfig::new(transport.as_mut()),
-115 |                   event_queue: SpinLock::new(event_queue),
-116 |                   status_queue,
-117 |                   event_table,
-118 |                   transport: SpinLock::new(transport),
-119 |                   // Default name, will be updated with actual device name from config.
-120 |                   device_name: "virtio_input".to_string(),
-121 |                   // Physical path for virtio devices.
-122 |                   device_phys: "virtio/input0".to_string(),
-123 |                   // Unique identifier (empty for virtio devices).
-124 |                   device_uniq: "".to_string(),
-125 |                   // Device ID with virtio-specific values.
-126 |                   // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                   // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                   // product (0x0001): Generic product ID for standard keyboards
-129 |                   // version (0x0001): Version 1.0
-130 |                   device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                   capability: InputCapability::new(),
-132 |               };
-133 |
-134 |               // Query and update device name from config.
-135 |               let name = device.query_config_id_name();
-136 |               info!("Virtio input device name: {}", name);
-137 |               device.device_name = name;
-138 |
-139 |               // Query and set device capabilities.
-140 |               device.query_and_set_capabilities();
-141 |
-142 |               Arc::new(device)
-143 |           };
-144 |
-145 |           let input_prop = device.query_config_prop_bits();
-146 |           if let Some(prop) = input_prop {
-147 |               debug!("input device prop: {:?}", prop);
-148 |           } else {
-149 |               debug!("input device has no properties or the properties is not defined");
-150 |           }
-151 |
-152 |           let mut transport = device.transport.disable_irq().lock();
-153 |           fn config_space_change(_: &TrapFrame) {
-154 |               debug!("input device config space change");
-155 |           }
-156 |           transport
-157 |               .register_cfg_callback(Box::new(config_space_change))
-158 |               .unwrap();
-159 |           transport.finish_init();
-160 |           drop(transport);
-161 |
-162 |           // Register with the input subsystem.
-163 |           let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |           let mut transport = device.transport.disable_irq().lock();
-166 |           let handle_input = {
-167 |               let device = device.clone();
-168 |               move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |           };
-170 | /         transport
-171 | |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-    | |________________________________________________________________________________- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 170.
-    | MIR detail: Value _216 and _234 are alias.
-    | MIR detail: _216 is dropped at BB85; _234 is used at BB92.
-172 |               .unwrap();
-173 |           drop(transport);
-174 |
-175 |           Ok(())
-176 |       }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:173:9
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-    |         --------------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 173.
-    | MIR detail: Value _216 and _239 are alias.
-    | MIR detail: _216 is dropped at BB85; _239 is used at BB96.
-174 |
-175 |         Ok(())
-176 |     }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:165:29
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-    |                             ------------------------------ 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 165.
-    | MIR detail: Value _216 and _224 are alias.
-    | MIR detail: _216 is dropped at BB85; _224 is used at BB89.
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-174 |
-175 |         Ok(())
-176 |     }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:165:29
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-    |                             ------------------------------ 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 165.
-    | MIR detail: Value _216 and _198 are alias.
-    | MIR detail: _216 is dropped at BB85; _198 is used at BB90.
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-174 |
-175 |         Ok(())
-176 |     }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:165:29
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-    |                             ---------------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 165.
-    | MIR detail: Value _216 and _202 are alias.
-    | MIR detail: _216 is dropped at BB85; _202 is used at BB89.
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-174 |
-175 |         Ok(())
-176 |     }
-    |
-warning: Use-after-free detected.
-   --> kernel/comps/virtio/src/device/input/device.rs:165:29
-    |
- 92 | pub fn init(mut transport: Box<dyn VirtioTransport>) -> Result<(), VirtioDeviceError> {
- 93 |         let mut event_queue = VirtQueue::new(QUEUE_EVENT, QUEUE_SIZE, transport.as_mut())
- 94 |             .expect("create event virtqueue failed");
- 95 |         let status_queue = VirtQueue::new(QUEUE_STATUS, QUEUE_SIZE, transport.as_mut())
- 96 |             .expect("create status virtqueue failed");
- 97 |
- 98 |         let event_table = EventTable::new(QUEUE_SIZE as usize);
- 99 |         for i in 0..event_table.num_events() {
-100 |             let event_buf = event_table.get(i);
-101 |             let token = event_queue.add_dma_buf(&[], &[&event_buf]);
-102 |             match token {
-103 |                 Ok(value) => {
-104 |                     assert_eq!(value, i as u16);
-105 |                 }
-106 |                 Err(_) => {
-107 |                     return Err(VirtioDeviceError::QueueUnknownError);
-108 |                 }
-109 |             }
-110 |         }
-111 |
-112 |         let device = {
-113 |             let mut device = Self {
-114 |                 config: VirtioInputConfig::new(transport.as_mut()),
-115 |                 event_queue: SpinLock::new(event_queue),
-116 |                 status_queue,
-117 |                 event_table,
-118 |                 transport: SpinLock::new(transport),
-119 |                 // Default name, will be updated with actual device name from config.
-120 |                 device_name: "virtio_input".to_string(),
-121 |                 // Physical path for virtio devices.
-122 |                 device_phys: "virtio/input0".to_string(),
-123 |                 // Unique identifier (empty for virtio devices).
-124 |                 device_uniq: "".to_string(),
-125 |                 // Device ID with virtio-specific values.
-126 |                 // BUS_VIRTUAL (0x06): Virtual bus type
-127 |                 // vendor (0x0001): Generic vendor ID for standard keyboards
-128 |                 // product (0x0001): Generic product ID for standard keyboards
-129 |                 // version (0x0001): Version 1.0
-130 |                 device_id: InputId::new(InputId::BUS_VIRTUAL, 0x0001, 0x0001, 0x0001),
-131 |                 capability: InputCapability::new(),
-132 |             };
-133 |
-134 |             // Query and update device name from config.
-135 |             let name = device.query_config_id_name();
-136 |             info!("Virtio input device name: {}", name);
-137 |             device.device_name = name;
-138 |
-139 |             // Query and set device capabilities.
-140 |             device.query_and_set_capabilities();
-141 |
-142 |             Arc::new(device)
-143 |         };
-144 |
-145 |         let input_prop = device.query_config_prop_bits();
-146 |         if let Some(prop) = input_prop {
-147 |             debug!("input device prop: {:?}", prop);
-148 |         } else {
-149 |             debug!("input device has no properties or the properties is not defined");
-150 |         }
-151 |
-152 |         let mut transport = device.transport.disable_irq().lock();
-153 |         fn config_space_change(_: &TrapFrame) {
-154 |             debug!("input device config space change");
-155 |         }
-156 |         transport
-157 |             .register_cfg_callback(Box::new(config_space_change))
-158 |             .unwrap();
-159 |         transport.finish_init();
-160 |         drop(transport);
-161 |
-162 |         // Register with the input subsystem.
-163 |         let registered_device = aster_input::register_device(device.clone());
-164 |
-165 |         let mut transport = device.transport.disable_irq().lock();
-    |                             ------------------------------------- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/device/input/device.rs line 165.
-    | MIR detail: Value _216 and _222 are alias.
-    | MIR detail: _216 is dropped at BB85; _222 is used at BB90.
-166 |         let handle_input = {
-167 |             let device = device.clone();
-168 |             move |_: &TrapFrame| device.handle_irq(&registered_device)
-169 |         };
-170 |         transport
-171 |             .register_queue_callback(QUEUE_EVENT, Box::new(handle_input), false)
-172 |             .unwrap();
-173 |         drop(transport);
-174 |
-175 |         Ok(())
-176 |     }
-    |
-Over visited: DefId(0:1895 ~ aster_virtio[0497]::device::network::config::{impl#11}::fmt)
-Over visited: DefId(0:2146 ~ aster_virtio[0497]::device::network::config::{impl#37}::fmt)
-Over visited: DefId(0:428 ~ aster_virtio[0497]::device::network::device::{impl#1}::init)
-Over visited: DefId(0:2271 ~ aster_virtio[0497]::device::network::header::{impl#15}::fmt)
-Over visited: DefId(0:2395 ~ aster_virtio[0497]::device::socket::config::{impl#11}::fmt)
-Over visited: DefId(0:2705 ~ aster_virtio[0497]::device::socket::header::{impl#31}::fmt)
-Over visited: DefId(0:718 ~ aster_virtio[0497]::queue::{impl#0}::new)
-Over visited: DefId(0:3147 ~ aster_virtio[0497]::queue::{impl#20}::fmt)
-warning: Use-after-free detected.
-  --> kernel/comps/virtio/src/transport/mmio/multiplex.rs:73:9
+  --> kernel/comps/pci/src/common_device.rs:89:9
    |
-27 | pub fn new(
-28 |         irq: IrqLine,
-29 |         interrupt_ack: SafePtr<u32, IoMem, TRightSet<WriteOp>>,
-30 |         interrupt_status: SafePtr<u32, IoMem, TRightSet<ReadOp>>,
-31 |     ) -> Arc<RwLock<Self>> {
-32 |         let irq = Arc::new(RwLock::new(Self {
-33 |             irq,
-34 |             queue_callbacks: Vec::new(),
-35 |             cfg_callbacks: Vec::new(),
-36 |             interrupt_ack,
-37 |             interrupt_status,
-38 |         }));
-39 |
-40 |         // Holding a weak reference to prevent memory leakage due to
-41 |         // circular reference.
-42 |         let weak = Arc::downgrade(&irq);
-43 |         let callback = move |trap_frame: &TrapFrame| {
-44 |             let Some(multiplex_irq) = weak.upgrade() else {
-45 |                 return;
-46 |             };
-47 |             let irq = multiplex_irq.read();
-48 |
-49 |             let interrupt_status = irq.interrupt_status.read_once().unwrap();
-50 |             // Acknowledging before invoking the callbacks to prevent the loss of unhandled
-51 |             // interrupts due to race conditions.
-52 |             irq.interrupt_ack.write_once(&interrupt_status).unwrap();
-53 |
-54 |             // Used buffer notification
-55 |             if interrupt_status & 0x01 != 0 {
-56 |                 for callback in irq.queue_callbacks.iter() {
-57 |                     (callback)(trap_frame);
-58 |                 }
-59 |             }
-60 |
-61 |             // Configuration change notification
-62 |             if interrupt_status & 0x02 != 0 {
-63 |                 for callback in irq.cfg_callbacks.iter() {
-64 |                     (callback)(trap_frame);
-65 |                 }
-66 |             }
-67 |         };
-68 |
-69 |         let mut lock = irq.write();
-70 |         lock.irq.on_active(callback);
-71 |         drop(lock);
-72 |
-73 |         irq
-   |         --- 
- Use-after-free (confidence 99%): Location in file kernel/comps/virtio/src/transport/mmio/multiplex.rs line 73.
-    | MIR detail: Value _26 and _4 are alias.
-    | MIR detail: _26 is dropped at BB9; _4 is used at BB10.
-74 |     }
+68 | pub(super) fn new(location: PciDeviceLocation) -> Option<Self> {
+69 |         if location.read16(0) == 0xFFFF {
+70 |             // not exists
+71 |             return None;
+72 |         }
+73 |
+74 |         let capabilities = Vec::new();
+75 |         let device_id = PciDeviceId::new(location);
+76 |         let bar_manager = BarManager {
+77 |             bars: [const { None }; 6],
+78 |         };
+79 |         let mut device = Self {
+80 |             device_id,
+81 |             location,
+82 |             bar_manager,
+83 |             capabilities,
+84 |         };
+85 |         device.set_command(
+86 |             device.command() | Command::MEMORY_SPACE | Command::BUS_MASTER | Command::IO_SPACE,
+87 |         );
+88 |         device.bar_manager = BarManager::new(location);
+89 |         device.capabilities = Capability::device_capabilities(&mut device);
+   |         ------------------- Use-after-free (confidence 99%): Location in file kernel/comps/pci/src/common_device.rs line 89.
+    | MIR detail: Value _12(device, kernel/comps/pci/src/common_device.rs:79) and _26(_, kernel/comps/pci/src/common_device.rs:89) are alias.
+    | MIR detail: _12(device, kernel/comps/pci/src/common_device.rs:79) is dropped at BB13(kernel/comps/pci/src/common_device.rs:89); _26(_, kernel/comps/pci/src/common_device.rs:89) is used at BB14(kernel/comps/pci/src/common_device.rs:91).
+90 |         Some(device)
+91 |     }
    |
-warning: Dangling pointer detected.
-  --> kernel/comps/virtio/src/transport/mmio/multiplex.rs:27:1
-   |
-27 | / pub fn new(
-28 | |         irq: IrqLine,
-29 | |         interrupt_ack: SafePtr<u32, IoMem, TRightSet<WriteOp>>,
-30 | |         interrupt_status: SafePtr<u32, IoMem, TRightSet<ReadOp>>,
-31 | |     ) -> Arc<RwLock<Self>> {
-32 | |         let irq = Arc::new(RwLock::new(Self {
-33 | |             irq,
-34 | |             queue_callbacks: Vec::new(),
-35 | |             cfg_callbacks: Vec::new(),
-36 | |             interrupt_ack,
-37 | |             interrupt_status,
-38 | |         }));
-39 | |
-40 | |         // Holding a weak reference to prevent memory leakage due to
-41 | |         // circular reference.
-42 | |         let weak = Arc::downgrade(&irq);
-43 | |         let callback = move |trap_frame: &TrapFrame| {
-44 | |             let Some(multiplex_irq) = weak.upgrade() else {
-45 | |                 return;
-46 | |             };
-47 | |             let irq = multiplex_irq.read();
-48 | |
-49 | |             let interrupt_status = irq.interrupt_status.read_once().unwrap();
-50 | |             // Acknowledging before invoking the callbacks to prevent the loss of unhandled
-51 | |             // interrupts due to race conditions.
-52 | |             irq.interrupt_ack.write_once(&interrupt_status).unwrap();
-53 | |
-54 | |             // Used buffer notification
-55 | |             if interrupt_status & 0x01 != 0 {
-56 | |                 for callback in irq.queue_callbacks.iter() {
-57 | |                     (callback)(trap_frame);
-58 | |                 }
-59 | |             }
-60 | |
-61 | |             // Configuration change notification
-62 | |             if interrupt_status & 0x02 != 0 {
-63 | |                 for callback in irq.cfg_callbacks.iter() {
-64 | |                     (callback)(trap_frame);
-65 | |                 }
-66 | |             }
-67 | |         };
-68 | |
-69 | |         let mut lock = irq.write();
-70 | |         lock.irq.on_active(callback);
-71 | |         drop(lock);
-72 | |
-73 | |         irq
-74 | |     }
-   | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/virtio/src/transport/mmio/multiplex.rs line 27.
-    | MIR detail: Value _26 and _0 are alias.
-    | MIR detail: _26 is dropped at BB9; _0 became dangling.
-   |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs:185:1
+warning: Use-after-free detected.
+   --> kernel/libs/aster-util/src/safe_ptr.rs:323:9
     |
-185 | / pub fn trim(&mut self, before_block: BlockId) {
-186 | |         // We must ensure the invariance that there is at least one valid block
-187 | |         // after trimming.
-188 | |         debug_assert!(before_block < self.block_range.end);
-189 | |
-190 | |         if before_block <= self.block_range.start {
-191 | |             return;
-192 | |         }
-193 | |
-194 | |         let num_blocks_trimmed = before_block - self.block_range.start;
-195 | |         self.block_range.start = before_block;
-196 | |         self.block_macs.drain(..num_blocks_trimmed);
-197 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs line 185.
-    | MIR detail: Value _20 and _20 are alias.
-    | MIR detail: _20 is dropped at BB9; _20 is dropped at BB9.
+322 | pub fn set_vm(&mut self, vm_obj: M) {
+323 |         self.vm_obj = vm_obj;
+    |         ----------- Use-after-free (confidence 99%): Location in file kernel/libs/aster-util/src/safe_ptr.rs line 323.
+    | MIR detail: Value _1(self, kernel/libs/aster-util/src/safe_ptr.rs:322) and _3(_, kernel/libs/aster-util/src/safe_ptr.rs:323) are alias.
+    | MIR detail: _1(self, kernel/libs/aster-util/src/safe_ptr.rs:322) is dropped at BB0(kernel/libs/aster-util/src/safe_ptr.rs:323); _3(_, kernel/libs/aster-util/src/safe_ptr.rs:323) is used at BB1(kernel/libs/aster-util/src/safe_ptr.rs:324).
+324 |     }
     |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs:185:1
+warning: Use-after-free detected.
+   --> kernel/comps/framebuffer/src/console.rs:262:9
     |
-185 | / pub fn trim(&mut self, before_block: BlockId) {
-186 | |         // We must ensure the invariance that there is at least one valid block
-187 | |         // after trimming.
-188 | |         debug_assert!(before_block < self.block_range.end);
-189 | |
-190 | |         if before_block <= self.block_range.start {
-191 | |             return;
-192 | |         }
-193 | |
-194 | |         let num_blocks_trimmed = before_block - self.block_range.start;
-195 | |         self.block_range.start = before_block;
-196 | |         self.block_macs.drain(..num_blocks_trimmed);
-197 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_chain.rs line 185.
-    | MIR detail: Value _18446744073709551615 and _1 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
+255 | pub(self) fn set_font(&mut self, font: BitmapFont) -> Result<(), ConsoleSetFontError> {
+256 |         // Note that the font height cannot exceed the half the height of the framebuffer.
+257 |         // Otherwise, `shift_lines_up` will underflow `x_pos`.
+258 |         if font.width() > self.backend.width() || font.height() > self.backend.height() / 2 {
+259 |             return Err(ConsoleSetFontError::InvalidFont);
+260 |         }
+261 |
+262 |         self.font = font;
+    |         --------- Use-after-free (confidence 99%): Location in file kernel/comps/framebuffer/src/console.rs line 262.
+    | MIR detail: Value _1(self, kernel/comps/framebuffer/src/console.rs:255) and _22(_, kernel/comps/framebuffer/src/console.rs:262) are alias.
+    | MIR detail: _1(self, kernel/comps/framebuffer/src/console.rs:255) is dropped at BB12(kernel/comps/framebuffer/src/console.rs:262); _22(_, kernel/comps/framebuffer/src/console.rs:262) is used at BB13(kernel/comps/framebuffer/src/console.rs:264).
+263 |
+264 |         if self.y_pos > self.backend.height() - self.font.height() {
+265 |             self.shift_lines_up();
+266 |         }
+267 |
+268 |         Ok(())
+269 |     }
     |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/1-crypto/crypto_log.rs:651:1
+warning: Use-after-free detected.
+   --> kernel/comps/framebuffer/src/console.rs:264:49
     |
-651 | / fn build_hierarchy(
-652 | |         &self,
-653 | |         level_entries: Vec<MhtNodeEntry>,
-654 | |         total_data_nodes: usize,
-655 | |         mut curr_height: Height,
-656 | |         target_height: Height,
-657 | |     ) -> Result<Arc<MhtNode>> {
-658 | |         // Build the MHT nodes of current level
-659 | |         let mut new_mht_nodes = {
-660 | |             // Previous built incomplete node of same level should participate in the building
-661 | |             let previous_incomplete_node = self
-662 | |                 .previous_build
-663 | |                 .as_ref()
-664 | |                 .and_then(|pre| pre.target_node(curr_height));
-665 | |
-666 | |             LevelBuilder::new(level_entries, total_data_nodes, curr_height)
-667 | |                 .previous_incomplete_node(previous_incomplete_node)
-668 | |                 .build()
-669 | |         };
-670 | |
-671 | |         if curr_height == target_height {
-672 | |             // The root MHT node has been built
-673 | |             debug_assert_eq!(new_mht_nodes.len(), 1);
-674 | |             return Ok(new_mht_nodes.pop().unwrap());
-675 | |         }
-676 | |
-677 | |         // Prepare MHT node entries for the higher level
-678 | |         let next_level_entries = self.storage.append_mht_nodes(&new_mht_nodes)?;
-679 | |         // Build the higher level
-680 | |         curr_height += 1;
-681 | |         self.build_hierarchy(
-682 | |             next_level_entries,
-683 | |             total_data_nodes,
-684 | |             curr_height,
-685 | |             target_height,
-686 | |         )
-687 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/1-crypto/crypto_log.rs line 651.
-    | MIR detail: Value _13 and _13 are alias.
-    | MIR detail: _13 is dropped at BB5; _13 is dropped at BB5.
+255 | pub(self) fn set_font(&mut self, font: BitmapFont) -> Result<(), ConsoleSetFontError> {
+256 |         // Note that the font height cannot exceed the half the height of the framebuffer.
+257 |         // Otherwise, `shift_lines_up` will underflow `x_pos`.
+258 |         if font.width() > self.backend.width() || font.height() > self.backend.height() / 2 {
+259 |             return Err(ConsoleSetFontError::InvalidFont);
+260 |         }
+261 |
+262 |         self.font = font;
+263 |
+264 |         if self.y_pos > self.backend.height() - self.font.height() {
+    |                                                 ------------------ Use-after-free (confidence 99%): Location in file kernel/comps/framebuffer/src/console.rs line 264.
+    | MIR detail: Value _1(self, kernel/comps/framebuffer/src/console.rs:255) and _32(_, kernel/comps/framebuffer/src/console.rs:264) are alias.
+    | MIR detail: _1(self, kernel/comps/framebuffer/src/console.rs:255) is dropped at BB12(kernel/comps/framebuffer/src/console.rs:262); _32(_, kernel/comps/framebuffer/src/console.rs:264) is used at BB15(kernel/comps/framebuffer/src/console.rs:264).
+265 |             self.shift_lines_up();
+266 |         }
+267 |
+268 |         Ok(())
+269 |     }
     |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/5-disk/block_alloc.rs:230:1
+warning: Use-after-free detected.
+   --> kernel/comps/framebuffer/src/console.rs:264:49
     |
-230 | / pub fn do_compaction<D: BlockSet + 'static>(&self, store: &Arc<TxLogStore<D>>) -> Result<()> {
-231 | |         if !self.is_dirty.load(Ordering::Relaxed) {
-232 | |             return Ok(());
-233 | |         }
-234 | |
-235 | |         // Serialize the block validity table
-236 | |         let bitmap = self.bitmap.lock();
-237 | |         const BITMAP_MAX_SIZE: usize = 1792 * BLOCK_SIZE; // TBD
-238 | |         let mut ser_buf = vec![0; BITMAP_MAX_SIZE];
-239 | |         let ser_len = postcard::to_slice::<BitMap>(&bitmap, &mut ser_buf)
-240 | |             .map_err(|_| Error::with_msg(InvalidArgs, "serialize block validity table failed"))?
-241 | |             .len();
-242 | |         ser_buf.resize(align_up(ser_len, BLOCK_SIZE), 0);
-243 | |         drop(bitmap);
-244 | |
-245 | |         // Persist the serialized block validity table to `BVT` log
-246 | |         // and GC any old `BVT` logs and `BAL` logs
-247 | |         let tx = store.new_tx();
-248 | |         let res: Result<_> = tx.context(|| {
-249 | |             if let Ok(bvt_log_ids) = store.list_logs_in(BUCKET_BLOCK_VALIDITY_TABLE) {
-250 | |                 for bvt_log_id in bvt_log_ids {
-251 | |                     store.delete_log(bvt_log_id)?;
-252 | |                 }
-253 | |             }
-254 | |
-255 | |             let bvt_log = store.create_log(BUCKET_BLOCK_VALIDITY_TABLE)?;
-256 | |             bvt_log.append(BufRef::try_from(&ser_buf[..]).unwrap())?;
-257 | |
-258 | |             if let Ok(bal_log_ids) = store.list_logs_in(BUCKET_BLOCK_ALLOC_LOG) {
-259 | |                 for bal_log_id in bal_log_ids {
-260 | |                     store.delete_log(bal_log_id)?;
-261 | |                 }
-262 | |             }
-263 | |             Ok(())
-264 | |         });
-265 | |         if res.is_err() {
-266 | |             tx.abort();
-267 | |             return_errno_with_msg!(TxAborted, "persist block validity table TX aborted");
-268 | |         }
-269 | |         tx.commit()?;
-270 | |
-271 | |         self.is_dirty.store(false, Ordering::Relaxed);
-272 | |         Ok(())
-273 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/5-disk/block_alloc.rs line 230.
-    | MIR detail: Value _11 and _2 are alias.
-    | MIR detail: _11 is dropped at BB35; _2 became dangling.
+255 | pub(self) fn set_font(&mut self, font: BitmapFont) -> Result<(), ConsoleSetFontError> {
+256 |         // Note that the font height cannot exceed the half the height of the framebuffer.
+257 |         // Otherwise, `shift_lines_up` will underflow `x_pos`.
+258 |         if font.width() > self.backend.width() || font.height() > self.backend.height() / 2 {
+259 |             return Err(ConsoleSetFontError::InvalidFont);
+260 |         }
+261 |
+262 |         self.font = font;
+263 |
+264 |         if self.y_pos > self.backend.height() - self.font.height() {
+    |                                                 --------- Use-after-free (confidence 99%): Location in file kernel/comps/framebuffer/src/console.rs line 264.
+    | MIR detail: Value _1(self, kernel/comps/framebuffer/src/console.rs:255) and _1(self, kernel/comps/framebuffer/src/console.rs:255) are alias.
+    | MIR detail: _1(self, kernel/comps/framebuffer/src/console.rs:255) is dropped at BB12(kernel/comps/framebuffer/src/console.rs:262); _1(self, kernel/comps/framebuffer/src/console.rs:255) is used at BB15(kernel/comps/framebuffer/src/console.rs:264).
+265 |             self.shift_lines_up();
+266 |         }
+267 |
+268 |         Ok(())
+269 |     }
     |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/5-disk/mlsdisk.rs:74:1
-    |
- 74 | / fn enqueue(
- 75 | |         &self,
- 76 | |         bio: aster_block::bio::SubmittedBio,
- 77 | |     ) -> core::result::Result<(), aster_block::bio::BioEnqueueError> {
- 78 | |         use aster_block::bio::{BioStatus, BioType, SubmittedBio};
- 79 | |
- 80 | |         if bio.type_() == BioType::Discard {
- 81 | |             warn!("discard operation not supported");
- 82 | |             bio.complete(BioStatus::NotSupported);
- 83 | |             return Ok(());
- 84 | |         }
- 85 | |
- 86 | |         if bio.type_() == BioType::Flush {
- 87 | |             let status = match self.sync() {
- 88 | |                 Ok(_) => BioStatus::Complete,
- 89 | |                 Err(_) => BioStatus::IoError,
- 90 | |             };
- 91 | |             bio.complete(status);
- 92 | |             return Ok(());
- 93 | |         }
- 94 | |
- 95 | |         let start_offset = bio.sid_range().start.to_offset();
- 96 | |         let start_lba = start_offset / BLOCK_SIZE;
- 97 | |         let end_offset = bio.sid_range().end.to_offset();
- 98 | |         let end_lba = end_offset.div_ceil(BLOCK_SIZE);
- 99 | |         let nblocks = end_lba - start_lba;
-100 | |         let Ok(buf) = Buf::alloc(nblocks) else {
-101 | |             bio.complete(BioStatus::NoSpace);
-102 | |             return Ok(());
-103 | |         };
-104 | |
-105 | |         let handle_read_bio = |mut buf: Buf| {
-106 | |             if self.read(start_lba, buf.as_mut()).is_err() {
-107 | |                 return BioStatus::IoError;
-108 | |             }
-109 | |
-110 | |             let mut base = start_offset % BLOCK_SIZE;
-111 | |             bio.segments().iter().for_each(|seg| {
-112 | |                 let offset = seg.nbytes();
-113 | |                 let _ = seg.write_bytes(0, &buf.as_slice()[base..base + offset]);
-114 | |                 base += offset;
-115 | |             });
-116 | |             BioStatus::Complete
-117 | |         };
-118 | |
-119 | |         let handle_write_bio = |mut buf: Buf| {
-120 | |             let mut base = start_offset % BLOCK_SIZE;
-121 | |             // Read the first unaligned block.
-122 | |             if base != 0 {
-123 | |                 let buf_mut = BufMut::try_from(&mut buf.as_mut_slice()[..BLOCK_SIZE]).unwrap();
-124 | |                 if self.read(start_lba, buf_mut).is_err() {
-125 | |                     return BioStatus::IoError;
-126 | |                 }
-127 | |             }
-128 | |
-129 | |             // Read the last unaligned block.
-130 | |             if !end_offset.is_multiple_of(BLOCK_SIZE) {
-131 | |                 let offset = buf.as_slice().len() - BLOCK_SIZE;
-132 | |                 let buf_mut = BufMut::try_from(&mut buf.as_mut_slice()[offset..]).unwrap();
-133 | |                 if self.read(end_lba - 1, buf_mut).is_err() {
-134 | |                     return BioStatus::IoError;
-135 | |                 }
-136 | |             }
-137 | |
-138 | |             bio.segments().iter().for_each(|seg| {
-139 | |                 let offset = seg.nbytes();
-140 | |                 let _ = seg.read_bytes(0, &mut buf.as_mut_slice()[base..base + offset]);
-141 | |                 base += offset;
-142 | |             });
-143 | |
-144 | |             if self.write(start_lba, buf.as_ref()).is_err() {
-145 | |                 return BioStatus::IoError;
-146 | |             }
-147 | |             BioStatus::Complete
-148 | |         };
-149 | |
-150 | |         let status = match bio.type_() {
-151 | |             BioType::Read => handle_read_bio(buf),
-152 | |             BioType::Write => handle_write_bio(buf),
-153 | |             _ => BioStatus::NotSupported,
-154 | |         };
-155 | |         bio.complete(status);
-156 | |         Ok(())
-157 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/5-disk/mlsdisk.rs line 74.
-    | MIR detail: Value _2 and _1 are alias.
-    | MIR detail: _2 is dropped at BB46; _1 became dangling.
-    |
-Over visited: DefId(0:944 ~ aster_mlsdisk[6b51]::layers::edit::journal::{impl#3}::recover)
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs:187:1
-    |
-187 | / move |entry| {
-188 | |                 chunk_alloc.dealloc_batch(entry.head.chunks.iter().cloned())
-189 | |             }
-    | |_____________- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs line 187.
-    | MIR detail: Value _18446744073709551615 and _2 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _2 became dangling.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs:326:1
-    |
-326 | / pub fn delete_log(&self, log_id: RawLogId) -> Result<()> {
-327 | |         let mut current_tx = self.tx_provider.current();
-328 | |
-329 | |         // Free tail chunks
-330 | |         let tail_chunks =
-331 | |             current_tx.data_mut_with(|edit: &mut RawLogStoreEdit| edit.delete_log(log_id));
-332 | |         if let Some(chunks) = tail_chunks {
-333 | |             self.chunk_alloc.dealloc_batch(chunks.iter().cloned());
-334 | |         }
-335 | |         // Leave freeing head chunks to lazy delete
-336 | |
-337 | |         self.state.lock().remove_from_write_set(log_id);
-338 | |         Ok(())
-339 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/raw_log.rs line 326.
-    | MIR detail: Value _18446744073709551615 and _1 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
-    |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/3-log/tx_log.rs:222:1
-    |
-222 | / pub fn recover(disk: D, root_key: Key) -> Result<Self> {
-223 | |         let superblock = Superblock::open(&disk.subset(0..1)?, &root_key)?;
-224 | |         if disk.nblocks() < superblock.total_nblocks() {
-225 | |             return_errno_with_msg!(OutOfDisk, "given disk lacks space for recovering");
-226 | |         }
-227 | |
-228 | |         let tx_provider = TxProvider::new();
-229 | |
-230 | |         let journal = {
-231 | |             let journal_area_meta = &superblock.journal_area_meta;
-232 | |             let journal_area = disk.subset(
-233 | |                 1 + superblock.chunk_area_nblocks
-234 | |                     ..1 + superblock.chunk_area_nblocks + journal_area_meta.total_nblocks(),
-235 | |             )?;
-236 | |             let compaction_policy = JournalCompactPolicy::from_meta(journal_area_meta);
-237 | |             Arc::new(Mutex::new(Journal::recover(
-238 | |                 journal_area,
-239 | |                 journal_area_meta,
-240 | |                 compaction_policy,
-241 | |             )?))
-242 | |         };
-243 | |         Self::register_commit_handler_for_journal(&journal, &tx_provider);
-244 | |
-245 | |         let AllState {
-246 | |             chunk_alloc,
-247 | |             raw_log_store,
-248 | |             tx_log_store,
-249 | |         } = journal.lock().state().clone();
-250 | |
-251 | |         let chunk_alloc = ChunkAlloc::from_parts(chunk_alloc, tx_provider.clone());
-252 | |         let chunk_area = disk.subset(1..1 + superblock.chunk_area_nblocks)?;
-253 | |         let raw_log_store =
-254 | |             RawLogStore::from_parts(raw_log_store, chunk_area, chunk_alloc, tx_provider.clone());
-255 | |         let tx_log_store = TxLogStore::from_parts(
-256 | |             tx_log_store,
-257 | |             raw_log_store,
-258 | |             journal,
-259 | |             superblock,
-260 | |             root_key,
-261 | |             disk,
-262 | |             tx_provider,
-263 | |         );
-264 | |
-265 | |         Ok(tx_log_store)
-266 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/3-log/tx_log.rs line 222.
-    | MIR detail: Value _89 and _89 are alias.
-    | MIR detail: _89 is dropped at BB49; _89 is dropped at BB49.
-    |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs:53:1
-    |
- 53 | / pub fn compact_records_and_build_ssts<D: BlockSet + 'static>(
- 54 | |         upper_records: impl Iterator<Item = (K, ValueEx<V>)>,
- 55 | |         lower_records: impl Iterator<Item = (K, ValueEx<V>)>,
- 56 | |         tx_log_store: &Arc<TxLogStore<D>>,
- 57 | |         event_listener: &Arc<dyn TxEventListener<K, V>>,
- 58 | |         to_level: LsmLevel,
- 59 | |         sync_id: SyncId,
- 60 | |     ) -> Result<Vec<SSTable<K, V>>> {
- 61 | |         let mut created_ssts = Vec::new();
- 62 | |         let mut upper_iter = upper_records.peekable();
- 63 | |         let mut lower_iter = lower_records.peekable();
- 64 | |
- 65 | |         loop {
- 66 | |             let mut record_cnt = 0;
- 67 | |             let records_iter = core::iter::from_fn(|| {
- 68 | |                 if record_cnt == SSTABLE_CAPACITY {
- 69 | |                     return None;
- 70 | |                 }
- 71 | |
- 72 | |                 record_cnt += 1;
- 73 | |                 match (upper_iter.peek(), lower_iter.peek()) {
- 74 | |                     (Some((upper_k, _)), Some((lower_k, _))) => match upper_k.cmp(lower_k) {
- 75 | |                         core::cmp::Ordering::Less => upper_iter.next(),
- 76 | |                         core::cmp::Ordering::Greater => lower_iter.next(),
- 77 | |                         core::cmp::Ordering::Equal => {
- 78 | |                             let (k, new_v_ex) = upper_iter.next().unwrap();
- 79 | |                             let (_, old_v_ex) = lower_iter.next().unwrap();
- 80 | |                             let (next_v_ex, dropped_v_opt) =
- 81 | |                                 Self::compact_value_ex(new_v_ex, old_v_ex);
- 82 | |
- 83 | |                             if let Some(dropped_v) = dropped_v_opt {
- 84 | |                                 event_listener.on_drop_record(&(k, dropped_v)).unwrap();
- 85 | |                             }
- 86 | |                             Some((k, next_v_ex))
- 87 | |                         }
- 88 | |                     },
- 89 | |                     (Some(_), None) => upper_iter.next(),
- 90 | |                     (None, Some(_)) => lower_iter.next(),
- 91 | |                     (None, None) => None,
- 92 | |                 }
- 93 | |             });
- 94 | |             let mut records_iter = records_iter.peekable();
- 95 | |             if records_iter.peek().is_none() {
- 96 | |                 break;
- 97 | |             }
- 98 | |
- 99 | |             let new_log = tx_log_store.create_log(to_level.bucket())?;
-100 | |             let new_sst = SSTable::build(records_iter, sync_id, &new_log, None)?;
-101 | |
-102 | |             created_ssts.push(new_sst);
-103 | |         }
-104 | |
-105 | |         Ok(created_ssts)
-106 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs line 53.
-    | MIR detail: Value _10 and _8 are alias.
-    | MIR detail: _10 is dropped at BB28; _8 is dropped at BB29.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs:53:1
-    |
- 53 | / pub fn compact_records_and_build_ssts<D: BlockSet + 'static>(
- 54 | |         upper_records: impl Iterator<Item = (K, ValueEx<V>)>,
- 55 | |         lower_records: impl Iterator<Item = (K, ValueEx<V>)>,
- 56 | |         tx_log_store: &Arc<TxLogStore<D>>,
- 57 | |         event_listener: &Arc<dyn TxEventListener<K, V>>,
- 58 | |         to_level: LsmLevel,
- 59 | |         sync_id: SyncId,
- 60 | |     ) -> Result<Vec<SSTable<K, V>>> {
- 61 | |         let mut created_ssts = Vec::new();
- 62 | |         let mut upper_iter = upper_records.peekable();
- 63 | |         let mut lower_iter = lower_records.peekable();
- 64 | |
- 65 | |         loop {
- 66 | |             let mut record_cnt = 0;
- 67 | |             let records_iter = core::iter::from_fn(|| {
- 68 | |                 if record_cnt == SSTABLE_CAPACITY {
- 69 | |                     return None;
- 70 | |                 }
- 71 | |
- 72 | |                 record_cnt += 1;
- 73 | |                 match (upper_iter.peek(), lower_iter.peek()) {
- 74 | |                     (Some((upper_k, _)), Some((lower_k, _))) => match upper_k.cmp(lower_k) {
- 75 | |                         core::cmp::Ordering::Less => upper_iter.next(),
- 76 | |                         core::cmp::Ordering::Greater => lower_iter.next(),
- 77 | |                         core::cmp::Ordering::Equal => {
- 78 | |                             let (k, new_v_ex) = upper_iter.next().unwrap();
- 79 | |                             let (_, old_v_ex) = lower_iter.next().unwrap();
- 80 | |                             let (next_v_ex, dropped_v_opt) =
- 81 | |                                 Self::compact_value_ex(new_v_ex, old_v_ex);
- 82 | |
- 83 | |                             if let Some(dropped_v) = dropped_v_opt {
- 84 | |                                 event_listener.on_drop_record(&(k, dropped_v)).unwrap();
- 85 | |                             }
- 86 | |                             Some((k, next_v_ex))
- 87 | |                         }
- 88 | |                     },
- 89 | |                     (Some(_), None) => upper_iter.next(),
- 90 | |                     (None, Some(_)) => lower_iter.next(),
- 91 | |                     (None, None) => None,
- 92 | |                 }
- 93 | |             });
- 94 | |             let mut records_iter = records_iter.peekable();
- 95 | |             if records_iter.peek().is_none() {
- 96 | |                 break;
- 97 | |             }
- 98 | |
- 99 | |             let new_log = tx_log_store.create_log(to_level.bucket())?;
-100 | |             let new_sst = SSTable::build(records_iter, sync_id, &new_log, None)?;
-101 | |
-102 | |             created_ssts.push(new_sst);
-103 | |         }
-104 | |
-105 | |         Ok(created_ssts)
-106 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/compaction.rs line 53.
-    | MIR detail: Value _10 and _4 are alias.
-    | MIR detail: _10 is dropped at BB9; _4 became dangling.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:162:1
-    |
-162 | / pub fn access_point<D: BlockSet + 'static>(
-163 | |         &self,
-164 | |         key: &K,
-165 | |         tx_log_store: &Arc<TxLogStore<D>>,
-166 | |     ) -> Result<V> {
-167 | |         debug_assert!(self.range().contains(key));
-168 | |         let target_rb_pos = self
-169 | |             .footer
-170 | |             .index
-171 | |             .iter()
-172 | |             .find_map(|entry| {
-173 | |                 if entry.is_within_range(key) {
-174 | |                     Some(entry.pos)
-175 | |                 } else {
-176 | |                     None
-177 | |                 }
-178 | |             })
-179 | |             .ok_or(Error::with_msg(NotFound, "target key not found in sst"))?;
-180 | |
-181 | |         let accessor = QueryAccessor::Point(*key);
-182 | |         let target_rb = self.target_record_block(target_rb_pos, tx_log_store)?;
-183 | |
-184 | |         let mut iter = BlockQueryIter::<'_, K, V> {
-185 | |             block: &target_rb,
-186 | |             offset: 0,
-187 | |             accessor: &accessor,
-188 | |             phantom: PhantomData,
-189 | |         };
-190 | |
-191 | |         iter.find_map(|(k, v_opt)| if k == *key { v_opt } else { None })
-192 | |             .ok_or(Error::with_msg(NotFound, "target value not found in SST"))
-193 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 162.
-    | MIR detail: Value _33 and _2 are alias.
-    | MIR detail: _33 is dropped at BB26; _2 became dangling.
-    |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:711:1
-    |
-711 | / fn next(&mut self) -> Option<Self::Item> {
-712 | |         // Iterate over the current record block first
-713 | |         if let Some(next) = self.curr_rb_iter.as_mut().unwrap().next() {
-714 | |             return Some(next);
-715 | |         }
-716 | |
-717 | |         let curr_rb_iter = self.curr_rb_iter.take().unwrap();
-718 | |
-719 | |         self.curr_nth_index += 1;
-720 | |         // Iteration goes to the end
-721 | |         if self.curr_nth_index >= self.sst.footer.meta.num_index as _ {
-722 | |             return None;
-723 | |         }
-724 | |
-725 | |         // Ready to iterate the next record block
-726 | |         let next_pos = self.sst.footer.index[self.curr_nth_index].pos;
-727 | |         let next_rb = self
-728 | |             .sst
-729 | |             .target_record_block(next_pos, self.tx_log_store)
-730 | |             .unwrap();
-731 | |
-732 | |         let mut next_rb_iter = BlockScanIter {
-733 | |             block: next_rb,
-734 | |             offset: 0,
-735 | |             accessor: curr_rb_iter.accessor,
-736 | |         };
-737 | |         let next = next_rb_iter.next()?;
-738 | |
-739 | |         let _ = self.curr_rb_iter.insert(next_rb_iter);
-740 | |         Some(next)
-741 | |     }
-    | |_____- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 711.
-    | MIR detail: Value _32 and _12 are alias.
-    | MIR detail: _32 is dropped at BB19; _12 is dropped at BB23.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs:711:1
-    |
-711 | / fn next(&mut self) -> Option<Self::Item> {
-712 | |         // Iterate over the current record block first
-713 | |         if let Some(next) = self.curr_rb_iter.as_mut().unwrap().next() {
-714 | |             return Some(next);
-715 | |         }
-716 | |
-717 | |         let curr_rb_iter = self.curr_rb_iter.take().unwrap();
-718 | |
-719 | |         self.curr_nth_index += 1;
-720 | |         // Iteration goes to the end
-721 | |         if self.curr_nth_index >= self.sst.footer.meta.num_index as _ {
-722 | |             return None;
-723 | |         }
-724 | |
-725 | |         // Ready to iterate the next record block
-726 | |         let next_pos = self.sst.footer.index[self.curr_nth_index].pos;
-727 | |         let next_rb = self
-728 | |             .sst
-729 | |             .target_record_block(next_pos, self.tx_log_store)
-730 | |             .unwrap();
-731 | |
-732 | |         let mut next_rb_iter = BlockScanIter {
-733 | |             block: next_rb,
-734 | |             offset: 0,
-735 | |             accessor: curr_rb_iter.accessor,
-736 | |         };
-737 | |         let next = next_rb_iter.next()?;
-738 | |
-739 | |         let _ = self.curr_rb_iter.insert(next_rb_iter);
-740 | |         Some(next)
-741 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/sstable.rs line 711.
-    | MIR detail: Value _18446744073709551615 and _1 are alias.
-    | MIR detail: _18446744073709551615 is dropped at BB18446744073709551615; _1 became dangling.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:357:1
-    |
-357 | / fn recover_sst_manager(
-358 | |         tx_log_store: &Arc<TxLogStore<D>>,
-359 | |     ) -> Result<(SstManager<K, V>, SyncId)> {
-360 | |         let mut manager = SstManager::new();
-361 | |         let mut max_sync_id: SyncId = 0;
-362 | |         let tx = tx_log_store.new_tx();
-363 | |         let res: Result<_> = tx.context(|| {
-364 | |             for (level, bucket) in LsmLevel::iter() {
-365 | |                 let log_ids = tx_log_store.list_logs_in(bucket);
-366 | |                 if let Err(e) = &log_ids
-367 | |                     && e.errno() == NotFound
-368 | |                 {
-369 | |                     continue;
-370 | |                 }
-371 | |
-372 | |                 for id in log_ids? {
-373 | |                     let log = tx_log_store.open_log(id, false)?;
-374 | |                     let sst = SSTable::<K, V>::from_log(&log)?;
-375 | |                     max_sync_id = max_sync_id.max(sst.sync_id());
-376 | |                     manager.insert(SSTable::from_log(&log)?, level);
-377 | |                 }
-378 | |             }
-379 | |             Ok(())
-380 | |         });
-381 | |         if res.is_ok() {
-382 | |             tx.commit()?;
-383 | |         } else {
-384 | |             tx.abort();
-385 | |             return_errno_with_msg!(TxAborted, "recover TxLsmTree failed");
-386 | |         }
-387 | |         Ok((manager, max_sync_id))
-388 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 357.
-    | MIR detail: Value _2 and _1 are alias.
-    | MIR detail: _2 is dropped at BB16; _1 became dangling.
-    |
-warning: Dangling pointer detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:497:1
-    |
-497 | / fn do_minor_compaction(&self, wal_id: TxLogId) -> Result<()> {
-498 | |         let mut tx = self.tx_log_store.new_tx();
-499 | |         // Prepare TX listener
-500 | |         let tx_type = TxType::Compaction {
-501 | |             to_level: LsmLevel::L0,
-502 | |         };
-503 | |         let event_listener = self.listener_factory.new_event_listener(tx_type);
-504 | |         event_listener.on_tx_begin(&mut tx).map_err(|_| {
-505 | |             tx.abort();
-506 | |             Error::with_msg(
-507 | |                 TxAborted,
-508 | |                 "minor compaction TX callback 'on_tx_begin' failed",
-509 | |             )
-510 | |         })?;
-511 | |
-512 | |         let res: Result<_> = tx.context(|| {
-513 | |             let tx_log = self.tx_log_store.create_log(LsmLevel::L0.bucket())?;
-514 | |
-515 | |             // Cook records in immutable MemTable into a new SST
-516 | |             let immutable_memtable = self.memtable_manager.immutable_memtable();
-517 | |             let records_iter = immutable_memtable.iter();
-518 | |             let sync_id = immutable_memtable.sync_id();
-519 | |
-520 | |             let sst = SSTable::build(records_iter, sync_id, &tx_log, Some(&event_listener))?;
-521 | |             self.tx_log_store.delete_log(wal_id)?;
-522 | |             Ok(sst)
-523 | |         });
-524 | |         let new_sst = res.map_err(|_| {
-525 | |             tx.abort();
-526 | |             Error::with_msg(TxAborted, "minor compaction TX failed")
-527 | |         })?;
-528 | |
-529 | |         event_listener.on_tx_precommit(&mut tx).map_err(|_| {
-530 | |             tx.abort();
-531 | |             Error::with_msg(
-532 | |                 TxAborted,
-533 | |                 "minor compaction TX callback 'on_tx_precommit' failed",
-534 | |             )
-535 | |         })?;
-536 | |
-537 | |         tx.commit()?;
-538 | |         event_listener.on_tx_commit();
-539 | |
-540 | |         self.sst_manager.write().insert(new_sst, LsmLevel::L0);
-541 | |
-542 | |         debug!("[MlsDisk TxLsmTree] Minor Compaction completed: {self:?}");
-543 | |         Ok(())
-544 | |     }
-    | |_____- 
- Dangling pointer (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 497.
-    | MIR detail: Value _9 and _1 are alias.
-    | MIR detail: _9 is dropped at BB54; _1 became dangling.
-    |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:565:1
-    |
-565 | / move || {
-566 | |             let (mut created_ssts, mut deleted_ssts) = (vec![], vec![]);
-567 | |
-568 | |             // Collect overlapped SSTs
-569 | |             let sst_manager = self.sst_manager.read();
-570 | |             let (upper_sst_id, upper_sst) = sst_manager
-571 | |                 .list_level(from_level)
-572 | |                 .last() // Choose the oldest SST from upper level
-573 | |                 .map(|(id, sst)| (*id, sst.clone()))
-574 | |                 .unwrap();
-575 | |             let lower_ssts: Vec<(TxLogId, Arc<SSTable<K, V>>)> = {
-576 | |                 let mut ssts = sst_manager
-577 | |                     .find_overlapped_ssts(&upper_sst.range(), to_level)
-578 | |                     .map(|(id, sst)| (*id, sst.clone()))
-579 | |                     .collect::<Vec<_>>();
-580 | |                 ssts.sort_by_key(|(_, sst)| *sst.range().start());
-581 | |                 ssts
-582 | |             };
-583 | |             drop(sst_manager);
-584 | |
-585 | |             // If there are no overlapped SSTs, just move the upper SST to the lower level
-586 | |             if lower_ssts.is_empty() {
-587 | |                 tx_log_store.move_log(upper_sst_id, from_level.bucket(), to_level.bucket())?;
-588 | |                 self.sst_manager
-589 | |                     .write()
-590 | |                     .move_sst(upper_sst_id, from_level, to_level);
-591 | |                 return Ok((created_ssts, deleted_ssts));
-592 | |             }
-593 | |
-594 | |             let upper_records_iter =
-595 | |                 upper_sst.iter(master_sync_id, false, &tx_log_store, Some(&listener));
-596 | |
-597 | |             let lower_records_iter = lower_ssts.iter().flat_map(|(_, sst)| {
-598 | |                 sst.iter(master_sync_id, false, &tx_log_store, Some(&listener))
-599 | |             });
-600 | |
-601 | |             // Compact records then build new SSTs
-602 | |             created_ssts = Compactor::compact_records_and_build_ssts(
-603 | |                 upper_records_iter,
-604 | |                 lower_records_iter,
-605 | |                 &tx_log_store,
-606 | |                 &listener,
-607 | |                 to_level,
-608 | |                 master_sync_id,
-609 | |             )?;
-610 | |
-611 | |             // Delete the old SSTs
-612 | |             for (id, level) in core::iter::once((upper_sst_id, from_level))
-613 | |                 .chain(lower_ssts.into_iter().map(|(id, _)| (id, to_level)))
-614 | |             {
-615 | |                 tx_log_store.delete_log(id)?;
-616 | |                 deleted_ssts.push((id, level));
-617 | |             }
-618 | |             Ok((created_ssts, deleted_ssts))
-619 | |         }
-    | |_________- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 565.
-    | MIR detail: Value _20 and _10 are alias.
-    | MIR detail: _20 is dropped at BB71; _10 is dropped at BB66.
-    |
-warning: Double free detected.
-   --> kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs:565:1
-    |
-565 | / move || {
-566 | |             let (mut created_ssts, mut deleted_ssts) = (vec![], vec![]);
-567 | |
-568 | |             // Collect overlapped SSTs
-569 | |             let sst_manager = self.sst_manager.read();
-570 | |             let (upper_sst_id, upper_sst) = sst_manager
-571 | |                 .list_level(from_level)
-572 | |                 .last() // Choose the oldest SST from upper level
-573 | |                 .map(|(id, sst)| (*id, sst.clone()))
-574 | |                 .unwrap();
-575 | |             let lower_ssts: Vec<(TxLogId, Arc<SSTable<K, V>>)> = {
-576 | |                 let mut ssts = sst_manager
-577 | |                     .find_overlapped_ssts(&upper_sst.range(), to_level)
-578 | |                     .map(|(id, sst)| (*id, sst.clone()))
-579 | |                     .collect::<Vec<_>>();
-580 | |                 ssts.sort_by_key(|(_, sst)| *sst.range().start());
-581 | |                 ssts
-582 | |             };
-583 | |             drop(sst_manager);
-584 | |
-585 | |             // If there are no overlapped SSTs, just move the upper SST to the lower level
-586 | |             if lower_ssts.is_empty() {
-587 | |                 tx_log_store.move_log(upper_sst_id, from_level.bucket(), to_level.bucket())?;
-588 | |                 self.sst_manager
-589 | |                     .write()
-590 | |                     .move_sst(upper_sst_id, from_level, to_level);
-591 | |                 return Ok((created_ssts, deleted_ssts));
-592 | |             }
-593 | |
-594 | |             let upper_records_iter =
-595 | |                 upper_sst.iter(master_sync_id, false, &tx_log_store, Some(&listener));
-596 | |
-597 | |             let lower_records_iter = lower_ssts.iter().flat_map(|(_, sst)| {
-598 | |                 sst.iter(master_sync_id, false, &tx_log_store, Some(&listener))
-599 | |             });
-600 | |
-601 | |             // Compact records then build new SSTs
-602 | |             created_ssts = Compactor::compact_records_and_build_ssts(
-603 | |                 upper_records_iter,
-604 | |                 lower_records_iter,
-605 | |                 &tx_log_store,
-606 | |                 &listener,
-607 | |                 to_level,
-608 | |                 master_sync_id,
-609 | |             )?;
-610 | |
-611 | |             // Delete the old SSTs
-612 | |             for (id, level) in core::iter::once((upper_sst_id, from_level))
-613 | |                 .chain(lower_ssts.into_iter().map(|(id, _)| (id, to_level)))
-614 | |             {
-615 | |                 tx_log_store.delete_log(id)?;
-616 | |                 deleted_ssts.push((id, level));
-617 | |             }
-618 | |             Ok((created_ssts, deleted_ssts))
-619 | |         }
-    | |_________- 
- Double free (confidence 99%): Location in file kernel/comps/mlsdisk/src/layers/4-lsm/tx_lsm_tree.rs line 565.
-    | MIR detail: Value _1 and _1 are alias.
-    | MIR detail: _1 is dropped at BB69; _1 is dropped at BB69.
-    |
+Over visited: DefId(0:22 ~ aster_i8042[a436]::controller::init)
+Over visited: DefId(0:248 ~ aster_i8042[a436]::mouse::{impl#5}::parse_packet)
+Over visited: DefId(0:1267 ~ aster_bigtcp[fa62]::iface::common::{impl#25}::fmt)
+Over visited: DefId(0:1491 ~ aster_bigtcp[fa62]::socket::event::{impl#10}::fmt)
