@@ -12,7 +12,7 @@ use ostd::{
         tsc_freq,
     },
     cpu::{PinCurrentCpu, num_cpus},
-    mm::Vaddr,
+    prelude::*,
     sync::SpinLock,
     task::DisabledPreemptGuard,
 };

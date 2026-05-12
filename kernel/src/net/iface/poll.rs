@@ -3,7 +3,7 @@
 use alloc::sync::Arc;
 use core::time::Duration;
 
-use ostd::{debug, timer::Jiffies};
+use ostd::{prelude::*, timer::Jiffies};
 
 use super::{Iface, iter_all_ifaces};
 use crate::{
