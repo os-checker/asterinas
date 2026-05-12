@@ -12,4 +12,4 @@ pub(crate) type Result<T, E = Error> = core::result::Result<T, E>;
 
 pub(crate) use core::fmt::{self, Debug};
 
-pub(crate) use ostd::{debug, error, info, warn};
+pub(crate) use ostd::prelude::{debug, error, info, warn};

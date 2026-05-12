@@ -8,10 +8,10 @@ use aster_util::{per_cpu_counter::PerCpuCounter, printer::VmPrinter};
 use ostd::{
     cpu::CpuId,
     mm::{VmReader, VmWriter},
+    prelude::*,
     sync::SpinLock,
     task::atomic_mode::AsAtomicModeGuard,
     timer::Jiffies,
-    warn,
 };
 
 use crate::{

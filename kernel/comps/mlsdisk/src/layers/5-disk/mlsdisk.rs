@@ -16,7 +16,7 @@ use core::{
 };
 
 use device_id::DeviceId;
-use ostd::mm::{HasSize, VmIo};
+use ostd::{mm::VmIo, prelude::*};
 use ostd_pod::{FromZeros, Pod};
 
 use super::{
@@ -34,7 +34,7 @@ use crate::{
         },
     },
     os::{Aead, AeadIv as Iv, AeadKey as Key, AeadMac as Mac, RwLock},
-    prelude::*,
+    prelude::{Result, *},
     tx::CurrentTx,
 };
 
@@ -74,7 +74,7 @@ impl<D: BlockSet + 'static> aster_block::BlockDevice for MlsDisk<D> {
     fn enqueue(
         &self,
         bio: aster_block::bio::SubmittedBio,
-    ) -> core::result::Result<(), aster_block::bio::BioEnqueueError> {
+    ) -> Result<(), aster_block::bio::BioEnqueueError> {
         use aster_block::bio::{BioStatus, BioType, SubmittedBio};
 
         if bio.type_() == BioType::Flush {

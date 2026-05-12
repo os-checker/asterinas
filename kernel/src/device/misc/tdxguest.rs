@@ -48,7 +48,8 @@ use aster_util::{field_ptr, safe_ptr::SafePtr};
 use device_id::{DeviceId, MinorId};
 use ostd::{
     const_assert,
-    mm::{FrameAllocOptions, HasPaddr, HasSize, PAGE_SIZE, USegment, VmIo, dma::DmaCoherent},
+    mm::{FrameAllocOptions, PAGE_SIZE, USegment, VmIo, dma::DmaCoherent},
+    prelude::*,
     sync::{RwMutexWriteGuard, WaitQueue},
 };
 use spin::Once;
@@ -65,7 +66,7 @@ use crate::{
         file::{FileIo, StatusFlags},
         vfs::inode::InodeIo,
     },
-    prelude::*,
+    prelude::{Result, *},
     process::signal::{PollHandle, Pollable},
     util::ioctl::{RawIoctl, dispatch_ioctl},
 };
