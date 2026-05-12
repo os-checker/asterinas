@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        image: ['asterinas/asterinas:0.17.2-20260407', 'asterinas/osdk:0.17.2-20260407']
+        image: ['asterinas/asterinas:0.17.2-20260407', 'asterinas/osdk:0.17.2-20260508']
       fail-fast: false
     container:
       image: ${{ matrix.image }}
