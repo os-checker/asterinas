@@ -23,6 +23,10 @@ macro_rules! error_msg {
     () => {
         std::eprint!("")
     };
+    (@exit $($arg:tt)*) => {
+        $crate::error_msg!($($arg)*);
+        std::process::exit(1);
+    };
     ($($arg:tt)*) => {{
         std::eprint!("[Error]: ");
         std::eprint!($($arg)*);
