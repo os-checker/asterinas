@@ -3,7 +3,10 @@
 //! The device object of virtio-vsock.
 
 use alloc::{boxed::Box, string::ToString, sync::Arc};
-use core::sync::atomic::{AtomicU64, Ordering};
+use core::{
+    result::Result,
+    sync::atomic::{AtomicU64, Ordering},
+};
 
 use aster_softirq::BottomHalfDisabled;
 use ostd::{

@@ -13,7 +13,7 @@ mod path;
 mod tree;
 
 use alloc::{boxed::Box, collections::BTreeSet, string::String, vec::Vec};
-use core::{any::Any, format_args};
+use core::{any::Any, format_args, result::Result};
 
 use ostd::{
     ktest::{

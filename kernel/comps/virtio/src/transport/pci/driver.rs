@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use alloc::{boxed::Box, collections::vec_deque::VecDeque, sync::Arc};
+use core::result::Result;
 
 use aster_pci::{
     bus::{PciDevice, PciDriver},

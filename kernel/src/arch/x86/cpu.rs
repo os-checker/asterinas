@@ -156,7 +156,7 @@ impl TryFrom<&CpuException> for PageFaultInfo {
     // with no additional error information.
     type Error = ();
 
-    fn try_from(value: &CpuException) -> Result<Self, ()> {
+    fn try_from(value: &CpuException) -> core::result::Result<Self, ()> {
         let CpuException::PageFault(raw_info) = value else {
             return Err(());
         };

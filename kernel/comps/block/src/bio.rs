@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-use core::sync::atomic::AtomicU64;
+use core::{result::Result, sync::atomic::AtomicU64};
 
 use align_ext::AlignExt;
 use aster_util::mem_obj_slice::Slice;

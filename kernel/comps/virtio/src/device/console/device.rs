@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use alloc::{boxed::Box, fmt::Debug, string::ToString, sync::Arc, vec::Vec};
-use core::hint::spin_loop;
+use core::{hint::spin_loop, result::Result};
 
 use aster_console::{AnyConsoleDevice, ConsoleCallback};
 use aster_util::mem_obj_slice::Slice;

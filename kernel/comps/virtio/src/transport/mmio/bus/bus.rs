@@ -3,6 +3,7 @@
 //! MMIO bus.
 
 use alloc::{collections::VecDeque, fmt::Debug, sync::Arc, vec::Vec};
+use core::result::Result;
 
 use ostd::{bus::BusProbeError, prelude::*};
 

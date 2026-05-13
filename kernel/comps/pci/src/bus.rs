@@ -3,7 +3,7 @@
 //! PCI bus
 
 use alloc::{collections::VecDeque, sync::Arc, vec::Vec};
-use core::fmt::Debug;
+use core::{fmt::Debug, result::Result};
 
 use ostd::{bus::BusProbeError, prelude::*};
 

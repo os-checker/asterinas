@@ -9,7 +9,7 @@ extern crate alloc;
 extern crate ostd_pod;
 
 use alloc::boxed::Box;
-use core::hint::spin_loop;
+use core::{hint::spin_loop, result::Result};
 
 use aster_block::MajorIdOwner;
 use bitflags::bitflags;

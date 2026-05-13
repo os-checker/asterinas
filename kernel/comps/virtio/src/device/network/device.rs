@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use alloc::{boxed::Box, string::ToString, sync::Arc, vec::Vec};
-use core::fmt::Debug;
+use core::{fmt::Debug, result::Result};
 
 use aster_bigtcp::device::{Checksum, DeviceCapabilities, Medium};
 use aster_network::{AnyNetworkDevice, EthernetAddr, NetError, RxBuffer, TxBuffer};

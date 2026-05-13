@@ -10,6 +10,7 @@ use alloc::{
 };
 use core::{
     fmt::Debug,
+    result::Result,
     sync::atomic::{AtomicU32, Ordering},
 };
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use alloc::{boxed::Box, sync::Arc};
-use core::fmt::Debug;
+use core::{fmt::Debug, result::Result};
 
 use aster_pci::{cfg_space::BarAccess, common_device::PciCommonDevice};
 use aster_util::safe_ptr::SafePtr;

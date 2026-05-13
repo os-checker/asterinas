@@ -6,7 +6,7 @@ use alloc::{
     sync::Arc,
     vec::Vec,
 };
-use core::fmt::Debug;
+use core::{fmt::Debug, result::Result};
 
 use aster_input::{
     event_type_codes::{EventTypes, KeyCode, KeyStatus, RelCode, SynEvent},

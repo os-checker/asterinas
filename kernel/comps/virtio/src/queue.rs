@@ -5,6 +5,7 @@
 use alloc::{sync::Arc, vec::Vec};
 use core::{
     mem::{offset_of, size_of},
+    result::Result,
     sync::atomic::{Ordering, fence},
 };
 

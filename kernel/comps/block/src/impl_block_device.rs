@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+use core::result::Result;
+
 use ostd::mm::{VmIo, VmReader, VmWriter};
 
 use super::{

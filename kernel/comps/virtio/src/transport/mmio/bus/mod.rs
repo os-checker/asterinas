@@ -2,7 +2,7 @@
 
 //! Virtio over MMIO
 
-use core::ops::Range;
+use core::{ops::Range, result::Result};
 
 use bus::MmioBus;
 use ostd::{io::IoMem, irq::IrqLine, prelude::*, sync::SpinLock};
