@@ -2,6 +2,7 @@
 
 //! I/O memory and its allocator that allocates memory I/O (MMIO) to device drivers.
 
+#[allow(unfulfilled_lint_expectations)]
 mod allocator;
 pub(crate) mod util;
 

@@ -6,7 +6,7 @@ use crate::{
     Error,
     arch::iommu::{self, has_dma_remapping},
     cpu::{AtomicCpuSet, CpuSet},
-    impl_frame_meta_for, irq,
+    irq,
     mm::{
         CachePolicy, Daddr, FrameAllocOptions, HasPaddr, HasSize, PAGE_SIZE, Paddr, PageFlags,
         PageProperty, PrivilegedPageFlags, Segment,

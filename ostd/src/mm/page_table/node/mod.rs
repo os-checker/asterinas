@@ -25,6 +25,8 @@
 //! the initialization of the entity that the PTE points to. This is taken care in this module.
 //!
 
+#![short_vis_path::add(mm)]
+
 mod entry;
 mod pte_state;
 
@@ -35,7 +37,7 @@ use core::{
     sync::atomic::{AtomicU8, Ordering},
 };
 
-pub(in crate::mm) use self::{
+pub(in mm) use self::{
     entry::Entry,
     pte_state::{PteState, PteStateRef},
 };

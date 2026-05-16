@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 mod eiointc;
 
 use loongArch64::register::ecfg::LineBasedInterrupt;
@@ -7,7 +9,7 @@ use loongArch64::register::ecfg::LineBasedInterrupt;
 use self::eiointc::Eiointc;
 use crate::arch::irq;
 
-pub(in crate::arch) fn init() {
+pub(in arch) fn init() {
     // FIXME: Support SMP in LoongArch
     Eiointc::init(1);
     for i in irq::IRQ_NUM_MIN..=irq::IRQ_NUM_MAX {
@@ -25,10 +27,10 @@ pub(in crate::arch) fn init() {
     );
 }
 
-pub(in crate::arch) fn claim() -> Option<u8> {
+pub(in arch) fn claim() -> Option<u8> {
     Eiointc::claim()
 }
 
-pub(in crate::arch) fn complete(irq: u8) {
+pub(in arch) fn complete(irq: u8) {
     Eiointc::complete(irq);
 }

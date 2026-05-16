@@ -2,6 +2,8 @@
 
 //! This module provides accessors to the page table entries in a node.
 
+#![short_vis_path::add(mm, page_table)]
+
 use super::{PageTableGuard, PageTableNode, PteState, PteStateRef, PteTrait};
 use crate::{
     mm::{
@@ -22,7 +24,7 @@ use crate::{
 /// This is a static reference to an entry in a node that does not account for
 /// a dynamic reference count to the child. It can be used to create a owned
 /// handle, which is a [`PteState`].
-pub(in crate::mm) struct Entry<'a, 'rcu, C: PageTableConfig> {
+pub(in mm) struct Entry<'a, 'rcu, C: PageTableConfig> {
     /// The page table entry.
     ///
     /// We store the page table entry here to optimize the number of reads from
@@ -39,7 +41,7 @@ pub(in crate::mm) struct Entry<'a, 'rcu, C: PageTableConfig> {
 
 impl<'a, 'rcu, C: PageTableConfig> Entry<'a, 'rcu, C> {
     /// Gets a reference to the child.
-    pub(in crate::mm) fn to_ref(&self) -> PteStateRef<'rcu, C> {
+    pub(in mm) fn to_ref(&self) -> PteStateRef<'rcu, C> {
         // SAFETY:
         //  - The child pointed to by the PTE outlives the reference, since
         //    either PTs and mapped items outlive `'rcu`.
@@ -50,7 +52,7 @@ impl<'a, 'rcu, C: PageTableConfig> Entry<'a, 'rcu, C> {
     /// Operates on the mapping properties of the entry.
     ///
     /// It only modifies the properties if the entry is present.
-    pub(in crate::mm) fn protect(&mut self, op: &mut impl FnMut(&mut PageProperty)) {
+    pub(in mm) fn protect(&mut self, op: &mut impl FnMut(&mut PageProperty)) {
         let level = self.node.level();
         let PteScalar::Mapped(pa, prop) = self.pte.to_repr(level) else {
             return;
@@ -81,7 +83,7 @@ impl<'a, 'rcu, C: PageTableConfig> Entry<'a, 'rcu, C> {
     ///
     /// The method panics if the level of the new child does not match the
     /// current node.
-    pub(in crate::mm) fn replace(&mut self, new_child: PteState<C>) -> PteState<C> {
+    pub(in mm) fn replace(&mut self, new_child: PteState<C>) -> PteState<C> {
         match &new_child {
             PteState::PageTable(node) => {
                 assert_eq!(node.level(), self.node.level() - 1);
@@ -118,7 +120,7 @@ impl<'a, 'rcu, C: PageTableConfig> Entry<'a, 'rcu, C> {
     ///
     /// If the old entry is not none, the operation will fail and return `None`.
     /// Otherwise, the lock guard of the new child page table node is returned.
-    pub(in crate::mm::page_table) fn alloc_if_none(
+    pub(in page_table) fn alloc_if_none(
         &mut self,
         guard: &'rcu dyn InAtomicMode,
     ) -> Option<PageTableGuard<'rcu, C>> {
@@ -158,7 +160,7 @@ impl<'a, 'rcu, C: PageTableConfig> Entry<'a, 'rcu, C> {
     ///
     /// If the entry does not map to a untracked huge page, the method returns
     /// `None`.
-    pub(in crate::mm::page_table) fn split_if_mapped_huge(
+    pub(in page_table) fn split_if_mapped_huge(
         &mut self,
         guard: &'rcu dyn InAtomicMode,
     ) -> Option<PageTableGuard<'rcu, C>> {

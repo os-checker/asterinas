@@ -2,6 +2,8 @@
 
 //! x86 ISA extensions.
 
+#![short_vis_path::add(arch)]
+
 use core::arch::x86_64::CpuidResult;
 
 use bitflags::bitflags;
@@ -10,7 +12,7 @@ use spin::Once;
 use super::cpuid::cpuid;
 
 /// Detects available x86 ISA extensions.
-pub(in crate::arch) fn init() {
+pub(in arch) fn init() {
     let mut global_isa_extensions = IsaExtensions::empty();
 
     for ext_leaf in EXTENSION_TABLE.iter() {

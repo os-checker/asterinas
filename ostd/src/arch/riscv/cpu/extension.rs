@@ -2,13 +2,15 @@
 
 //! RISC-V ISA extensions.
 
+#![short_vis_path::add(arch)]
+
 use bitflags::bitflags;
 use spin::Once;
 
 use crate::arch::boot::DEVICE_TREE;
 
 /// Detects available RISC-V ISA extensions.
-pub(in crate::arch) fn init() {
+pub(in arch) fn init() {
     let mut global_isa_extensions = IsaExtensions::all();
 
     let device_tree = DEVICE_TREE.get().expect("Device tree not initialized");

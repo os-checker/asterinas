@@ -16,6 +16,8 @@
 
 //! Configure fast syscall.
 
+#![short_vis_path::add(arch)]
+
 use core::arch::global_asm;
 
 use x86_64::{
@@ -80,7 +82,7 @@ impl RawUserContext {
     ///
     /// If `trap_num` is `0x100`, it will go user by `sysret` (`rcx` and `r11` are dropped),
     /// otherwise it will use `iret`.
-    pub(in crate::arch) fn run(&mut self) {
+    pub(in arch) fn run(&mut self) {
         // Return to userspace with interrupts disabled. Otherwise, interrupts
         // after executing `swapgs` will mess up the CPU state.
         crate::arch::irq::disable_local();

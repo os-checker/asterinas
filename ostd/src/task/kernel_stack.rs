@@ -5,7 +5,6 @@ use core::sync::atomic::Ordering;
 use crate::{
     arch::mm::tlb_flush_addr_range,
     cpu::{AtomicCpuSet, CpuSet, PinCurrentCpu},
-    impl_frame_meta_for,
     irq::DisabledLocalIrqGuard,
     mm::{
         FrameAllocOptions, PAGE_SIZE,

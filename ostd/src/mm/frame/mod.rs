@@ -31,12 +31,18 @@
 //! as well, leaving the handle only a pointer to the metadata slot. Users
 //! can create custom metadata types by implementing the [`AnyFrameMeta`] trait.
 
+#![short_vis_path::add(mm)]
+
+#[macro_use]
+pub mod meta;
+
+#[macro_use]
+pub mod untyped;
+
 pub mod allocator;
 pub mod linked_list;
-pub mod meta;
 pub mod segment;
 pub mod unique;
-pub mod untyped;
 
 mod frame_ref;
 pub use frame_ref::FrameRef;
@@ -63,7 +69,7 @@ use crate::{
 static MAX_PADDR: AtomicUsize = AtomicUsize::new(0);
 
 /// Returns the maximum physical address that is tracked by frame metadata.
-pub(in crate::mm) fn max_paddr() -> Paddr {
+pub(in mm) fn max_paddr() -> Paddr {
     let max_paddr = MAX_PADDR.load(Ordering::Relaxed) as Paddr;
     debug_assert_ne!(max_paddr, 0);
     max_paddr
@@ -186,7 +192,7 @@ impl<M: AnyFrameMeta + ?Sized> Frame<M> {
     /// A physical address to the frame is returned in case the frame needs to be
     /// restored using [`Frame::from_raw`] later. This is useful when some architectural
     /// data structures need to hold the frame handle such as the page table.
-    pub(in crate::mm) fn into_raw(self) -> Paddr {
+    pub(in mm) fn into_raw(self) -> Paddr {
         let this = ManuallyDrop::new(self);
         this.paddr()
     }
@@ -203,7 +209,7 @@ impl<M: AnyFrameMeta + ?Sized> Frame<M> {
     ///
     /// Also, the caller ensures that the usage of the frame is correct. There's
     /// no checking of the usage in this function.
-    pub(in crate::mm) unsafe fn from_raw(paddr: Paddr) -> Self {
+    pub(in mm) unsafe fn from_raw(paddr: Paddr) -> Self {
         debug_assert!(paddr < max_paddr());
 
         let vaddr = mapping::frame_to_meta::<PagingConsts>(paddr);
@@ -355,7 +361,7 @@ impl TryFrom<Frame<dyn AnyFrameMeta>> for UFrame {
 /// The caller should ensure the following conditions:
 ///  1. The physical address must represent a valid frame;
 ///  2. The caller must have already held a reference to the frame.
-pub(in crate::mm) unsafe fn inc_frame_ref_count(paddr: Paddr) {
+pub(in mm) unsafe fn inc_frame_ref_count(paddr: Paddr) {
     debug_assert!(paddr.is_multiple_of(PAGE_SIZE));
     debug_assert!(paddr < max_paddr());
 

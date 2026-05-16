@@ -2,6 +2,8 @@
 
 //! Inter-processor interrupts.
 
+#![short_vis_path::add(arch)]
+
 use spin::Once;
 
 use crate::{cpu::PinCurrentCpu, irq::IrqLine, smp::do_inter_processor_call};
@@ -24,7 +26,7 @@ impl HwCpuId {
 static IPI_IRQ: Once<IrqLine> = Once::new();
 
 /// Initializes global IPI state.
-pub(in crate::arch) fn init() {
+pub(in arch) fn init() {
     let mut irq = IrqLine::alloc().unwrap();
     // SAFETY: This will be called upon an inter-processor interrupt.
     irq.on_active(|f| unsafe { do_inter_processor_call(f) });

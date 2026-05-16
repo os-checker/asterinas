@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(mm)]
 #![cfg_attr(
     any(target_arch = "riscv64", target_arch = "loongarch64"),
     expect(dead_code)
@@ -27,7 +28,7 @@ use crate::{
 mod cursor;
 mod node;
 
-pub(in crate::mm) use cursor::PageTableFrag;
+pub(in mm) use cursor::PageTableFrag;
 pub(crate) use cursor::{Cursor, CursorMut};
 use node::*; // FIXME: Remove glob imports.
 
@@ -348,7 +349,7 @@ impl PageTable<KernelPtConfig> {
     ///
     /// This should be the only way to create the user page table, that is to
     /// duplicate the kernel page table with all the kernel mappings shared.
-    pub(in crate::mm) fn create_user_page_table(&'static self) -> PageTable<UserPtConfig> {
+    pub(in mm) fn create_user_page_table(&'static self) -> PageTable<UserPtConfig> {
         let new_root = PageTableNode::alloc(PagingConsts::NR_LEVELS);
 
         let preempt_guard = disable_preempt();
@@ -402,7 +403,7 @@ impl<C: PageTableConfig> PageTable<C> {
         }
     }
 
-    pub(in crate::mm) unsafe fn first_activate_unchecked(&self) {
+    pub(in mm) unsafe fn first_activate_unchecked(&self) {
         // SAFETY: The safety is upheld by the caller.
         unsafe { self.root.first_activate() };
     }

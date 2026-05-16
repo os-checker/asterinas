@@ -30,6 +30,9 @@ extern crate alloc;
 
 use core::alloc::Layout;
 
+#[macro_use]
+extern crate ostd;
+
 use ostd::{
     cpu::PinCurrentCpu,
     irq,

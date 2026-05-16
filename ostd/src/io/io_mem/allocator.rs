@@ -2,6 +2,8 @@
 
 //! I/O Memory allocator.
 
+#![short_vis_path::add(io)]
+
 use alloc::vec::Vec;
 use core::ops::Range;
 
@@ -154,7 +156,7 @@ pub(super) static IO_MEM_ALLOCATOR: Once<IoMemAllocator> = Once::new();
 ///
 /// User must ensure all the memory I/O regions that belong to the system device have been removed by calling the
 /// `remove` function.
-pub(in crate::io) unsafe fn init(io_mem_builder: IoMemAllocatorBuilder) {
+pub(in io) unsafe fn init(io_mem_builder: IoMemAllocatorBuilder) {
     // SAFETY: The safety is upheld by the caller.
     IO_MEM_ALLOCATOR.call_once(|| unsafe { IoMemAllocator::new(io_mem_builder.allocators) });
 }

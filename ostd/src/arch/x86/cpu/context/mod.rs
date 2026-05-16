@@ -2,6 +2,8 @@
 
 //! CPU execution context control.
 
+#![short_vis_path::add(arch)]
+
 use alloc::boxed::Box;
 use core::arch::x86_64::{_fxrstor64, _fxsave64, _xrstor64, _xsave64};
 
@@ -654,7 +656,7 @@ static XSAVE_AREA_SIZE: Once<usize> = Once::new();
 /// The max size in bytes of the XSAVE area.
 const MAX_XSAVE_AREA_SIZE: usize = 4096;
 
-pub(in crate::arch) fn enable_essential_features() {
+pub(in arch) fn enable_essential_features() {
     use super::extension::{IsaExtensions, has_extensions};
 
     if has_extensions(IsaExtensions::XSAVE) {

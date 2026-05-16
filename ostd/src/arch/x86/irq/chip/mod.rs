@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 use alloc::{boxed::Box, vec::Vec};
 use core::{
     fmt,
@@ -160,7 +162,7 @@ impl Drop for MappedIrqLine {
 /// The [`IrqChip`] singleton.
 pub static IRQ_CHIP: Once<IrqChip> = Once::new();
 
-pub(in crate::arch) fn init(io_mem_builder: &IoMemAllocatorBuilder) {
+pub(in arch) fn init(io_mem_builder: &IoMemAllocatorBuilder) {
     use acpi::madt::{Madt, MadtEntry};
 
     // If there are no ACPI tables, or the ACPI tables do not provide us with information about

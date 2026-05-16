@@ -2,6 +2,8 @@
 
 //! Interrupts.
 
+#![short_vis_path::add(arch)]
+
 mod plic;
 
 use alloc::boxed::Box;
@@ -34,7 +36,7 @@ pub static IRQ_CHIP: Once<IrqChip> = Once::new();
 /// 1. It is called once and at most once at a proper timing in the boot context
 ///    of the BSP.
 /// 2. It is called before any other public functions of this module is called.
-pub(in crate::arch) unsafe fn init_on_bsp(io_mem_builder: &IoMemAllocatorBuilder) {
+pub(in arch) unsafe fn init_on_bsp(io_mem_builder: &IoMemAllocatorBuilder) {
     let device_tree = DEVICE_TREE.get().unwrap();
     let mut plics = Plic::from_fdt(device_tree, io_mem_builder);
     plics.iter_mut().for_each(|plic| plic.init());
@@ -56,7 +58,7 @@ pub(in crate::arch) unsafe fn init_on_bsp(io_mem_builder: &IoMemAllocatorBuilder
 /// 1. It is called once and at most once on this AP.
 /// 2. It is called before any other public functions of this module is called
 ///    on this AP.
-pub(in crate::arch) unsafe fn init_on_ap() {
+pub(in arch) unsafe fn init_on_ap() {
     // SAFETY: Accessing the `sie` CSR to enable the external interrupt is safe
     // here due to the same reasons mentioned in `init`.
     unsafe { riscv::register::sie::set_sext() };
@@ -109,7 +111,7 @@ impl IrqChip {
     ///
     /// It returns the software IRQ number if there's a pending interrupt on the
     /// hart, otherwise it will return `None`.
-    pub(in crate::arch) fn claim_interrupt(&self, hart: u32) -> Option<HwIrqLine> {
+    pub(in arch) fn claim_interrupt(&self, hart: u32) -> Option<HwIrqLine> {
         self.plics
             .lock()
             .iter()

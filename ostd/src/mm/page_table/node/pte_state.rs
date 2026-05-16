@@ -2,6 +2,8 @@
 
 //! This module specifies the type of the children of a page table node.
 
+#![short_vis_path::add(mm)]
+
 use core::mem::ManuallyDrop;
 
 use ostd_pod::FromZeros;
@@ -17,7 +19,7 @@ use crate::{
 
 /// A page table entry that owns the child of a page table node if present.
 #[derive(Debug)]
-pub(in crate::mm) enum PteState<C: PageTableConfig> {
+pub(in mm) enum PteState<C: PageTableConfig> {
     /// A child page table node.
     PageTable(RcuDrop<PageTableNode<C>>),
     /// A mapped item, often a mapped physical frame. The actual type is
@@ -28,7 +30,7 @@ pub(in crate::mm) enum PteState<C: PageTableConfig> {
 
 impl<C: PageTableConfig> PteState<C> {
     /// Returns whether the child is not present.
-    pub(in crate::mm) fn is_absent(&self) -> bool {
+    pub(in mm) fn is_absent(&self) -> bool {
         matches!(self, PteState::Absent)
     }
 
@@ -85,7 +87,7 @@ impl<C: PageTableConfig> PteState<C> {
 
 /// A reference to the child of a page table node.
 #[derive(Debug)]
-pub(in crate::mm) enum PteStateRef<'a, C: PageTableConfig> {
+pub(in mm) enum PteStateRef<'a, C: PageTableConfig> {
     /// A child page table node.
     PageTable(PageTableNodeRef<'a, C>),
     /// A reference to a mapped item, often a mapped physical frame. The actual

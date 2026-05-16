@@ -2,6 +2,8 @@
 
 //! CPU information from the CPUID instruction.
 
+#![short_vis_path::add(arch)]
+
 use core::arch::x86_64::CpuidResult;
 
 use spin::Once;
@@ -53,7 +55,7 @@ pub fn cpuid(leaf: u32, subleaf: u32) -> Option<CpuidResult> {
 ///
 /// Note that the CPUID leaf is currently only supported by new Intel CPUs. This method will return
 /// `None` if it is not supported.
-pub(in crate::arch) fn query_tsc_freq() -> Option<u64> {
+pub(in arch) fn query_tsc_freq() -> Option<u64> {
     let CpuidResult {
         eax: denominator,
         ebx: numerator,
@@ -84,7 +86,7 @@ pub(in crate::arch) fn query_tsc_freq() -> Option<u64> {
 }
 
 /// Queries the supported XSTATE features, i.e., the supported bits of `XCR0` and `IA32_XSS`.
-pub(in crate::arch) fn query_xstate_max_features() -> Option<u64> {
+pub(in arch) fn query_xstate_max_features() -> Option<u64> {
     let res0 = cpuid(Leaf::Xstate as u32, 0)?;
     let res1 = cpuid(Leaf::Xstate as u32, 1)?;
 
@@ -97,14 +99,14 @@ pub(in crate::arch) fn query_xstate_max_features() -> Option<u64> {
 }
 
 /// Queries the size in bytes of the XSAVE area containing states enabled by `XCRO` and `IA32_XSS`.
-pub(in crate::arch) fn query_xsave_area_size() -> Option<u32> {
+pub(in arch) fn query_xsave_area_size() -> Option<u32> {
     cpuid(Leaf::Xstate as u32, 1).map(|res| res.ebx)
 }
 
 /// Queries if the system is running in QEMU.
 ///
 /// This function uses the CPUID instruction to detect the QEMU hypervisor signature.
-pub(in crate::arch) fn query_is_running_in_qemu() -> bool {
+pub(in arch) fn query_is_running_in_qemu() -> bool {
     let Some(result) = cpuid(Leaf::HypervisorBase as u32, 0) else {
         return false;
     };

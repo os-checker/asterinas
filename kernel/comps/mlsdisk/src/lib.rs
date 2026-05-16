@@ -3,7 +3,6 @@
 #![no_std]
 #![deny(unsafe_code)]
 #![feature(negative_impls)]
-#![allow(unfulfilled_lint_expectations)]
 #![expect(dead_code, deprecated, unused_imports)]
 
 // Set this crate's log prefix for `ostd::log`.

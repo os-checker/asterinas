@@ -50,7 +50,7 @@ macro_rules! impl_untyped_frame_meta_for {
         }
         impl $crate::mm::frame::untyped::AnyUFrameMeta for $t {}
 
-        $crate::check_frame_meta_layout!($t);
+        check_frame_meta_layout!($t);
     };
     // Implement with a customized drop function.
     ($t:ty, $body:expr) => {
@@ -66,7 +66,7 @@ macro_rules! impl_untyped_frame_meta_for {
         }
         impl $crate::mm::frame::untyped::AnyUFrameMeta for $t {}
 
-        $crate::check_frame_meta_layout!($t);
+        check_frame_meta_layout!($t);
     };
 }
 
