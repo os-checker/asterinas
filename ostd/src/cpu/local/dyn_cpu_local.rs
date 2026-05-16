@@ -115,7 +115,7 @@ const CHUNK_SIZE: usize = PAGE_SIZE;
 /// Footer metadata to describe a `SSTable`.
 #[derive(Clone, Copy, Debug)]
 struct DynCpuLocalMeta;
-crate::impl_frame_meta_for!(DynCpuLocalMeta);
+impl_frame_meta_for!(DynCpuLocalMeta);
 
 /// Manages dynamically-allocated CPU-local chunks.
 ///

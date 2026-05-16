@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 use core::arch::global_asm;
 
 use crate::arch::cpu::context::GeneralRegs;
@@ -49,15 +51,15 @@ pub struct TrapFrame {
 /// Saved registers on a trap.
 #[repr(C)]
 #[derive(Clone, Copy, Debug)]
-pub(in crate::arch) struct RawUserContext {
+pub(in arch) struct RawUserContext {
     /// General registers
-    pub(in crate::arch) general: GeneralRegs,
+    pub(in arch) general: GeneralRegs,
     /// Pre-exception Mode Information
-    pub(in crate::arch) prmd: usize,
+    pub(in arch) prmd: usize,
     /// Exception Return Address
-    pub(in crate::arch) era: usize,
+    pub(in arch) era: usize,
     /// Extended Unit Enable
-    pub(in crate::arch) euen: usize,
+    pub(in arch) euen: usize,
 }
 
 impl Default for RawUserContext {
@@ -76,7 +78,7 @@ impl RawUserContext {
     ///
     /// On return, the context will be reset to the status before the trap.
     /// Trap reason will be placed at `estat`.
-    pub(in crate::arch) fn run(&mut self) {
+    pub(in arch) fn run(&mut self) {
         // Return to userspace with interrupts disabled. Otherwise, interrupts
         // after switching `SAVE_SCRATCH` will mess up the CPU state.
         crate::arch::irq::disable_local();

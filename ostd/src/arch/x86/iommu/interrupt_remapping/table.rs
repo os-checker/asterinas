@@ -20,7 +20,7 @@ enum ExtendedInterruptMode {
 }
 
 struct IntRemappingMeta;
-crate::impl_untyped_frame_meta_for!(IntRemappingMeta);
+impl_untyped_frame_meta_for!(IntRemappingMeta);
 
 pub struct IntRemappingTable {
     num_entries: u16,

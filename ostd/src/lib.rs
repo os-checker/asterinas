@@ -5,9 +5,11 @@
 #![feature(allocator_api)]
 #![feature(btree_cursors)]
 #![feature(core_intrinsics)]
+#![feature(custom_inner_attributes)]
 #![feature(linkage)]
 #![feature(min_specialization)]
 #![feature(negative_impls)]
+#![feature(proc_macro_hygiene)]
 #![feature(ptr_metadata)]
 #![feature(sync_unsafe_cell)]
 #![cfg_attr(target_arch = "x86_64", feature(iter_advance_by, macro_metavar_expr))]
@@ -26,6 +28,9 @@ macro_rules! __log_prefix {
     };
 }
 
+#[macro_use]
+pub mod mm;
+
 #[cfg_attr(target_arch = "x86_64", path = "arch/x86/mod.rs")]
 #[cfg_attr(target_arch = "riscv64", path = "arch/riscv/mod.rs")]
 #[cfg_attr(target_arch = "loongarch64", path = "arch/loongarch/mod.rs")]
@@ -40,7 +45,6 @@ mod ex_table;
 pub mod io;
 pub mod irq;
 pub mod log;
-pub mod mm;
 pub mod panic;
 pub mod power;
 pub mod prelude;

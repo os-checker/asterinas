@@ -29,6 +29,8 @@ extern crate controlled;
 extern crate getset;
 #[macro_use]
 extern crate ostd_pod;
+#[macro_use]
+extern crate ostd;
 
 // Set this crate's log prefix for `ostd::log`.
 macro_rules! __log_prefix {

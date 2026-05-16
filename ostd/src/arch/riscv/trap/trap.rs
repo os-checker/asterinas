@@ -14,6 +14,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 use core::arch::{asm, global_asm};
 
 use crate::arch::cpu::{
@@ -48,10 +50,10 @@ global_asm!(
 
 /// FPU status bits.
 /// Reference: <https://riscv.github.io/riscv-isa-manual/snapshot/privileged/#sstatus>.
-pub(in crate::arch) const SSTATUS_FS_MASK: usize = 0b11 << 13;
+pub(in arch) const SSTATUS_FS_MASK: usize = 0b11 << 13;
 /// Supervisor User Memory access bit.
 /// Reference: <https://riscv.github.io/riscv-isa-manual/snapshot/privileged/#sstatus>.
-pub(in crate::arch) const SSTATUS_SUM: usize = 0b1 << 18;
+pub(in arch) const SSTATUS_SUM: usize = 0b1 << 18;
 
 global_asm!(include_str!("trap.S"), SSTATUS_FS_MASK = const SSTATUS_FS_MASK, SSTATUS_SUM = const SSTATUS_SUM);
 
@@ -105,13 +107,13 @@ pub struct TrapFrame {
 /// Saved registers on a trap.
 #[repr(C)]
 #[derive(Clone, Copy, Debug)]
-pub(in crate::arch) struct RawUserContext {
+pub(in arch) struct RawUserContext {
     /// General registers
-    pub(in crate::arch) general: GeneralRegs,
+    pub(in arch) general: GeneralRegs,
     /// Supervisor Status
-    pub(in crate::arch) sstatus: usize,
+    pub(in arch) sstatus: usize,
     /// Supervisor Exception Program Counter
-    pub(in crate::arch) sepc: usize,
+    pub(in arch) sepc: usize,
 }
 
 impl Default for RawUserContext {
@@ -139,7 +141,7 @@ impl RawUserContext {
     ///
     /// On return, the context will be reset to the status before the trap.
     /// Trap reason and error code will be placed at `scause` and `stval`.
-    pub(in crate::arch) fn run(&mut self) {
+    pub(in arch) fn run(&mut self) {
         // Return to userspace with interrupts disabled. Otherwise, interrupts
         // after switching `sscratch` will mess up the CPU state.
         crate::arch::irq::disable_local();

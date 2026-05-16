@@ -35,6 +35,7 @@
 //! 39 bits or 57 bits, the memory space just adjust proportionally.
 
 #![cfg_attr(target_arch = "loongarch64", expect(unused_imports))]
+#![short_vis_path::add(mm)]
 
 pub(crate) mod kvirt_area;
 
@@ -111,7 +112,7 @@ const KERNEL_CODE_BASE_VADDR: usize = 0x9000_0000_0000_0000;
 
 const FRAME_METADATA_CAP_VADDR: Vaddr = 0xffff_fff0_8000_0000 << ADDR_WIDTH_SHIFT;
 const FRAME_METADATA_BASE_VADDR: Vaddr = 0xffff_fff0_0000_0000 << ADDR_WIDTH_SHIFT;
-pub(in crate::mm) const FRAME_METADATA_RANGE: Range<Vaddr> =
+pub(in mm) const FRAME_METADATA_RANGE: Range<Vaddr> =
     FRAME_METADATA_BASE_VADDR..FRAME_METADATA_CAP_VADDR;
 
 const VMALLOC_BASE_VADDR: Vaddr = 0xffff_ffe0_0000_0000 << ADDR_WIDTH_SHIFT;

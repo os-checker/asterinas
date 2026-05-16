@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 use core::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 
 use crate::{
@@ -13,7 +15,7 @@ use crate::{
 };
 
 /// The frequency in Hz of the Time Stamp Counter (TSC).
-pub(in crate::arch) static TSC_FREQ: AtomicU64 = AtomicU64::new(0);
+pub(in arch) static TSC_FREQ: AtomicU64 = AtomicU64::new(0);
 
 pub fn init_tsc_freq() {
     use crate::arch::cpu::cpuid::query_tsc_freq as determine_tsc_freq_via_cpuid;

@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 use core::{arch::asm, intrinsics::AtomicOrdering::Relaxed, ops::Range};
 
 use crate::mm::{
@@ -315,7 +317,7 @@ unsafe impl PteTrait for PageTableEntry {
     }
 }
 
-pub(in crate::arch) fn paddr_to_daddr(pa: Paddr) -> usize {
+pub(in arch) fn paddr_to_daddr(pa: Paddr) -> usize {
     const DEVICE_LINEAR_MAPPING_BASE_VADDR: usize = 0x8000_0000_0000_0000;
     pa + DEVICE_LINEAR_MAPPING_BASE_VADDR
 }

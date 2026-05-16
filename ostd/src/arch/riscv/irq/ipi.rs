@@ -2,6 +2,8 @@
 
 //! Inter-processor interrupts.
 
+#![short_vis_path::add(arch)]
+
 use spin::Once;
 
 use crate::{cpu::PinCurrentCpu, irq::IrqLine};
@@ -17,7 +19,7 @@ impl HwCpuId {
     }
 }
 
-pub(in crate::arch) static IPI_IRQ: Once<IrqLine> = Once::new();
+pub(in arch) static IPI_IRQ: Once<IrqLine> = Once::new();
 
 /// Initializes the global IPI-related state and local state on the BSP.
 ///
@@ -25,7 +27,7 @@ pub(in crate::arch) static IPI_IRQ: Once<IrqLine> = Once::new();
 ///
 /// This function can only be called on the BSP and before any other
 /// IPI-related function is called.
-pub(in crate::arch) unsafe fn init_on_bsp() {
+pub(in arch) unsafe fn init_on_bsp() {
     let mut irq = IrqLine::alloc().unwrap();
     // SAFETY: This will be called upon an inter-processor interrupt.
     irq.on_active(|f| unsafe { crate::smp::do_inter_processor_call(f) });
@@ -43,7 +45,7 @@ pub(in crate::arch) unsafe fn init_on_bsp() {
 ///
 /// This function can only be called before any other harts can send IPIs to
 /// this application hart.
-pub(in crate::arch) unsafe fn init_on_ap() {
+pub(in arch) unsafe fn init_on_ap() {
     // SAFETY: Enabling the software interrupts is safe here due to the same
     // reasons mentioned in `init`.
     unsafe { riscv::register::sie::set_ssoft() };

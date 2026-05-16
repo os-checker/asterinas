@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 //! The timer support.
 
 // Set this module's log prefix for `ostd::log`.
@@ -11,7 +13,7 @@ macro_rules! __log_prefix {
 
 mod apic;
 mod hpet;
-pub(in crate::arch) mod pit;
+pub(in arch) mod pit;
 
 use spin::Once;
 

@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(arch)]
+
 // Set this module's log prefix for `ostd::log`.
 macro_rules! __log_prefix {
     () => {
@@ -7,8 +9,8 @@ macro_rules! __log_prefix {
     };
 }
 
-pub(in crate::arch) mod dmar;
-pub(in crate::arch) mod remapping;
+pub(in arch) mod dmar;
+pub(in arch) mod remapping;
 
 use core::{num::NonZeroU8, ptr::NonNull};
 
@@ -126,7 +128,7 @@ pub struct PciEcamRegion {
 /// The [`AcpiInfo`] singleton.
 pub static ACPI_INFO: Once<AcpiInfo> = Once::new();
 
-pub(in crate::arch) fn init() {
+pub(in arch) fn init() {
     let mut acpi_info = AcpiInfo {
         century_register: None,
         boot_flags: None,

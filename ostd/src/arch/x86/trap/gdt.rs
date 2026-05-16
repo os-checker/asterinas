@@ -2,6 +2,8 @@
 
 //! Configure the Global Descriptor Table (GDT).
 
+#![short_vis_path::add(arch)]
+
 use alloc::boxed::Box;
 
 use x86_64::{
@@ -108,11 +110,11 @@ static LOCAL_TSS: StaticCpuLocal<TaskStateSegment> = {
 // The Intel manual says: "It is the responsibility of OS software to ensure that the descriptors
 // (in GDT or LDT) referenced by those selector values correspond to the fixed values loaded into
 // the descriptor caches; the SYSCALL instruction does not ensure this correspondence."
-pub(in crate::arch) const KCODE64: u64 = 0x00AF_9B00_0000_FFFF;
-pub(in crate::arch) const KDATA: u64 = 0x00CF_9300_0000_FFFF;
+pub(in arch) const KCODE64: u64 = 0x00AF_9B00_0000_FFFF;
+pub(in arch) const KDATA: u64 = 0x00CF_9300_0000_FFFF;
 
 // A 32-bit code descriptor that is used in the boot stage only. See `boot/bsp_boot.S`.
-pub(in crate::arch) const KCODE32: u64 = 0x00CF_9B00_0000_FFFF;
+pub(in arch) const KCODE32: u64 = 0x00CF_9B00_0000_FFFF;
 
 // User code and data descriptors.
 //

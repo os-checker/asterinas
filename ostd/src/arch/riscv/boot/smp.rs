@@ -2,6 +2,8 @@
 
 //! Multiprocessor Boot Support
 
+#![short_vis_path::add(arch)]
+
 use core::arch::global_asm;
 
 use crate::{
@@ -171,7 +173,7 @@ fn get_bootstrap_hart_id() -> u32 {
     unsafe { super::BOOTSTRAP_HART_ID }
 }
 
-pub(in crate::arch) fn get_current_hart_id() -> u32 {
+pub(in arch) fn get_current_hart_id() -> u32 {
     let id = AP_CURRENT_HART_ID.load();
     if id == u32::MAX {
         // This function cannot be called before `riscv_ap_early_entry`, which

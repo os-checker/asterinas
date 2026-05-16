@@ -18,36 +18,38 @@
 //! This module provides a set of functions to access and manipulate
 //! `guard_count` and `need_preempt`.
 
+#![short_vis_path::add(task)]
+
 use crate::cpu_local_cell;
 
 /// Returns whether the current task _should_ be preempted or not.
 ///
 /// `should_preempt() == need_preempt() && get_guard_count() == 0`.
-pub(in crate::task) fn should_preempt() -> bool {
+pub(in task) fn should_preempt() -> bool {
     PREEMPT_INFO.load() == 0
 }
 
-pub(in crate::task) fn need_preempt() -> bool {
+pub(in task) fn need_preempt() -> bool {
     PREEMPT_INFO.load() & NEED_PREEMPT_MASK == 0
 }
 
-pub(in crate::task) fn set_need_preempt() {
+pub(in task) fn set_need_preempt() {
     PREEMPT_INFO.bitand_assign(!NEED_PREEMPT_MASK);
 }
 
-pub(in crate::task) fn clear_need_preempt() {
+pub(in task) fn clear_need_preempt() {
     PREEMPT_INFO.bitor_assign(NEED_PREEMPT_MASK);
 }
 
-pub(in crate::task) fn get_guard_count() -> u32 {
+pub(in task) fn get_guard_count() -> u32 {
     PREEMPT_INFO.load() & GUARD_COUNT_MASK
 }
 
-pub(in crate::task) fn inc_guard_count() {
+pub(in task) fn inc_guard_count() {
     PREEMPT_INFO.add_assign(1);
 }
 
-pub(in crate::task) fn dec_guard_count() {
+pub(in task) fn dec_guard_count() {
     debug_assert!(get_guard_count() > 0);
     PREEMPT_INFO.sub_assign(1);
 }

@@ -15,6 +15,8 @@
 //! address in the kernel space. So finding the metadata of a frame often
 //! comes with no costs since the translation is a simple arithmetic operation.
 
+#![short_vis_path::add(mm)]
+
 pub(crate) mod mapping {
     //! The metadata of each physical page is linear mapped to fixed virtual addresses
     //! in [`FRAME_METADATA_RANGE`].
@@ -72,7 +74,7 @@ pub const FRAME_METADATA_MAX_ALIGN: usize = META_SLOT_SIZE;
 const META_SLOT_SIZE: usize = 64;
 
 #[repr(C)]
-pub(in crate::mm) struct MetaSlot {
+pub(in mm) struct MetaSlot {
     /// The metadata of a frame.
     ///
     /// It is placed at the beginning of a slot because:
@@ -177,11 +179,11 @@ macro_rules! impl_frame_meta_for {
         // SAFETY: `on_drop` won't read the page.
         unsafe impl $crate::mm::frame::meta::AnyFrameMeta for $t {}
 
-        $crate::check_frame_meta_layout!($t);
+        check_frame_meta_layout!($t);
     };
 }
 
-pub use impl_frame_meta_for;
+// pub use impl_frame_meta_for;
 
 /// The error type for getting the frame from a physical address.
 #[derive(Debug)]
@@ -517,7 +519,7 @@ pub(crate) unsafe fn init() -> Segment<MetaPageMeta> {
 }
 
 /// Returns whether the global frame allocator is initialized.
-pub(in crate::mm) fn is_initialized() -> bool {
+pub(in mm) fn is_initialized() -> bool {
     // `init` sets it with relaxed ordering somewhere in the middle. But due
     // to the safety requirement of the `init` function, we can assume that
     // there is no race conditions.

@@ -2,6 +2,8 @@
 
 //! CPU execution context control.
 
+#![short_vis_path::add(arch)]
+
 use alloc::boxed::Box;
 use core::{arch::global_asm, fmt::Debug};
 
@@ -105,7 +107,7 @@ pub enum CpuException {
 }
 
 impl CpuException {
-    pub(in crate::arch) fn new(raw_exception: Exception, stval: usize) -> Self {
+    pub(in arch) fn new(raw_exception: Exception, stval: usize) -> Self {
         use Exception::*;
 
         match raw_exception {

@@ -2,6 +2,8 @@
 
 //! The IOMMU support.
 
+#![short_vis_path::add(arch)]
+
 // Set this module's log prefix for `ostd::log`.
 macro_rules! __log_prefix {
     () => {
@@ -16,9 +18,7 @@ mod invalidate;
 mod registers;
 
 pub(crate) use dma_remapping::{IommuPtConfig, has_dma_remapping, map, unmap};
-pub(in crate::arch) use interrupt_remapping::{
-    IrtEntryHandle, alloc_irt_entry, has_interrupt_remapping,
-};
+pub(in arch) use interrupt_remapping::{IrtEntryHandle, alloc_irt_entry, has_interrupt_remapping};
 
 use crate::{io::IoMemAllocatorBuilder, mm::page_table::PageTableError};
 

@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
 //! I/O port allocator.
+
+#![short_vis_path::add(io)]
+
 use core::ops::Range;
 
 use id_alloc::IdAlloc;
@@ -76,7 +79,7 @@ pub(super) static IO_PORT_ALLOCATOR: Once<IoPortAllocator> = Once::new();
 ///
 /// 2. `MAX_IO_PORT` defined in `crate::arch::io` is guaranteed not to exceed the maximum
 ///    value specified by architecture.
-pub(in crate::io) unsafe fn init() {
+pub(in io) unsafe fn init() {
     // SAFETY: `MAX_IO_PORT` is guaranteed not to exceed the maximum value specified by architecture.
     let mut allocator = IdAlloc::with_capacity(crate::arch::io::MAX_IO_PORT as usize);
 
