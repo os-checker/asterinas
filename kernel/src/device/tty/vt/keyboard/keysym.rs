@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(keyboard)]
+
 use alloc::{boxed::Box, vec, vec::Vec};
 
 use aster_input::event_type_codes::KeyCode;
@@ -14,7 +16,7 @@ use crate::device::tty::vt::{
 ///
 /// Reference: <https://elixir.bootlin.com/linux/v6.17.4/source/drivers/tty/vt/keyboard.c#L69-L77>
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(in crate::device::tty::vt::keyboard) enum KeySym {
+pub(in keyboard) enum KeySym {
     /// A direct character output (similar to Linux `k_self`).
     ///
     /// It is used for characters that do not depend on Caps Lock state
@@ -56,7 +58,7 @@ pub(in crate::device::tty::vt::keyboard) enum KeySym {
 ///
 /// Reference: <https://elixir.bootlin.com/linux/v6.17.4/source/drivers/tty/vt/keyboard.c#L84-L89>
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(in crate::device::tty::vt::keyboard) enum SpecialHandler {
+pub(in keyboard) enum SpecialHandler {
     /// Toggle Caps Lock state (similar to Linux `fn_caps_toggle`).
     ToggleCapsLock,
     /// Toggle Num Lock state, possibly with special handling in
@@ -803,10 +805,7 @@ impl KeyMaps {
 static KEYMAPS: Once<KeyMaps> = Once::new();
 
 /// Looks up the [`KeySym`] for a given modifier mask and key code.
-pub(in crate::device::tty::vt::keyboard) fn get_keysym(
-    mods: ModifierKeyFlags,
-    key_code: KeyCode,
-) -> KeySym {
+pub(in keyboard) fn get_keysym(mods: ModifierKeyFlags, key_code: KeyCode) -> KeySym {
     KEYMAPS
         .get()
         .expect("`KEYMAPS` is not initialized")
@@ -821,7 +820,7 @@ pub(in crate::device::tty::vt::keyboard) fn get_keysym(
 /// Reference: <https://elixir.bootlin.com/linux/v6.17.4/source/include/uapi/linux/keyboard.h#L49-L78>
 #[expect(dead_code)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(in crate::device::tty::vt::keyboard) enum FuncId {
+pub(in keyboard) enum FuncId {
     F1 = 0,
     F2 = 1,
     F3 = 2,
@@ -856,7 +855,7 @@ pub(in crate::device::tty::vt::keyboard) enum FuncId {
 
 impl FuncId {
     /// Returns the function-string for this function key.
-    pub(in crate::device::tty::vt::keyboard) fn to_function_string(self) -> Option<&'static [u8]> {
+    pub(in keyboard) fn to_function_string(self) -> Option<&'static [u8]> {
         FUNC_TABLE.get(self as usize).copied().flatten()
     }
 }

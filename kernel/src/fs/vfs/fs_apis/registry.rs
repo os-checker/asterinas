@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use aster_block::BlockDevice;
 use aster_systree::{
     AttrLessBranchNodeFields, SysNode, SysObj, SysPerms, SysStr, inherit_sys_branch_node,
@@ -65,23 +67,23 @@ impl<'a> FsCreationCtx<'a> {
     }
 
     /// Returns the user-supplied mount source.
-    pub(in crate::fs) fn source(&self) -> Option<&str> {
+    pub(in fs) fn source(&self) -> Option<&str> {
         self.source
     }
 
     /// Returns the user-supplied mount flags.
     #[expect(dead_code)]
-    pub(in crate::fs) fn flags(&self) -> FsFlags {
+    pub(in fs) fn flags(&self) -> FsFlags {
         self.flags
     }
 
     /// Returns the filesystem-specific mount arguments.
-    pub(in crate::fs) fn args(&self) -> Option<&CStr> {
+    pub(in fs) fn args(&self) -> Option<&CStr> {
         self.args
     }
 
     /// Resolves the mount source into a block device.
-    pub(in crate::fs) fn resolve_block_device(&self) -> Result<Arc<dyn BlockDevice>> {
+    pub(in fs) fn resolve_block_device(&self) -> Result<Arc<dyn BlockDevice>> {
         let source = self
             .source()
             .ok_or_else(|| Error::with_message(Errno::EINVAL, "the source is not specified"))?;

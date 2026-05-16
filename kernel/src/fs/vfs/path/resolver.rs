@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use alloc::str;
 
 use ostd::task::Task;
@@ -488,7 +490,7 @@ impl PathResolver {
     ///    mounts that are mounted under the resolver's root directory.
     ///
     /// The mounts are collected in depth-first order.
-    pub(in crate::fs) fn collect_visible_mounts(&self) -> Vec<Arc<Mount>> {
+    pub(in fs) fn collect_visible_mounts(&self) -> Vec<Arc<Mount>> {
         let mut visible = Vec::new();
         let mut stack = vec![self.root.mount.clone()];
         let is_root_mount_root = self.root.is_mount_root();

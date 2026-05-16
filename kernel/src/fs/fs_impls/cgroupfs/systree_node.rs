@@ -49,6 +49,8 @@
 //!    When acquiring the `Cgroup Membership Lock` along with any other cgroup locks,
 //!    the `Cgroup Membership Lock` must be acquired first.
 
+#![short_vis_path::add(fs)]
+
 use core::{
     str::FromStr,
     sync::atomic::{AtomicUsize, Ordering},
@@ -265,7 +267,7 @@ impl CgroupMembership {
 ///
 /// The cgroup system provides v2 unified hierarchy, and is also used as a root
 /// node in the cgroup systree.
-pub(in crate::fs) struct CgroupSystem {
+pub(in fs) struct CgroupSystem {
     fields: BranchNodeFields<CgroupNode, Self>,
     controller: Controller,
 }
@@ -336,7 +338,7 @@ impl CgroupNode {
 
 impl CgroupSystem {
     /// Returns the `CgroupSystem` singleton.
-    pub(in crate::fs) fn singleton() -> &'static Arc<CgroupSystem> {
+    pub(in fs) fn singleton() -> &'static Arc<CgroupSystem> {
         static SINGLETON: Once<Arc<CgroupSystem>> = Once::new();
 
         SINGLETON.call_once(Self::new)

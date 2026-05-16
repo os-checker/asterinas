@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use core::cell::{Cell, Ref, RefCell, RefMut};
 
 use ostd::{arch::cpu::context::FpuContext, sync::RwArc, task::CurrentTask};
@@ -148,7 +150,7 @@ impl ThreadLocal {
         self.fs.borrow()
     }
 
-    pub(in crate::process) fn borrow_fs_mut(&self) -> RefMut<'_, Arc<ThreadFsInfo>> {
+    pub(in process) fn borrow_fs_mut(&self) -> RefMut<'_, Arc<ThreadFsInfo>> {
         self.fs.borrow_mut()
     }
 
@@ -166,7 +168,7 @@ impl ThreadLocal {
         &self.sig_stack
     }
 
-    pub(in crate::process) fn sig_mask_saved(&self) -> &Cell<Option<SigMask>> {
+    pub(in process) fn sig_mask_saved(&self) -> &Cell<Option<SigMask>> {
         &self.sig_mask_saved
     }
 
@@ -178,7 +180,7 @@ impl ThreadLocal {
         ThreadLocalOptionRef(self.ns_proxy.borrow())
     }
 
-    pub(in crate::process) fn borrow_ns_proxy_mut(&self) -> NsProxyRefMut<'_> {
+    pub(in process) fn borrow_ns_proxy_mut(&self) -> NsProxyRefMut<'_> {
         ThreadLocalOptionRefMut(self.ns_proxy.borrow_mut())
     }
 }
@@ -293,7 +295,7 @@ impl<T> ThreadLocalOptionRef<'_, T> {
 pub type FileTableRefMut<'a> = ThreadLocalOptionRefMut<'a, RwArc<FileTable>>;
 
 /// A mutable, exclusive reference to the `NsProxy` in [`ThreadLocal`].
-pub(in crate::process) type NsProxyRefMut<'a> = ThreadLocalOptionRefMut<'a, Arc<NsProxy>>;
+pub(in process) type NsProxyRefMut<'a> = ThreadLocalOptionRefMut<'a, Arc<NsProxy>>;
 
 /// A mutable, exclusive reference to thread-local data contained within a `RefCell<Option<..>>`.
 pub struct ThreadLocalOptionRefMut<'a, T>(RefMut<'a, Option<T>>);
@@ -314,7 +316,7 @@ impl<T> ThreadLocalOptionRefMut<'_, T> {
     }
 
     /// Replaces the data with a new one, returning the old one.
-    pub(in crate::process) fn replace(&mut self, new: Option<T>) -> Option<T> {
+    pub(in process) fn replace(&mut self, new: Option<T>) -> Option<T> {
         core::mem::replace(&mut *self.0, new)
     }
 }

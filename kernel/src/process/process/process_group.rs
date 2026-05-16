@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process = crate::process)]
+
 use alloc::collections::btree_map::Values;
 
 use super::{BOOTSTRAP_PGID, BOOTSTRAP_SID, Pgid, Pid, Process, Session};
@@ -112,7 +114,7 @@ impl ProcessGroupGuard<'_> {
     ///
     /// The caller needs to ensure that the process didn't previously belong to the process group,
     /// but now does.
-    pub(in crate::process) fn insert_process(&mut self, process: &Arc<Process>) {
+    pub(in process) fn insert_process(&mut self, process: &Arc<Process>) {
         let old_process = self
             .inner
             .processes
@@ -124,13 +126,13 @@ impl ProcessGroupGuard<'_> {
     ///
     /// The caller needs to ensure that the process previously belonged to the process group, but
     /// now doesn't.
-    pub(in crate::process) fn remove_process(&mut self, pid: &Pid) {
+    pub(in process) fn remove_process(&mut self, pid: &Pid) {
         let process = self.inner.processes.remove(pid);
         debug_assert!(process.is_some());
     }
 
     /// Returns whether the process group is empty.
-    pub(in crate::process) fn is_empty(&self) -> bool {
+    pub(in process) fn is_empty(&self) -> bool {
         self.inner.processes.is_empty()
     }
 }

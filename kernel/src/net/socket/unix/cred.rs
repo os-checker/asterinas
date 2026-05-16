@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use aster_rights::{Dup, Read, ReadDupOp, ReadOp, TRights};
 use aster_rights_proc::require;
 
@@ -90,7 +92,7 @@ pub struct CUserCred {
 }
 
 impl CUserCred {
-    pub(in crate::net) const fn new_invalid() -> Self {
+    pub(in net) const fn new_invalid() -> Self {
         Self {
             pid: 0,
             uid: Uid::INVALID,
@@ -98,7 +100,7 @@ impl CUserCred {
         }
     }
 
-    pub(in crate::net) const fn new_overflow() -> Self {
+    pub(in net) const fn new_overflow() -> Self {
         Self {
             pid: 0,
             uid: Uid::OVERFLOW,

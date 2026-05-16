@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use align_ext::AlignExt;
 
 use super::SocketAddr;
@@ -8,8 +10,8 @@ use crate::{net::socket::unix::UnixControlMessage, prelude::*, util::net::CSocke
 /// Message header used for sendmsg/recvmsg.
 #[derive(Debug)]
 pub struct MessageHeader {
-    pub(in crate::net) addr: Option<SocketAddr>,
-    pub(in crate::net) control_messages: Vec<ControlMessage>,
+    pub(in net) addr: Option<SocketAddr>,
+    pub(in net) control_messages: Vec<ControlMessage>,
 }
 
 impl MessageHeader {

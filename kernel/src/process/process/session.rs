@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use super::{BOOTSTRAP_SID, Pgid, Process, ProcessGroup, Sid, Terminal};
 use crate::prelude::*;
 
@@ -109,7 +111,7 @@ impl SessionGuard<'_> {
     ///
     /// The caller needs to ensure that the process group didn't previously belong to the session,
     /// but now does.
-    pub(in crate::process) fn insert_process_group(&mut self, process_group: &Arc<ProcessGroup>) {
+    pub(in process) fn insert_process_group(&mut self, process_group: &Arc<ProcessGroup>) {
         let old_process_group = self
             .inner
             .process_groups
@@ -121,12 +123,12 @@ impl SessionGuard<'_> {
     ///
     /// The caller needs to ensure that the process group previously belonged to the session, but
     /// now doesn't.
-    pub(in crate::process) fn remove_process_group(&mut self, pgid: &Pgid) {
+    pub(in process) fn remove_process_group(&mut self, pgid: &Pgid) {
         self.inner.process_groups.remove(pgid);
     }
 
     /// Returns whether the session is empty.
-    pub(in crate::process) fn is_empty(&self) -> bool {
+    pub(in process) fn is_empty(&self) -> bool {
         self.inner.process_groups.is_empty()
     }
 }

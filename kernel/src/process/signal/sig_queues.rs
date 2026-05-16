@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use core::sync::atomic::{AtomicUsize, Ordering};
 
 use super::{
@@ -68,7 +70,7 @@ impl SigQueues {
     /// Returns whether there's some pending signals that are not blocked and not ignored.
     ///
     /// Note that ignored but not blocked signals may be dequeued silently.
-    pub(in crate::process) fn has_pending(
+    pub(in process) fn has_pending(
         &self,
         blocked: SigMask,
         sig_dispositions: &SigDispositions,
@@ -79,15 +81,11 @@ impl SigQueues {
         has_pending
     }
 
-    pub(in crate::process) fn has_pending_signal(&self, signum: SigNum) -> bool {
+    pub(in process) fn has_pending_signal(&self, signum: SigNum) -> bool {
         self.queues.lock().has_pending_signal(signum)
     }
 
-    pub(in crate::process) fn register_signalfd_poller(
-        &self,
-        poller: &mut PollHandle,
-        mask: IoEvents,
-    ) {
+    pub(in process) fn register_signalfd_poller(&self, poller: &mut PollHandle, mask: IoEvents) {
         self.signalfd_pollee.register_poller(poller, mask);
     }
 }

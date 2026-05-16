@@ -2,6 +2,8 @@
 
 //! Ptrace implementation for POSIX threads.
 
+#![short_vis_path::add(process)]
+
 use core::sync::atomic::{AtomicBool, Ordering};
 
 #[cfg(target_arch = "x86_64")]
@@ -29,12 +31,12 @@ use crate::{
 mod util;
 
 pub use util::PtraceContRequest;
-pub(in crate::process) use util::PtraceStopResult;
+pub(in process) use util::PtraceStopResult;
 use util::StopDeliverySignal;
 
 impl PosixThread {
     /// Returns whether this thread is being traced.
-    pub(in crate::process) fn is_traced(&self) -> bool {
+    pub(in process) fn is_traced(&self) -> bool {
         self.tracer().is_some()
     }
 
@@ -54,7 +56,7 @@ impl PosixThread {
     }
 
     /// Detaches the tracer of this thread.
-    pub(in crate::process) fn detach_tracer(&self) {
+    pub(in process) fn detach_tracer(&self) {
         if let Some(status) = self.tracee_status.get() {
             status.detach_tracer();
             self.wake_signalled_waker();
@@ -64,7 +66,7 @@ impl PosixThread {
     /// Stops this thread by ptrace with the given signal if it is currently traced.
     ///
     /// Returns a [`PtraceStopResult`] indicating why this ptrace-stop ended.
-    pub(in crate::process) fn ptrace_stop(
+    pub(in process) fn ptrace_stop(
         &self,
         signal: DequeuedSignal,
         ctx: &Context,
@@ -78,7 +80,7 @@ impl PosixThread {
     }
 
     /// Returns the ptrace-stop status changes for the `wait` syscall.
-    pub(in crate::process) fn wait_ptrace_stopped(&self, options: WaitOptions) -> Option<SigNum> {
+    pub(in process) fn wait_ptrace_stopped(&self, options: WaitOptions) -> Option<SigNum> {
         self.tracee_status
             .get()
             .and_then(|status| status.wait(options))
@@ -200,7 +202,7 @@ impl PosixThread {
     }
 
     /// Returns the tracee map of this thread if it is a tracer.
-    pub(in crate::process) fn tracees(&self) -> Option<&Mutex<BTreeMap<Tid, Arc<Thread>>>> {
+    pub(in process) fn tracees(&self) -> Option<&Mutex<BTreeMap<Tid, Arc<Thread>>>> {
         self.tracees.get()
     }
 
@@ -216,7 +218,7 @@ impl PosixThread {
     }
 
     /// Clears all tracees of this tracer on exit.
-    pub(in crate::process) fn clear_tracees(&self) {
+    pub(in process) fn clear_tracees(&self) {
         let Some(tracees) = self.tracees() else {
             return;
         };

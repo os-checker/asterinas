@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use core::ops::RangeInclusive;
 
 use aster_bigtcp::socket::{
@@ -54,7 +56,7 @@ impl Default for SocketOptionSet {
 
 impl SocketOptionSet {
     /// Returns the default socket level options for tcp socket.
-    pub(in crate::net) fn new_tcp() -> Self {
+    pub(in net) fn new_tcp() -> Self {
         Self {
             send_buf: TCP_SEND_BUF_LEN as u32,
             recv_buf: TCP_RECV_BUF_LEN as u32,
@@ -63,7 +65,7 @@ impl SocketOptionSet {
     }
 
     /// Returns the default socket level options for udp socket.
-    pub(in crate::net) fn new_udp() -> Self {
+    pub(in net) fn new_udp() -> Self {
         Self {
             send_buf: UDP_SEND_PAYLOAD_LEN as u32,
             recv_buf: UDP_RECV_PAYLOAD_LEN as u32,
@@ -72,7 +74,7 @@ impl SocketOptionSet {
     }
 
     /// Returns the default socket level options for unix stream socket.
-    pub(in crate::net) fn new_unix_stream() -> Self {
+    pub(in net) fn new_unix_stream() -> Self {
         Self {
             send_buf: UNIX_STREAM_DEFAULT_BUF_SIZE as u32,
             recv_buf: UNIX_STREAM_DEFAULT_BUF_SIZE as u32,
@@ -81,7 +83,7 @@ impl SocketOptionSet {
     }
 
     /// Returns the default socket level options for unix datagram socket.
-    pub(in crate::net) fn new_unix_datagram() -> Self {
+    pub(in net) fn new_unix_datagram() -> Self {
         Self {
             send_buf: UNIX_DATAGRAM_DEFAULT_BUF_SIZE as u32,
             recv_buf: UNIX_DATAGRAM_DEFAULT_BUF_SIZE as u32,
@@ -90,7 +92,7 @@ impl SocketOptionSet {
     }
 
     /// Returns the default socket level options for netlink socket.
-    pub(in crate::net) fn new_netlink() -> Self {
+    pub(in net) fn new_netlink() -> Self {
         Self {
             send_buf: NETLINK_DEFAULT_BUF_SIZE as u32,
             recv_buf: NETLINK_DEFAULT_BUF_SIZE as u32,
@@ -288,13 +290,13 @@ pub const MIN_SENDBUF: u32 = 2304;
 pub const MIN_RECVBUF: u32 = 2304;
 
 /// A trait used for getting socket level options on actual sockets.
-pub(in crate::net) trait GetSocketLevelOption {
+pub(in net) trait GetSocketLevelOption {
     /// Returns whether the socket is in listening state.
     fn is_listening(&self) -> bool;
 }
 
 /// A trait used for setting socket level options on actual sockets.
-pub(in crate::net) trait SetSocketLevelOption {
+pub(in net) trait SetSocketLevelOption {
     /// Sets whether the socket address can be reused.
     fn set_reuse_addr(&self, _reuse_addr: bool) {}
 

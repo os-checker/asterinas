@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use core::sync::atomic::{AtomicBool, Ordering};
 
 use crate::{
@@ -224,7 +226,7 @@ impl<T: AsRef<EndpointState>> Endpoint<T> {
     }
 
     /// Activates the local endpoint.
-    pub(in crate::fs) fn activate(&self) {
+    pub(in fs) fn activate(&self) {
         self.this_end()
             .as_ref()
             .is_shutdown
@@ -233,7 +235,7 @@ impl<T: AsRef<EndpointState>> Endpoint<T> {
     }
 
     /// Activates the remote endpoint.
-    pub(in crate::fs) fn peer_activate(&self) {
+    pub(in fs) fn peer_activate(&self) {
         self.peer_end()
             .as_ref()
             .is_shutdown

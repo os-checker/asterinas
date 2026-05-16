@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs = crate::fs)]
+
 use core::{
     sync::atomic::{AtomicU64, Ordering},
     time::Duration,
@@ -57,13 +59,13 @@ impl RamFs {
         Self::new_internal("ramfs")
     }
 
-    pub(in crate::fs) fn new_rootfs() -> Arc<Self> {
+    pub(in fs) fn new_rootfs() -> Arc<Self> {
         Self::new_internal("rootfs")
     }
 
     // TODO: Remove this tmpfs-specific constructor once `TmpFs` no longer
     // aliases `RamFs`.
-    pub(in crate::fs) fn new_tmpfs() -> Arc<Self> {
+    pub(in fs) fn new_tmpfs() -> Arc<Self> {
         let anon_device_id = AnonDeviceId::acquire().expect("no device ID is available for tmpfs");
         let sb = {
             let mut super_block =

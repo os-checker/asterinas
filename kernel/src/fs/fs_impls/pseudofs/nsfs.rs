@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use alloc::format;
 use core::time::Duration;
 
@@ -68,7 +70,7 @@ impl NsFs {
 }
 
 /// An inode representing a namespace entry in [`NsFs`].
-pub(in crate::fs) struct NsInode<T: NsCommonOps> {
+pub(in fs) struct NsInode<T: NsCommonOps> {
     common: PseudoInode,
     ns: Arc<T>,
     name: String,
@@ -96,7 +98,7 @@ impl<T: NsCommonOps> NsInode<T> {
         &self.name
     }
 
-    pub(in crate::fs) fn ns(&self) -> &Arc<T> {
+    pub(in fs) fn ns(&self) -> &Arc<T> {
         &self.ns
     }
 }
