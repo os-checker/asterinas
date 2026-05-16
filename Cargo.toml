@@ -175,6 +175,7 @@ ring-buffer = { path = "kernel/libs/ring-buffer" }
 typeflags = { path = "kernel/libs/typeflags" }
 typeflags-util = { path = "kernel/libs/typeflags-util" }
 xarray = { path = "kernel/libs/xarray" }
+short_vis_path = { path = "/home/zjp/tmp/short_vis_path" }
 
 # Crates under kernel/libs/comp-sys
 component = { path = "kernel/libs/comp-sys/component" }
