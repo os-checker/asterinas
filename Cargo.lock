@@ -1377,6 +1377,7 @@ dependencies = [
  "ostd-test",
  "riscv",
  "sbi-rt",
+ "short_vis_path",
  "smallvec",
  "spin",
  "tdx-guest",
