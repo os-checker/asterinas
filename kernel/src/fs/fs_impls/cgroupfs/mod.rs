@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 pub use cgroup_ns::CgroupNamespace;
 pub use controller::cpu::{CpuStatKind, charge_cpu_time};
 use fs::CgroupFsType;
-pub(in crate::fs) use systree_node::CgroupSystem;
+pub(in fs) use systree_node::CgroupSystem;
 pub use systree_node::{CgroupMembership, CgroupNode, CgroupSysNode};
 
 // Set this module's log prefix for `ostd::log`.

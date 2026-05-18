@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(ipc)]
+
 use core::sync::atomic::{AtomicU64, Ordering};
 
 use aster_rights::ReadOp;
@@ -230,7 +232,7 @@ impl SemaphoreSet {
         self.inner.lock()
     }
 
-    pub(in crate::ipc) fn new(
+    pub(in ipc) fn new(
         key: IpcKey,
         num_sems: usize,
         mode: u16,

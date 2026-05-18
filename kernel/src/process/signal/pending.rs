@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use crate::{
     prelude::*,
     process::{
@@ -30,19 +32,19 @@ impl DequeuedSignal {
     }
 
     /// Returns a reference to the inner signal.
-    pub(in crate::process) fn signal(&self) -> &dyn Signal {
+    pub(in process) fn signal(&self) -> &dyn Signal {
         match self {
             Self::FromProcess(signal) | Self::FromThread(signal) => signal.as_ref(),
         }
     }
 
     /// Returns the signal number of the inner signal.
-    pub(in crate::process) fn num(&self) -> SigNum {
+    pub(in process) fn num(&self) -> SigNum {
         self.signal().num()
     }
 
     /// Replaces the inner signal with `new_signal`, preserving the origin.
-    pub(in crate::process) fn set_signal(&mut self, new_signal: Box<dyn Signal>) {
+    pub(in process) fn set_signal(&mut self, new_signal: Box<dyn Signal>) {
         match self {
             Self::FromProcess(signal) | Self::FromThread(signal) => *signal = new_signal,
         }

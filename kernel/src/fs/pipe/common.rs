@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use core::{
     num::Wrapping,
     sync::atomic::{AtomicUsize, Ordering},
@@ -33,7 +35,7 @@ use crate::{
 ///
 /// Once a handle for a `Pipe` exists, the corresponding pipe object will
 /// not be dropped.
-pub(in crate::fs) struct PipeHandle {
+pub(in fs) struct PipeHandle {
     inner: Arc<PipeObj>,
     access_mode: AccessMode,
 }
@@ -168,7 +170,7 @@ impl FileIo for PipeHandle {
 ///
 /// A `Pipe` will maintain exactly one **pipe object** that provides actual pipe
 /// functionalities when there is at least one handle opened on it.
-pub(in crate::fs) struct Pipe {
+pub(in fs) struct Pipe {
     pipe: Mutex<PipeInner>,
     wait_queue: WaitQueue,
 }
@@ -292,7 +294,7 @@ impl Pipe {
     }
 }
 
-pub(in crate::fs) fn check_status_flags(status_flags: StatusFlags) -> Result<()> {
+pub(in fs) fn check_status_flags(status_flags: StatusFlags) -> Result<()> {
     if status_flags.contains(StatusFlags::O_DIRECT) {
         // TODO: Support "packet" mode for pipes.
         //

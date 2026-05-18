@@ -2,6 +2,8 @@
 
 //! Ptrace implementation for POSIX threads.
 
+#![short_vis_path::add(process)]
+
 use core::sync::atomic::{AtomicBool, Ordering};
 
 #[cfg(target_arch = "x86_64")]
@@ -29,11 +31,11 @@ mod util;
 
 use util::StopDeliverySignal;
 pub use util::{PtraceContRequest, PtraceOptions, PtraceWaitStatus};
-pub(in crate::process) use util::{PtraceEvent, PtraceStopResult};
+pub(in process) use util::{PtraceEvent, PtraceStopResult};
 
 impl PosixThread {
     /// Returns whether this thread is being traced.
-    pub(in crate::process) fn is_traced(&self) -> bool {
+    pub(in process) fn is_traced(&self) -> bool {
         self.tracer().is_some()
     }
 
@@ -53,7 +55,7 @@ impl PosixThread {
     }
 
     /// Detaches the tracer of this thread.
-    pub(in crate::process) fn detach_tracer(&self) {
+    pub(in process) fn detach_tracer(&self) {
         self.detach_tracer_with(|_| {});
     }
 
@@ -71,7 +73,7 @@ impl PosixThread {
     /// Stops this thread by ptrace with the given signal if it is currently traced.
     ///
     /// Returns a [`PtraceStopResult`] indicating why this ptrace-stop ended.
-    pub(in crate::process) fn ptrace_stop(
+    pub(in process) fn ptrace_stop(
         &self,
         signal: DequeuedSignal,
         ctx: &Context,
@@ -89,7 +91,7 @@ impl PosixThread {
     ///
     /// May block in the event-stop until the tracer continues the stop,
     /// or until a `SIGKILL` interrupts it.
-    pub(in crate::process) fn ptrace_may_stop_on(
+    pub(in process) fn ptrace_may_stop_on(
         &self,
         event: PtraceEvent,
         ctx: &Context,
@@ -101,14 +103,14 @@ impl PosixThread {
     }
 
     /// Returns whether a clone-family ptrace event would be required for `clone_args`.
-    pub(in crate::process) fn needs_ptrace_clone_stop(&self, clone_args: &CloneArgs) -> bool {
+    pub(in process) fn needs_ptrace_clone_stop(&self, clone_args: &CloneArgs) -> bool {
         self.tracee_status
             .get()
             .is_some_and(|status| status.needs_clone_stop(clone_args))
     }
 
     /// Returns the ptrace-stop status changes for the `wait` syscall.
-    pub(in crate::process) fn wait_ptrace_stopped(
+    pub(in process) fn wait_ptrace_stopped(
         &self,
         options: WaitOptions,
     ) -> Option<PtraceWaitStatus> {
@@ -254,7 +256,7 @@ impl PosixThread {
     }
 
     /// Returns the tracee map of this thread if it is a tracer.
-    pub(in crate::process) fn tracees(&self) -> Option<&Mutex<BTreeMap<Tid, Arc<Thread>>>> {
+    pub(in process) fn tracees(&self) -> Option<&Mutex<BTreeMap<Tid, Arc<Thread>>>> {
         self.tracees.get()
     }
 
@@ -270,7 +272,7 @@ impl PosixThread {
     }
 
     /// Clears all tracees of this tracer on exit.
-    pub(in crate::process) fn clear_tracees(&self) {
+    pub(in process) fn clear_tracees(&self) {
         let Some(tracees) = self.tracees() else {
             return;
         };

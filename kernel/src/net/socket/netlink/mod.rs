@@ -37,6 +37,8 @@
 //! The destination address must be specified when dispatching a message.
 //!
 
+#![short_vis_path::add(net)]
+
 mod addr;
 mod common;
 mod kobject_uevent;
@@ -53,6 +55,6 @@ pub(super) use receiver::NETLINK_DEFAULT_BUF_SIZE;
 pub use route::NetlinkRouteSocket;
 pub use table::{StandardNetlinkProtocol, is_valid_protocol};
 
-pub(in crate::net) fn init() {
+pub(in net) fn init() {
     table::init();
 }

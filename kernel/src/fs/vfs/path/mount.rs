@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use core::sync::atomic::{AtomicU32, Ordering};
 
 use atomic_integer_wrapper::define_atomic_version_of_integer_like_type;
@@ -214,7 +216,7 @@ impl Mount {
     ///
     /// It is allowed to create a mount node even if the fs has been provided to another
     /// mount node. It is the fs's responsibility to ensure the data consistency.
-    pub(in crate::fs) fn new_root(
+    pub(in fs) fn new_root(
         fs: Arc<dyn FileSystem>,
         mnt_ns: Weak<MountNamespace>,
     ) -> Result<Arc<Self>> {
@@ -226,7 +228,7 @@ impl Mount {
     ///
     /// This pseudo mount is not mounted on other mount nodes, has no parent, and does not
     /// belong to any mount namespace.
-    pub(in crate::fs) fn new_pseudo(fs: Arc<dyn FileSystem>) -> Result<Arc<Self>> {
+    pub(in fs) fn new_pseudo(fs: Arc<dyn FileSystem>) -> Result<Arc<Self>> {
         Self::new(fs, PerMountFlags::KERNMOUNT, None, Weak::new(), None)
     }
 
@@ -268,7 +270,7 @@ impl Mount {
     }
 
     /// Returns the mount source.
-    pub(in crate::fs) fn source(&self) -> Option<&str> {
+    pub(in fs) fn source(&self) -> Option<&str> {
         self.fs.source().or(self.source.as_deref())
     }
 
@@ -464,12 +466,12 @@ impl Mount {
     }
 
     /// Gets the root `Dentry` of this mount node.
-    pub(in crate::fs) fn root_dentry(&self) -> &Arc<Dentry> {
+    pub(in fs) fn root_dentry(&self) -> &Arc<Dentry> {
         &self.root_dentry
     }
 
     /// Gets the mountpoint `Dentry` of this mount node if any.
-    pub(in crate::fs) fn mountpoint(&self) -> Option<Arc<Dentry>> {
+    pub(in fs) fn mountpoint(&self) -> Option<Arc<Dentry>> {
         self.mountpoint.read().clone()
     }
 
@@ -540,7 +542,7 @@ impl Mount {
     }
 
     /// Gets the parent mount node if any.
-    pub(in crate::fs) fn parent(&self) -> Option<Weak<Self>> {
+    pub(in fs) fn parent(&self) -> Option<Weak<Self>> {
         self.parent.read().as_ref().cloned()
     }
 
@@ -565,11 +567,11 @@ impl Mount {
     }
 
     /// Gets the associated FS.
-    pub(in crate::fs) fn fs(&self) -> &Arc<dyn FileSystem> {
+    pub(in fs) fn fs(&self) -> &Arc<dyn FileSystem> {
         &self.fs
     }
 
-    pub(in crate::fs) fn flags(&self) -> PerMountFlags {
+    pub(in fs) fn flags(&self) -> PerMountFlags {
         self.flags.load(Ordering::Relaxed)
     }
 

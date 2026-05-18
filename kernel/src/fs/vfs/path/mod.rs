@@ -2,9 +2,11 @@
 
 //! Form file paths within and across FSes with dentries and mount points.
 
+#![short_vis_path::add(fs)]
+
 use core::time::Duration;
 
-pub(in crate::fs) use dentry::Dentry;
+pub(in fs) use dentry::Dentry;
 use dentry::DirDentry;
 use inherit_methods_macro::inherit_methods;
 use mount::MountNsFileCopying;
@@ -77,7 +79,7 @@ impl Path {
     }
 
     /// Creates a new pseudo `Path`.
-    pub(in crate::fs) fn new_pseudo(
+    pub(in fs) fn new_pseudo(
         mount: Arc<Mount>,
         inode: Arc<dyn Inode>,
         name_fn: fn(&dyn Inode) -> String,
@@ -86,7 +88,7 @@ impl Path {
         Self::new(mount, dentry)
     }
 
-    pub(in crate::fs) fn new(mount: Arc<Mount>, dentry: Arc<Dentry>) -> Self {
+    pub(in fs) fn new(mount: Arc<Mount>, dentry: Arc<Dentry>) -> Self {
         Self { mount, dentry }
     }
 
@@ -96,7 +98,7 @@ impl Path {
     }
 
     /// Gets the dentry of current `Path`.
-    pub(in crate::fs) fn dentry(&self) -> &Arc<Dentry> {
+    pub(in fs) fn dentry(&self) -> &Arc<Dentry> {
         &self.dentry
     }
 

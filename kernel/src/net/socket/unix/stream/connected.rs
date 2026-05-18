@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use core::{
     num::Wrapping,
     sync::atomic::{AtomicBool, Ordering},
@@ -387,4 +389,4 @@ struct RangedAuxiliaryData {
     end: Wrapping<usize>,   // exclusive
 }
 
-pub(in crate::net) const UNIX_STREAM_DEFAULT_BUF_SIZE: usize = 65536;
+pub(in net) const UNIX_STREAM_DEFAULT_BUF_SIZE: usize = 65536;

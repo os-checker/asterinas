@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use spin::Once;
 
 use crate::{
@@ -26,7 +28,7 @@ pub struct NsProxy {
 
 impl NsProxy {
     /// Returns a reference to the singleton initial `NsProxy`.
-    pub(in crate::process) fn get_init_singleton() -> &'static Arc<Self> {
+    pub(in process) fn get_init_singleton() -> &'static Arc<Self> {
         static INIT: Once<Arc<NsProxy>> = Once::new();
         INIT.call_once(|| {
             Arc::new(NsProxy {
@@ -47,7 +49,7 @@ impl NsProxy {
     // FIXME: This method is currently used by both `unshare()` and `clone()`.
     // Once we support PID and time namespaces, their semantics diverge.
     // We will need to refactor (or split) this method accordingly.
-    pub(in crate::process) fn new_clone(
+    pub(in process) fn new_clone(
         self: &Arc<Self>,
         user_ns: &Arc<UserNamespace>,
         process: &Process,

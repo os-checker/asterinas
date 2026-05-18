@@ -15,6 +15,8 @@
 //!   userspace-facing system calls.
 //!
 
+#![short_vis_path::add(net)]
+
 mod addr;
 mod stream;
 mod transport;
@@ -22,6 +24,6 @@ mod transport;
 pub use addr::VsockSocketAddr;
 pub use stream::VsockStreamSocket;
 
-pub(in crate::net) fn init() {
+pub(in net) fn init() {
     transport::init();
 }

@@ -2,6 +2,8 @@
 
 //! Opened Inode-backed File Handle
 
+#![short_vis_path::add(fs)]
+
 use core::{fmt::Display, sync::atomic::Ordering};
 
 use aster_rights::Rights;
@@ -85,7 +87,7 @@ impl InodeHandle {
         *offset
     }
 
-    pub(in crate::fs) fn rights(&self) -> Rights {
+    pub(in fs) fn rights(&self) -> Rights {
         self.rights
     }
 

@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 macro_rules! impl_socket_options {
     ($(
         $(#[$outer:meta])*
@@ -42,7 +44,7 @@ macro_rules! impl_socket_options {
         )*
     };
 }
-pub(in crate::net) use impl_socket_options;
+pub(in net) use impl_socket_options;
 
 macro_rules! sock_option_ref {
     (
@@ -62,7 +64,7 @@ macro_rules! sock_option_ref {
         }
     }};
 }
-pub(in crate::net) use sock_option_ref;
+pub(in net) use sock_option_ref;
 
 macro_rules! sock_option_mut {
     (
@@ -82,4 +84,4 @@ macro_rules! sock_option_mut {
         }
     }};
 }
-pub(in crate::net) use sock_option_mut;
+pub(in net) use sock_option_mut;

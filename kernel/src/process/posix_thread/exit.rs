@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use ostd::{arch::cpu::context::UserContext, mm::VmIo, task::Task};
 
 use super::{
@@ -123,7 +125,7 @@ fn exit_internal(
 }
 
 /// Sends `SIGKILL` to all other threads in the current process.
-pub(in crate::process) fn sigkill_other_threads(current_task: &Task, task_set: &TaskSet) {
+pub(in process) fn sigkill_other_threads(current_task: &Task, task_set: &TaskSet) {
     debug_assert!(
         task_set
             .as_slice()

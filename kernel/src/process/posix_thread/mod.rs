@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(process)]
+
 use core::sync::atomic::{AtomicU32, AtomicU64, AtomicUsize, Ordering};
 
 use aster_rights::{ReadDupOp, ReadOp, ReadWriteOp};
@@ -144,7 +146,7 @@ impl PosixThread {
     }
 
     /// Sets the filesystem information of the thread.
-    pub(in crate::process) fn set_fs(&self, new_fs: Arc<ThreadFsInfo>) {
+    pub(in process) fn set_fs(&self, new_fs: Arc<ThreadFsInfo>) {
         let mut fs_lock = self.fs.write();
         *fs_lock = new_fs;
     }
@@ -259,7 +261,7 @@ impl PosixThread {
 
     /// Returns the original syscall-return register value
     /// for the most recent kernel entry.
-    pub(in crate::process) fn orig_syscall_ret(&self) -> usize {
+    pub(in process) fn orig_syscall_ret(&self) -> usize {
         self.orig_syscall_ret.load(Ordering::Relaxed)
     }
 

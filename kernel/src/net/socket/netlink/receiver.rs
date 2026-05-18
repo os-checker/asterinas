@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use crate::{events::IoEvents, prelude::*, process::signal::Pollee};
 
 pub struct MessageReceiver<Message> {
@@ -112,4 +114,4 @@ impl<Message: QueueableMessage> MessageReceiver<Message> {
     }
 }
 
-pub(in crate::net) const NETLINK_DEFAULT_BUF_SIZE: usize = 65536;
+pub(in net) const NETLINK_DEFAULT_BUF_SIZE: usize = 65536;

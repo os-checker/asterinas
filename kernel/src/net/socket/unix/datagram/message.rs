@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use core::sync::atomic::{AtomicBool, Ordering};
 
 use ostd::sync::WaitQueue;
@@ -275,4 +277,4 @@ impl QueueTable {
     }
 }
 
-pub(in crate::net) const UNIX_DATAGRAM_DEFAULT_BUF_SIZE: usize = 65536;
+pub(in net) const UNIX_DATAGRAM_DEFAULT_BUF_SIZE: usize = 65536;

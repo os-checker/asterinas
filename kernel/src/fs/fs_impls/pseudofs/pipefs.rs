@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use alloc::format;
 
 use spin::Once;
@@ -22,20 +24,20 @@ pub(super) fn init() {
     let _ = PipeFs::mount_node();
 }
 
-pub(in crate::fs) struct PipeFs {
+pub(in fs) struct PipeFs {
     _private: (),
 }
 
 impl PipeFs {
     /// Returns the singleton instance of the anonymous pipe file system.
-    pub(in crate::fs) fn singleton() -> &'static Arc<NaivePseudoFs> {
+    pub(in fs) fn singleton() -> &'static Arc<NaivePseudoFs> {
         static PIPEFS: Once<Arc<NaivePseudoFs>> = Once::new();
 
         NaivePseudoFs::singleton(&PIPEFS, "pipefs", PIPEFS_MAGIC)
     }
 
     /// Creates a pseudo `Path` for an anonymous pipe.
-    pub(in crate::fs) fn new_path(pipe_inode: Arc<AnonPipeInode>) -> Path {
+    pub(in fs) fn new_path(pipe_inode: Arc<AnonPipeInode>) -> Path {
         Path::new_pseudo(Self::mount_node().clone(), pipe_inode, |inode| {
             format!("pipe:[{}]", inode.ino())
         })

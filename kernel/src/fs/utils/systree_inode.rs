@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use alloc::borrow::Cow;
 use core::time::Duration;
 
@@ -34,7 +36,7 @@ type Ino = u64;
 /// the [`Inode`] trait. Users only need to additionally implement the
 /// [`Inode::fs`] method.
 #[expect(dead_code)]
-pub(in crate::fs) trait SysTreeInodeTy: Send + Sync + 'static {
+pub(in fs) trait SysTreeInodeTy: Send + Sync + 'static {
     fn new_arc(
         node_kind: SysTreeNodeKind,
         metadata: Metadata,
@@ -304,7 +306,7 @@ pub(in crate::fs) trait SysTreeInodeTy: Send + Sync + 'static {
 
 /// An enum that represent one of the variants of `SysTree` nodes.
 #[derive(Debug)]
-pub(in crate::fs) enum SysTreeNodeKind {
+pub(in fs) enum SysTreeNodeKind {
     Branch(Arc<dyn SysBranchNode>),
     Leaf(Arc<dyn SysNode>),
     Attr(SysAttr, Arc<dyn SysNode>),
@@ -772,7 +774,7 @@ impl<KInode: SysTreeInodeTy> Iterator for ThisAndParentDentryIter<'_, KInode> {
 }
 
 /// A directory entry of sysfs.
-pub(in crate::fs) struct Dentry {
+pub(in fs) struct Dentry {
     pub ino: Ino,
     pub name: SysStr,
     pub type_: InodeType,

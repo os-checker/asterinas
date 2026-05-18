@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs = crate::fs)]
+
 use crate::{
     fs::{
         ramfs::RamFs,
@@ -22,10 +24,10 @@ pub type TmpFs = RamFs;
 // FIXME: These defaults are only a rough approximation for tmpfs-over-ramfs.
 // A dedicated tmpfs implementation should replace them with real tmpfs limit
 // and accounting semantics.
-pub(in crate::fs) fn default_max_blocks() -> usize {
+pub(in fs) fn default_max_blocks() -> usize {
     crate::vm::mem_total() / PAGE_SIZE / 2
 }
-pub(in crate::fs) fn default_max_inodes() -> usize {
+pub(in fs) fn default_max_inodes() -> usize {
     crate::vm::mem_total() / PAGE_SIZE / 2
 }
 

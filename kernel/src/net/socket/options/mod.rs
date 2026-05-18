@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(net)]
+
 use macros::impl_socket_options;
 
 use super::util::LingerOption;
 use crate::{net::socket::unix::CUserCred, prelude::*, process::Gid};
 
-pub(in crate::net) mod macros;
+pub(in net) mod macros;
 
 /// Socket options. This trait represents all options that can be set or got for a socket, including
 /// socket level options and options for specific socket type like tcp socket.

@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![short_vis_path::add(fs)]
+
 use core::{
     ops::Deref,
     sync::atomic::{AtomicU32, Ordering},
@@ -128,7 +130,7 @@ use crate::{
 /// and pairs a `Dentry` with the `Mount` it was reached through,
 /// since mounts let a single `Dentry`
 /// appear at several locations in the namespace.
-pub(in crate::fs) struct Dentry {
+pub(in fs) struct Dentry {
     inode: Arc<dyn Inode>,
     type_: InodeType,
     name_and_parent: NameAndParent,
@@ -336,7 +338,7 @@ impl Dentry {
     }
 
     /// Gets the absolute path name of this `Dentry` within the filesystem.
-    pub(in crate::fs) fn path_name(&self) -> String {
+    pub(in fs) fn path_name(&self) -> String {
         let mut path_name = self.name().to_string();
         let mut current_dir = self.this();
 
@@ -480,7 +482,7 @@ impl DirDentry<'_> {
     /// permission, and does not resolve overmounted children. Callers that need
     /// full path-component semantics should use
     /// [`super::PathResolver::lookup_at_path`].
-    pub(in crate::fs) fn lookup_child(&self, name: &str) -> Result<Arc<Dentry>> {
+    pub(in fs) fn lookup_child(&self, name: &str) -> Result<Arc<Dentry>> {
         debug_assert!(!is_dot_or_dotdot(name));
 
         let mut children = self.children.upread();
