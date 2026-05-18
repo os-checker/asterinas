@@ -21,11 +21,12 @@ members = [
     "ostd/libs/linux-bzimage/boot-params",
     "ostd/libs/linux-bzimage/builder",
     "ostd/libs/linux-bzimage/setup",
+    "ostd/libs/ostd-macros",
     "ostd/libs/ostd-pod",
     "ostd/libs/ostd-pod/macros",
-    "ostd/libs/ostd-macros",
     "ostd/libs/ostd-test",
     "ostd/libs/padding-struct",
+    "ostd/libs/short-vis-path",
     "kernel",
     "kernel/comps/block",
     "kernel/comps/cmdline",
@@ -140,6 +141,7 @@ linux-boot-params = { version = "0.17.2", path = "ostd/libs/linux-bzimage/boot-p
 ostd-macros = { version = "0.17.2", path = "ostd/libs/ostd-macros" }
 ostd-pod = { path = "ostd/libs/ostd-pod", version = "0.4.0" }
 ostd-test = { version = "0.17.2", path = "ostd/libs/ostd-test" }
+short-vis-path = { path = "ostd/libs/short-vis-path", version = "0.1.0" }
 
 # Crates under kernel/comps
 aster-block = { path = "kernel/comps/block" }
