@@ -21,8 +21,8 @@ use crate::arch::cpu::{
     extension::{IsaExtensions, has_extensions},
 };
 
-#[cfg(target_arch = "riscv32")]
 global_asm!(
+    #[cfg(target_arch = "riscv32")]
     r"
     .equ XLENB, 4
     .macro LOAD_SP a1, a2
@@ -31,10 +31,8 @@ global_asm!(
     .macro STORE_SP a1, a2
         sw \a1, \a2*XLENB(sp)
     .endm
-"
-);
-#[cfg(target_arch = "riscv64")]
-global_asm!(
+    ",
+    #[cfg(target_arch = "riscv64")]
     r"
     .equ XLENB, 8
     .macro LOAD_SP a1, a2
@@ -43,7 +41,9 @@ global_asm!(
     .macro STORE_SP a1, a2
         sd \a1, \a2*XLENB(sp)
     .endm
-"
+    ",
+    include_str!("trap.S"),
+    SSTATUS_FS_MASK = const SSTATUS_FS_MASK, SSTATUS_SUM = const SSTATUS_SUM
 );
 
 /// FPU status bits.
@@ -53,7 +53,7 @@ pub(in crate::arch) const SSTATUS_FS_MASK: usize = 0b11 << 13;
 /// Reference: <https://riscv.github.io/riscv-isa-manual/snapshot/privileged/#sstatus>.
 pub(in crate::arch) const SSTATUS_SUM: usize = 0b1 << 18;
 
-global_asm!(include_str!("trap.S"), SSTATUS_FS_MASK = const SSTATUS_FS_MASK, SSTATUS_SUM = const SSTATUS_SUM);
+// global_asm!(include_str!("trap.S"), SSTATUS_FS_MASK = const SSTATUS_FS_MASK, SSTATUS_SUM = const SSTATUS_SUM);
 
 /// Initialize interrupt handling for the current HART.
 ///
