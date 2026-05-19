@@ -1,5 +1,5 @@
 [package]
-name = "ok_single_ident"
+name = "err_macro_decl_absolute_path"
 version = "0.1.0"
 edition = "2024"
 

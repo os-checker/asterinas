@@ -1,8 +1,9 @@
-use expect_test::expect_file;
 use std::{process::Command, sync::LazyLock};
 
+use expect_test::expect_file;
+
 macro_rules! snapshot {
-    ($name:ident $success:literal $substr:expr) => {
+    ($name:ident $success:literal: $stdout:expr; $stderr:expr) => {
         #[test]
         fn $name() {
             let dir = stringify!($name);
@@ -17,8 +18,14 @@ macro_rules! snapshot {
             expect_file![format!("{dir}/cargo_expand.rs")].assert_eq(&stdout);
 
             // Check if the output contains `pub(in crate::xx::subsystem)`.
-            for substr in (&$substr as &[&str]) {
-                assert!(stdout.contains(substr), "{substr:?} should be included in the output of {dir}");
+            for substr in (&$stdout as &[&str]) {
+                assert!(stdout.contains(substr), "{substr:?} should be included in the stdout of {dir}");
+            }
+
+            // Check if the error contains expected contents.
+            let stderr = strip_pwd(std::str::from_utf8(&output.stderr).unwrap());
+            for substr in (&$stderr as &[&str]) {
+                assert!(stderr.contains(substr), "{substr:?} should be included in the stderr of {dir}");
             }
 
             // Stdout and stderr are redirected to user.
@@ -36,19 +43,22 @@ macro_rules! snapshot {
             );
         }
     };
-    (@fail $($name:ident [$($substr:literal),*]),+) => {
-        $(snapshot! { $name false [$($substr),*] })+
+    (@fail $($name:ident #stdout [$($stdout:literal),*] #stderr [$($stderr:literal),*]),+) => {
+        $(snapshot! { $name false: [$($stdout),*]; [$($stderr),*] })+
     };
-    (@success $($name:ident [$($substr:literal),*]),+) => {
-        $(snapshot! { $name true [$($substr),*] })+
+    (@success $($name:ident [$($stdout:literal),*]),+) => {
+        $(snapshot! { $name true: [$($stdout),*]; [] })+
     };
 }
 
 snapshot! {
-    @fail err_single_ident ["pub(in crate::procfs) fn foo()"]
+    @fail
+    err_single_ident #stdout ["pub(in crate::procfs) fn foo()"] #stderr ["function `foo` is private"],
+    err_decl_macro_absolute_path #stdout [] #stderr ["cannot find macro `impl_frame_meta_for` in this scope"]
 }
 snapshot! {
-    @success ok_single_ident [
+    @success
+    ok_single_ident [
         "pub(in crate::fs) f1:",
         "pub(in crate::fs) fn nested_impl_fn()",
         "pub(in crate::fs) fn baz()",
@@ -61,7 +71,8 @@ snapshot! {
         "pub(in crate::mod_rs::procfs) struct S;",
         "pub(in crate::override_::procfs) const UNIT:",
         "pub(in crate::adhoc::outer) type Unit"
-    ]
+    ],
+    ok_decl_macro_2 []
 }
 
 // Don't include local path in output.

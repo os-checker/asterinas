@@ -1,0 +1,6 @@
+[workspace]
+members = ["err*", "ok*"]
+resolver = "3"
+
+[workspace.dependencies]
+short-vis-path = { path = ".." }

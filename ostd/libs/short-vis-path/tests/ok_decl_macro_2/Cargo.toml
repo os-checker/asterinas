@@ -1,5 +1,5 @@
 [package]
-name = "ok_single_ident"
+name = "ok_decl_macro_2"
 version = "0.1.0"
 edition = "2024"
 
