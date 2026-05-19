@@ -147,4 +147,4 @@ impl HeapSlot {
 #[derive(Debug)]
 pub struct LargeAllocFrameMeta;
 
-impl_frame_meta_for!(LargeAllocFrameMeta);
+crate::impl_frame_meta_for!(LargeAllocFrameMeta);

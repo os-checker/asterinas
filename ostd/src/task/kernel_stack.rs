@@ -48,7 +48,7 @@ pub(super) struct KernelStack {
 #[derive(Debug, Default)]
 struct KernelStackMeta;
 
-impl_frame_meta_for!(KernelStackMeta);
+crate::impl_frame_meta_for!(KernelStackMeta);
 
 impl KernelStack {
     /// Generates a kernel stack with guard pages.

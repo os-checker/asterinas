@@ -14,6 +14,7 @@
 #![feature(sync_unsafe_cell)]
 #![cfg_attr(target_arch = "x86_64", feature(iter_advance_by, macro_metavar_expr))]
 #![expect(internal_features)]
+#![expect(macro_expanded_macro_exports_accessed_by_absolute_paths)]
 #![no_std]
 #![warn(missing_docs)]
 
@@ -27,9 +28,6 @@ macro_rules! __log_prefix {
         ""
     };
 }
-
-#[macro_use]
-pub mod mm;
 
 #[cfg_attr(target_arch = "x86_64", path = "arch/x86/mod.rs")]
 #[cfg_attr(target_arch = "riscv64", path = "arch/riscv/mod.rs")]
@@ -45,6 +43,7 @@ mod ex_table;
 pub mod io;
 pub mod irq;
 pub mod log;
+pub mod mm;
 pub mod panic;
 pub mod power;
 pub mod prelude;

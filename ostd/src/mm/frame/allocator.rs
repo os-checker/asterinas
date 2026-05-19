@@ -328,7 +328,7 @@ impl EarlyFrameAllocator {
 #[derive(Debug)]
 pub(crate) struct EarlyAllocatedFrameMeta;
 
-impl_frame_meta_for!(EarlyAllocatedFrameMeta);
+crate::impl_frame_meta_for!(EarlyAllocatedFrameMeta);
 
 /// Allocates a contiguous range of frames in the early boot phase.
 ///

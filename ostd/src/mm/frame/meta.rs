@@ -179,11 +179,9 @@ macro_rules! impl_frame_meta_for {
         // SAFETY: `on_drop` won't read the page.
         unsafe impl $crate::mm::frame::meta::AnyFrameMeta for $t {}
 
-        check_frame_meta_layout!($t);
+        $crate::check_frame_meta_layout!($t);
     };
 }
-
-// pub use impl_frame_meta_for;
 
 /// The error type for getting the frame from a physical address.
 #[derive(Debug)]

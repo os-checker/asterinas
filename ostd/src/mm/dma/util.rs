@@ -33,7 +33,7 @@ use crate::{
 /// [`VmReader`]: crate::mm::VmReader
 /// [`VmWriter`]: crate::mm::VmWriter
 struct DmaBufferMeta;
-impl_frame_meta_for!(DmaBufferMeta);
+crate::impl_frame_meta_for!(DmaBufferMeta);
 
 // TODO: Implement other architectures when their `IommuPtConfig` are ready.
 #[cfg(target_arch = "x86_64")]

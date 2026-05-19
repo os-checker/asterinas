@@ -7,10 +7,8 @@
     expect(unused_imports)
 )]
 
-#[macro_use]
-pub mod frame;
-
 pub mod dma;
+pub mod frame;
 pub mod heap;
 pub mod io;
 pub(crate) mod kspace;
