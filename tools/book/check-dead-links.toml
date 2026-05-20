@@ -1,0 +1,24 @@
+# See https://lychee.cli.rs/guides/config/ for the meanings.
+
+# Verbose program output
+# Accepts log level: "error", "warn", "info", "debug", "trace"
+verbose = "info"
+
+# Output format
+format = "detailed"
+
+# Don't show interactive progress bar while checking links.
+no_progress = true
+
+# Proceed for server connections considered insecure (invalid TLS).
+insecure = true
+
+# Exclude URLs and mail addresses from checking. The values are treated as regular expressions
+exclude = [
+  "https://www.gnu.org/software/.*",                                                               # 429 Too Many Requests
+  "https://dl.acm.org/doi/.*",                                                                     # 403 Forbidden
+  "https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html", # 403 Forbidden
+  "https://ftp.gnu.org/.*",                                                                        # timeout
+  "https://nixos.org/.*",                                                                          # timeout
+  "https://darwinsys.com/file/",                                                                   # timeout
+]

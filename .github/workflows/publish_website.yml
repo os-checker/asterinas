@@ -14,9 +14,22 @@ on:
       - .github/workflows/update-website.yml
 
 jobs:
+  check_dead_links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check dead links in the book
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          jobSummary: true
+          args: --config tools/book/check-dead-links.toml book/src
+
   build_and_deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    needs: [check_dead_links]
     container: asterinas/asterinas:0.17.2-20260508
     steps:
       - uses: actions/checkout@v2
