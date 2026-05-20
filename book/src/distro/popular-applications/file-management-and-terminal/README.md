@@ -457,7 +457,7 @@ ag --cc "main"
 
 ### tree
 
-[tree](http://mama.indstate.edu/users/ice/tree/) displays directory structures in a tree format.
+[tree](http://oldmanprogrammer.net/source.php?dir=projects/tree) displays directory structures in a tree format.
 
 #### Installation
 

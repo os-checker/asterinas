@@ -71,7 +71,7 @@ if doing it outside is possible.
 The safe API provided by the framework is only allowed
 to introduce minimal overheads.
 Ideally, these APIs should be realized
-as [zero-cost abstractions](https://monomorph.is/posts/zero-cost-abstractions/).
+as [zero-cost abstractions](https://web.archive.org/web/20230407233736/https://monomorph.is/posts/zero-cost-abstractions/).
 
 Fortunately, our efforts
 to design and implement an OS framework meeting these standards
