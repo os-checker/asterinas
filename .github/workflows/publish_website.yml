@@ -4,12 +4,14 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - VERSION
       - book/**
       - .github/workflows/update-website.yml
   push:
     branches:
       - main
     paths:
+      - VERSION
       - book/**
       - .github/workflows/update-website.yml
 
@@ -26,10 +28,18 @@ jobs:
           jobSummary: true
           args: --config tools/book/check-dead-links.toml book/src
 
+  check_latest_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check api-docs links referring to latest version
+        run: tools/book/check-latest-version.sh
+
   build_and_deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [check_dead_links]
+    needs: [check_dead_links, check_latest_version]
     container: asterinas/asterinas:0.17.2-20260508
     steps:
       - uses: actions/checkout@v2
