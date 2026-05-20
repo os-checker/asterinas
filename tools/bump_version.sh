@@ -144,6 +144,18 @@ update_all_docker_version_refs() {
     done
 }
 
+update_all_book_links() {
+    # Define the search and replace patterns for sed.
+    # We use '|' as a delimiter for sed to avoid escaping the slashes in the URL.
+    # This matches 'asterinas.github.io/api-docs/' followed by any X.Y.Z version.
+    SEARCH_PATTERN="asterinas\.github\.io/api-docs/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+"
+    REPLACE_STR="asterinas\.github\.io/api-docs/${new_version}"
+
+    grep -rl "asterinas.github.io/api-docs/" "$BOOK_SRC_DIR" | while read -r file; do
+        sed -i "s|$SEARCH_PATTERN|$REPLACE_STR|g" "$file"
+    done
+}
+
 # Update project dependencies (Cargo.toml and Cargo.lock)
 update_project_dependencies() {
     # Update the versions in Cargo.toml
@@ -186,6 +198,7 @@ sync_project_version() {
     fi
 
     update_project_dependencies
+    update_all_book_links
 
     echo -n "${new_version}" > ${VERSION_PATH}
     echo "Bumped Asterinas OSTD & OSDK version to $new_version"
@@ -199,6 +212,7 @@ OSDK_DIR=${ASTER_SRC_DIR}/osdk
 OSDK_CARGO_TOML_PATH=${OSDK_DIR}/Cargo.toml
 SCTRACE_DIR=${ASTER_SRC_DIR}/tools/sctrace
 SCTRACE_CARGO_TOML_PATH=${SCTRACE_DIR}/Cargo.toml
+BOOK_SRC_DIR=${ASTER_SRC_DIR}/book/src
 VERSION_PATH=${ASTER_SRC_DIR}/VERSION
 DOCKER_IMAGE_VERSION_PATH=${ASTER_SRC_DIR}/DOCKER_IMAGE_VERSION
 
