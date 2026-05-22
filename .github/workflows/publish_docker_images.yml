@@ -5,10 +5,10 @@ on:
   push:
     paths:
       - DOCKER_IMAGE_VERSION
+      - '**/Dockerfile'
     branches:
       - main
   pull_request:
-    branches:
     paths:
       - '**/Dockerfile'
 
