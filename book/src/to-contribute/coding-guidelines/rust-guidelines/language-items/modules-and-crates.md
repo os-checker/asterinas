@@ -28,6 +28,43 @@ PR [#2951](https://github.com/asterinas/asterinas/pull/2951),
 [#2605](https://github.com/asterinas/asterinas/pull/2605#discussion_r2720506912),
 and [#3154](https://github.com/asterinas/asterinas/pull/3154#discussion_r3100905375).
 
+### Restrict subsystem visibility in a short name (`short-vis-path`) {#short-vis-path}
+
+For a kernel subsystem with a long module path, use
+`#![short_vis_path::add(subsystem)]` and `pub(in subsystem)` to restrict an
+item's visibility to that subsystem scope.
+
+The attribute is placed inside the module and rewrites restricted visibility
+paths from the short name to the absolute module path.
+
+```rust
+// src/a/long/subsystem/child1/child2.rs
+
+// Good
+#![short_vis_path::add(subsystem)]
+pub(in subsystem) fn foo() {}
+
+// Bad
+pub(in crate::a::long::subsystem) fn foo() {}
+```
+
+**Guidelines for applying the attribute:**
+
+1. The subsystem must be a parent or ancestor module of the current module; the
+   Rust compiler does not allow restricting visibility to unrelated modules.
+
+2. When the restricted path is straightforward or used infrequently, keep the
+   original long path to avoid overusing this attribute. Use the
+   attribute if **all** of the following conditions are met:
+   * the submodule depth exceeds 2 levels (i.e., the target path contains at
+     least two `::` separators); **and**
+   * the restricted visibility path is used at least 3 times.
+
+Refer to [#3247] for the `short-vis-path` implementation and [#3188] for the design.
+
+[#3247]: https://github.com/asterinas/asterinas/pull/3247
+[#3188]: https://github.com/asterinas/asterinas/issues/3188
+
 ### Qualify function calls with the parent module (`qualified-fn-imports`) {#qualified-fn-imports}
 
 When importing a free function or a static/constant
