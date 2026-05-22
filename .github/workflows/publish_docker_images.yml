@@ -7,6 +7,9 @@ on:
       - DOCKER_IMAGE_VERSION
     branches:
       - main
+  pull_request:
+    paths:
+      - '**/Dockerfile'
 
 permissions:
   contents: read
@@ -46,7 +49,7 @@ jobs:
       id-token: write # for cosign keyless signing of provenance attestations
     with:
       output: image
-      push: true
+      push: ${{ github.event_name != 'pull_request' }}
       platforms: linux/amd64,linux/arm64
       context: .
       file: ./osdk/tools/docker/Dockerfile
@@ -71,7 +74,7 @@ jobs:
       id-token: write # for cosign keyless signing of provenance attestations
     with:
       output: image
-      push: true
+      push: ${{ github.event_name != 'pull_request' }}
       platforms: linux/amd64,linux/arm64
       context: .
       file: ./tools/docker/nix/Dockerfile
@@ -96,7 +99,7 @@ jobs:
       id-token: write # for cosign keyless signing of provenance attestations
     with:
       output: image
-      push: true
+      push: ${{ github.event_name != 'pull_request' }}
       platforms: linux/amd64,linux/arm64
       context: .
       file: ./tools/docker/Dockerfile
