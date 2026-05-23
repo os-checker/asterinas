@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#![doc = include_str!("../README.md")]
 #![feature(clone_from_ref)]
 
 use proc_macro::TokenStream;
