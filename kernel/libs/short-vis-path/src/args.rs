@@ -8,7 +8,7 @@ use syn::{parse::Parse, punctuated::Punctuated, *};
 
 /// Represents a single argument in the `#[add(...)]` attribute.
 /// Either a simple identifier or an override with an explicit path.
-pub enum Argument {
+enum Argument {
     Single(Ident),
     Override(Ident, Path),
 }
@@ -32,7 +32,7 @@ impl Parse for Argument {
 /// Holds the parsed arguments from `#[add(...)]`.
 /// Maps each identifier to its corresponding path.
 pub struct AddArguments {
-    pub args: BTreeMap<Ident, Path>,
+    args: BTreeMap<Ident, Path>,
 }
 
 /// Parses the `#[add(...)]` attribute content.
@@ -117,9 +117,11 @@ impl AddArguments {
                     && let Some(path) = self.args.get(&input)
                 {
                     path.to_tokens(&mut new_stream);
+                    // Replace the group's token stream directly.
                     *group = Group::new(group.delimiter(), new_stream);
                 }
             }
+            // Update token stream with the modified v_tt since the original ts doesn't apply the change.
             *ts = TokenStream::from_iter(v_tt);
         }
     }
