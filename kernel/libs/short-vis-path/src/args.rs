@@ -6,11 +6,15 @@ use proc_macro2::{Group, Span, TokenStream, TokenTree};
 use quote::ToTokens;
 use syn::{parse::Parse, punctuated::Punctuated, *};
 
+/// Represents a single argument in the `#[add(...)]` attribute.
+/// Either a simple identifier or an override with an explicit path.
 pub enum Argument {
     Single(Ident),
     Override(Ident, Path),
 }
 
+/// Parses `Argument` from token stream.
+/// Accepts either a single identifier or `ident = path` format.
 impl Parse for Argument {
     fn parse(input: parse::ParseStream) -> Result<Self> {
         Ok(if input.peek2(Token![=]) {
@@ -25,10 +29,14 @@ impl Parse for Argument {
     }
 }
 
+/// Holds the parsed arguments from `#[add(...)]`.
+/// Maps each identifier to its corresponding path.
 pub struct AddArguments {
     pub args: BTreeMap<Ident, Path>,
 }
 
+/// Parses the `#[add(...)]` attribute content.
+/// Expects a comma-separated list of identifiers, optionally with path overrides.
 impl Parse for AddArguments {
     fn parse(input: parse::ParseStream) -> Result<Self> {
         // Parse multiple arguments.
@@ -58,6 +66,7 @@ impl Parse for AddArguments {
     }
 }
 
+/// Implements VisitMut to transform visibility paths in AST nodes.
 impl visit_mut::VisitMut for AddArguments {
     fn visit_visibility_mut(&mut self, vis: &mut Visibility) {
         self.replace_restricted_vis_path(vis);
@@ -73,9 +82,11 @@ impl visit_mut::VisitMut for AddArguments {
     }
 }
 
+/// Provides methods for replacing short visibility paths with full paths.
 impl AddArguments {
-    /// Replace `pub(in subsystem)` by `pub(in crate::to::subsystem)`.
-    pub fn replace_restricted_vis_path(&self, vis: &mut Visibility) {
+    /// Replaces `pub(in subsystem)` with `pub(in crate::to::subsystem)`.
+    /// Only affects visibility restricted to identifiers registered in `self.args`.
+    fn replace_restricted_vis_path(&self, vis: &mut Visibility) {
         if let Visibility::Restricted(vis) = vis
             && let Some(input) = vis.path.get_ident()
             && let Some(path) = self.args.get(input)
@@ -84,7 +95,8 @@ impl AddArguments {
         }
     }
 
-    /// Parse `pub(in ident) ...`.
+    /// Parses and replaces visibility paths in verbatim token streams.
+    /// Handles `pub(in ident)` syntax that syn cannot parse normally.
     fn replace_verbatim_vis_path(&self, ts: &mut TokenStream) {
         let mut v_tt: Vec<TokenTree> = ts.clone().into_iter().collect();
         let mut iter = v_tt.iter_mut();
@@ -113,16 +125,18 @@ impl AddArguments {
     }
 }
 
-/// Module path to be replaced with, at best effort of guess basis on source file layout.
+/// Represents the full module path derived from the source file location.
+/// Used to replace short visibility paths with properly qualified paths.
 struct ExpandedPath {
-    /// Starting from `crate`.
+    /// Module path segments starting from `crate`.
     segment: Vec<String>,
-    /// Callsite span.
+    /// Span for maintaining original source location in generated tokens.
     callsite_span: Span,
 }
 
 impl ExpandedPath {
-    /// Get the module path to be used in `pub(in ...)`, based on directory structure.
+    /// Constructs the full module path based on the source file location.
+    /// The path starts from `crate` and follows the directory structure.
     /// For example, if the attribute is in `a/src/procfs.rs`, this function returns
     /// `crate::procfs`; if in `a/src/fs/procfs/mod.rs`, returns `crate::fs::procfs`.
     fn new() -> Self {
@@ -164,8 +178,8 @@ impl ExpandedPath {
         }
     }
 
-    /// Generate the Path tokens, starting from `crate` to `end` (both included).
-    /// Returns None when the module path doesn't contain `end`.
+    /// Generates a `Path` from `crate` up to and including the segment matching `end`.
+    /// Returns `None` if `end` is not found in the module path.
     fn to_syn_path(&self, end: &Ident) -> Option<Path> {
         let pos = self.segment.iter().rposition(|seg| end == seg.as_str())?;
         Some(Path {
