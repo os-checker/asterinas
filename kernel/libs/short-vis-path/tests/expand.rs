@@ -1,5 +1,7 @@
-//! Run `SHORT_VIS_PATH_DIR=$PWD/tests/ui cargo test` for testing, because `#![short_vis_path::add]` requires a correct base dir,
-//! while the tested rust files lie in non-classic cargo project, thus need to set `SHORT_VIS_PATH_DIR` to set correct file prefix.
+//!  Run `SHORT_VIS_PATH_DIR=$PWD/tests/expand cargo test` for testing, because
+//!  `#![short_vis_path::add]` requires a correct base directory, while the tested Rust files reside
+//!  in a non-standard Cargo project structure, so `SHORT_VIS_PATH_DIR` must be set to specify the
+//!  correct file prefix.
 
 struct Expanded {
     file_path: String,
@@ -8,7 +10,7 @@ struct Expanded {
 
 impl Expanded {
     fn run(name: &str) -> Expanded {
-        const PREFIX_DIR: &str = "tests/ui";
+        const PREFIX_DIR: &str = "tests/expand";
         let src = format!("{PREFIX_DIR}/{name}.rs");
 
         // This function run `cargo expand`, and generate a local expanded file.
