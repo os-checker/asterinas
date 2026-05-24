@@ -150,30 +150,30 @@ impl ExpandedPath {
             panic!("Unable to canonicalize {local_path:?}.")
         };
 
-        let manifest_dir =
-            std::env::var("CARGO_MANIFEST_DIR").expect("Failed to get manifest dir.");
+        let sep = std::path::MAIN_SEPARATOR_STR;
+        let prefix = std::env::var("SHORT_VIS_PATH_DIR").unwrap_or_else(|_| {
+            let manifest_dir =
+                std::env::var("CARGO_MANIFEST_DIR").expect("Failed to get manifest dir.");
+            manifest_dir + sep + "src"
+        });
 
-        let Ok(relative_path) = local_path.strip_prefix(&manifest_dir) else {
-            panic!("{manifest_dir:?} must be a prefix of {local_path:?}.")
+        // Strip `CARGO_MANIFEST_DIR/src/` or `$SHORT_VIS_PATH_DIR`.
+        let Ok(module_path) = local_path.strip_prefix(&prefix) else {
+            panic!("{prefix:?} must be a prefix of {local_path:?}.")
         };
 
-        let Ok(module_path) = relative_path.strip_prefix("src") else {
-            panic!("`src/` must be a prefix of {relative_path:?}.")
-        };
-
-        let module_str = module_path.to_str().unwrap();
         // Handle `xx/mod_name/mod.rs` module style.
-        let module_str = module_str.strip_suffix("/mod.rs").unwrap_or(module_str);
+        let module_path = if module_path.file_name() == Some("mod.rs".as_ref()) {
+            module_path.parent().unwrap()
+        } else {
+            module_path
+        };
         // Handle `xx/mod_name.rs` module style.
-        let module_str = module_str.strip_suffix(".rs").unwrap_or(module_str);
+        let module_path = module_path.with_extension("");
 
         ExpandedPath {
             segment: std::iter::once("crate")
-                .chain(
-                    std::path::Path::new(module_str)
-                        .iter()
-                        .map(|m| m.to_str().unwrap()),
-                )
+                .chain(module_path.iter().map(|m| m.to_str().unwrap()))
                 .map(String::from)
                 .collect(),
             callsite_span,
