@@ -10,7 +10,7 @@ When working with deep module hierarchies, writing `pub(in crate::very::long::pa
 
 In a file at `src/fs/procfs.rs`:
 
-```rust
+```rust,ignore
 #![short_vis_path::add(fs)]
 
 // Expands to `pub(in crate::fs)`
@@ -19,7 +19,7 @@ pub(in fs) enum E {}
 
 This attribute uses inner attributes (`#![...]`), which requires the `custom_inner_attributes` and `proc_macro_hygiene` features. Enable them in your crate root:
 
-```rust
+```rust,ignore
 // src/lib.rs or src/main.rs
 #![feature(custom_inner_attributes, proc_macro_hygiene)]
 ```
@@ -28,7 +28,7 @@ This attribute uses inner attributes (`#![...]`), which requires the `custom_inn
 
 You can specify multiple identifiers in the attribute. Each identifier is matched against the current file's module path, and the longest matching segment is used:
 
-```rust
+```rust,ignore
 // In src/fs/procfs/child.rs
 #![short_vis_path::add(fs, procfs)]
 
@@ -42,7 +42,7 @@ pub(in procfs) fn bar() {}
 
 When there are multiple modules with the same name in the current file's path, the macro expands to the deepest matching module by default. Use path override to specify a different ancestor module:
 
-```rust
+```rust,ignore
 // In src/fs/procfs/fs/child.rs
 #![short_vis_path::add(fs = crate::fs)]
 
