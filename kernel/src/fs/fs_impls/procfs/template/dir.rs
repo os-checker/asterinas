@@ -2,6 +2,8 @@
 
 //! Reusable procfs directory inode templates and `readdir` helpers.
 
+#![short_vis_path::add(procfs)]
+
 use alloc::borrow::Cow;
 use core::time::Duration;
 
@@ -29,7 +31,7 @@ use crate::{
 /// `ProcDir` owns the directory implementation object,
 /// tracks parent linkage for `.` and `..`,
 /// and forwards inode methods that are common to all procfs directories.
-pub struct ProcDir<D: DirOps> {
+pub(in procfs) struct ProcDir<D: DirOps> {
     inner: D,
     this: Weak<ProcDir<D>>,
     parent: Option<Weak<dyn Inode>>,
@@ -38,7 +40,7 @@ pub struct ProcDir<D: DirOps> {
 
 impl<D: DirOps> ProcDir<D> {
     /// Creates the root procfs directory inode.
-    pub fn new_root(
+    pub(in procfs) fn new_root(
         dir: D,
         fs: Weak<dyn FileSystem>,
         ino: u64,
@@ -57,7 +59,7 @@ impl<D: DirOps> ProcDir<D> {
     }
 
     /// Creates a non-root procfs directory inode under `parent`.
-    pub fn new(dir: D, parent: Weak<dyn Inode>, mode: InodeMode) -> Arc<Self> {
+    pub(in procfs) fn new(dir: D, parent: Weak<dyn Inode>, mode: InodeMode) -> Arc<Self> {
         let common = {
             let fs = parent.upgrade().unwrap().fs();
             let procfs = fs.downcast_ref::<ProcFs>().unwrap();
@@ -77,7 +79,7 @@ impl<D: DirOps> ProcDir<D> {
         self.this.upgrade().unwrap()
     }
 
-    pub fn this_weak(&self) -> &Weak<ProcDir<D>> {
+    pub(in procfs) fn this_weak(&self) -> &Weak<ProcDir<D>> {
         &self.this
     }
 
@@ -86,7 +88,7 @@ impl<D: DirOps> ProcDir<D> {
     }
 
     /// Returns the directory-specific procfs operations.
-    pub fn inner(&self) -> &D {
+    pub(in procfs) fn inner(&self) -> &D {
         &self.inner
     }
 }
@@ -236,7 +238,7 @@ impl<D: DirOps + 'static> Inode for ProcDir<D> {
     }
 }
 
-pub trait DirOps: Sync + Send + Sized {
+pub(in procfs) trait DirOps: Sync + Send + Sized {
     /// Returns the thread whose credentials own this procfs inode.
     fn owner_thread(&self) -> Option<Arc<Thread>> {
         None
@@ -293,13 +295,13 @@ pub trait DirOps: Sync + Send + Sized {
 /// The tuple stores the exported filename,
 /// the inode type reported to [`Inode::readdir_at`],
 /// and the constructor used by lookup paths to instantiate the inode.
-pub type StaticDirEntry<Fp> = (&'static str, InodeType, Fp);
+pub(in procfs) type StaticDirEntry<Fp> = (&'static str, InodeType, Fp);
 
 /// Looks up a statically declared child from a `StaticDirEntry` table.
 ///
 /// The `constructor_adaptor` receives the stored constructor payload
 /// and can bind any per-directory context that is needed at the call site.
-pub fn lookup_child_from_table<Fp, F>(
+pub(in procfs) fn lookup_child_from_table<Fp, F>(
     name: &str,
     table: &[StaticDirEntry<Fp>],
     constructor_adaptor: F,
@@ -315,7 +317,7 @@ where
 }
 
 /// Converts a static procfs child table into listed entries.
-pub fn listed_entries_from_table<'a, Fp>(
+pub(in procfs) fn listed_entries_from_table<'a, Fp>(
     table: &'a [StaticDirEntry<Fp>],
 ) -> impl Iterator<Item = ListedEntry<'a>> + 'a
 where
@@ -326,7 +328,7 @@ where
         .map(|(name, type_, _)| ListedEntry::new(*name, *type_))
 }
 
-mod readdir {
+pub(in procfs) mod readdir {
     //! `readdir` resumption types and strategies.
     //!
     //! When user space calls `getdents`, it passes an offset and expects the
@@ -494,7 +496,7 @@ mod readdir {
     }
 }
 
-pub use readdir::{
+pub(in procfs) use readdir::{
     ListedEntry, ReaddirEntry, keyed_readdir_entries, sequential_readdir_entries,
     visit_listed_entries, visit_readdir_entries,
 };
