@@ -1,7 +1,6 @@
-//!  Run `SHORT_VIS_PATH_DIR=$PWD/tests/expand cargo test` for testing, because
-//!  `#![short_vis_path::add]` requires a correct base directory, while the tested Rust files reside
-//!  in a non-standard Cargo project structure, so `SHORT_VIS_PATH_DIR` must be set to specify the
-//!  correct file prefix.
+// SPDX-License-Identifier: MPL-2.0
+
+#![doc = include_str!("../README.md")]
 
 struct Expanded {
     file_path: String,
@@ -38,6 +37,11 @@ impl Drop for Expanded {
 }
 
 macro_rules! check {
+    // # Arugments
+    //
+    // * `$name` refers to a file stem under `expand` directory.
+    // * `$target_str` refers to a list of string that contains the expected
+    //   expanded path (better with extra item names included for good search).
     ($name:ident: $($target_str:literal),+) => {
         #[test]
         fn $name() {
@@ -51,7 +55,7 @@ macro_rules! check {
 }
 
 // Share entry point `fs/procfs/` to test usages on items and the attribute syntax.
-check! { a_integration_test:
+check! { integration_test:
     // override.rs
     "pub(in crate::fs) enum Enum",
     // field.rs
