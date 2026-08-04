@@ -1,0 +1,51 @@
+name: "Codex Action bad with `container:`"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened]
+  push:
+    branches:
+
+jobs:
+  basic-test:
+    runs-on: ubuntu-latest
+    container:
+      image: asterinas/asterinas:0.18.0-20260702
+      options: -v /dev:/dev --privileged
+      volumes:
+        # Map the following directories on the host into the container so that
+        # the container can remove them to save some precious disk space (~16GB),
+        # which is quite limited on free-tier Github runners.
+        - /usr/lib/google-cloud-sdk:/usr/lib/google-cloud-sdk
+        - /usr/local/lib/android:/usr/local/lib/android
+        - /usr/share/dotnet:/usr/share/dotnet
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Codex
+        id: run_codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          responses-api-endpoint: https://platform.tlaic.ac.cn/api/gateway/v1/
+          model: sophnet/DeepSeek-V4-Flash
+          permission-profile: ":workspace"
+          prompt: |
+            This is PR #${{ github.event.pull_request.number }} for ${{ github.repository }}.
+
+            Review ONLY the changes introduced by the PR, so consider:
+               git log --oneline ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}
+
+            Suggest any improvements, potential bugs, or issues.
+            Be concise and specific in your feedback.
+
+            Pull request title and body:
+            ----
+            ${{ github.event.pull_request.title }}
+            ${{ github.event.pull_request.body }}
+
+      - name: check codex
+        run: codex --version
